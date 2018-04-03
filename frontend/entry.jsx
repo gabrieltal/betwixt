@@ -1,3 +1,7 @@
-<div>
-  YO
-</div>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('root');
+  ReactDOM.render(<h1>Yooooo</h1>, root);
+});
