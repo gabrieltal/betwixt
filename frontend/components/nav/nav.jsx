@@ -8,7 +8,7 @@ class Nav extends React.Component {
     super(props);
     this.state = {
       signInOpen: false,
-      signUpOpen: false
+      signUpOpen: false,
     };
     this.signUpOpenModal = this.signUpOpenModal.bind(this);
     this.signInOpenModal = this.signInOpenModal.bind(this);
@@ -20,9 +20,11 @@ class Nav extends React.Component {
   }
 
   welcomeUser () {
+    const user = Object.values(this.props.currentUser)[0];
     return (
       <div>
-        <p>Welcome {this.props.currentUser.username}!</p>
+        <p>Welcome {user.username}!</p>
+        <button onClick={this.props.logout}>Sign Out</button>
       </div>
     );
   }
@@ -33,18 +35,20 @@ class Nav extends React.Component {
         <button onClick={this.signUpOpenModal}>Get started</button>
         <button onClick={this.signInOpenModal}>Sign in</button>
 
-        <Modal isOpen={this.state.signUpOpen} onRequestClose={this.closeModal}><SignupFormContainer /></Modal>
-        <Modal isOpen={this.state.signInOpen} onRequestClose={this.closeModal}><LoginFormContainer /></Modal>
+        <Modal isOpen={this.state.signUpOpen} onRequestClose={this.closeModal}><SignupFormContainer signInOpenModal={this.signInOpenModal} closeModal={this.closeModal}/></Modal>
+        <Modal isOpen={this.state.signInOpen} onRequestClose={this.closeModal}><LoginFormContainer signUpOpenModal={this.signUpOpenModal} closeModal={this.closeModal}/></Modal>
 
       </div>
     )
   }
 
   signUpOpenModal () {
+
     this.setState({ signUpOpen: true });
   }
 
   signInOpenModal () {
+
     this.setState({ signInOpen: true });
   }
 
