@@ -37,8 +37,15 @@ class SessionForm extends React.Component {
           <input onChange={this.update('password')} type="password" value={this.state.password}/>
         </label>
         <br/>
-        {this.props.redirectPageMessage}<button onClick={()=>{this.props.closeModal(); this.props.otherForm();}}>{this.props.redirectPageText}</button>
-        <br/><input type="submit" value="Continue" />
+        <p className='formText'> {this.props.redirectPageMessage}
+          <input className='changeFormButton' type="button"
+            onClick={(e)=>{this.props.closeModal(e); this.props.otherForm();}}
+            value={this.props.redirectPageText}
+          />
+        </p>
+
+        <br/>
+        <input type="submit" value="Continue" />
       </form>
     );
   }
