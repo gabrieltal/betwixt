@@ -52,7 +52,8 @@ class Nav extends React.Component {
     this.setState({ signInOpen: true });
   }
 
-  closeModal () {
+  closeModal (e) {
+    e.preventDefault();
     this.setState({ modalIsOpen: false,
       signUpOpen: false,
       signInOpen: false,
