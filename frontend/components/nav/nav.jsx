@@ -14,9 +14,9 @@ class Nav extends React.Component {
   welcomeUser () {
     const user = Object.values(this.props.currentUser)[0];
     return (
-      <div>
+      <div className='greet-signout'>
+        <button className='signout-button' onClick={this.props.logout}>Sign Out</button>
         <p>Welcome {user.username}!</p>
-        <button onClick={this.props.logout}>Sign Out</button>
       </div>
     );
   }
@@ -24,8 +24,8 @@ class Nav extends React.Component {
   navLinks () {
     return (
       <nav className='login-signup'>
-        <button onClick={() => this.props.openModal('signup')}>Get started</button>
-        <button onClick={() => this.props.openModal('login')}>Sign in</button>
+        <button className='login-button' onClick={() => this.props.openModal('login')}>Sign in</button>
+        <button className='signup-button' onClick={() => this.props.openModal('signup')}>Get started</button>
       </nav>
     )
   }

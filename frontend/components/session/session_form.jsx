@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
       <div className='login-form-container'>
         <form onSubmit={this.handleSubmit} className={this.props.formType}>
           <button onClick={this.props.closeModal}>X</button>
-          <br/>
+
           <h3>{this.props.headerMessage}</h3>
           <br/>
           <label> username:

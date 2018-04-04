@@ -2,9 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
-
-  h1 {
+  display: block;
+  text-align: center;
+  .header-Link {
+    display: inline-block;
     color: black;
     font-size: 48px;
+    text-decoration: none;
+    font-weight: bold;
   }
+
+  .login-signup {
+    float: right;
+    margin-top: 10px;
+    font-family: sans-serif;
+    button {
+      margin-right: 15px;
+    }
+
+    .signup-button {
+      color: green;
+      font-size: 14px;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      background: white;
+      border-radius: 5px;
+      border: 2px solid green;
+    }
+
+    .signup-button:hover {
+      color: white;
+      cursor: pointer;
+      background: green;
+    }
+
+  }
+
+  .greet-signout {
+    float: right;
+
+    font-family: sans-serif;
+    display: flex;
+    margin-right: 10px;
+    font-size: 16px;
+    align-items: center;
+    margin-top: 15px;
+    p {
+      margin-right: 10px;
+    }
+    .signout-button {
+      margin-right: 10px;
+    }
+  }
+
+  .login-button, .signout-button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: green;
+    font-size: 14px;
+  }
+
+  .login-button:hover, .signout-button:hover {
+    cursor: pointer;
+    text-decoration: underline black;
+  }
+
 }
