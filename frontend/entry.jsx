@@ -7,8 +7,9 @@ import Root from './components/root';
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
+
   if (window.currentUser) {
-    const preloadedState = {session: { currentUser: window.CurrentUser } };
+    const preloadedState = {session: { currentUser: window.currentUser } };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
@@ -19,7 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
-  window.dispatch = store.dispatch;
+
   // END TESTING
+  window.dispatch = store.dispatch;
+
   ReactDOM.render(<Root store={ store }/>, root);
 });
