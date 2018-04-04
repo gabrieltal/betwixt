@@ -23,7 +23,13 @@ const Modal = ({ modal, closeModal }) => {
 
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={ e => e.stopPropagation()}>
+      <div className="modal-child" onClick={ e => {
+        e.stopPropagation();
+        if (e.target.innerText === 'Create One.' ||
+            e.target.innerText === 'Login.') {
+              e.preventDefault();
+        }}
+      }>
         { component }
       </div>
     </div>

@@ -5,10 +5,6 @@ import SignupFormContainer from '../session/signup_form_container';
 class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      signInOpen: false,
-      signUpOpen: false,
-    };
   }
 
   welcomeUser () {

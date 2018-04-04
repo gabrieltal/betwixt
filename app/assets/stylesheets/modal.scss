@@ -1,24 +1,49 @@
 .modal-background {
   position: fixed;
-  top: 35%;
-
-  left: 35%;
-  width: 400px;
-  height: 400px;
-  background-color: skyblue;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
   z-index: 10;
 }
 
 .modal-child {
   position: absolute;
+  display: flex;
+  align-content: space-around;
+  align-items: space-around;
+  text-align: center;
   top: 50%;
   left: 50%;
+  background-color: #3CB371;
   transform: translate(-50%, -50%);
+  padding: 100px;
+  border-radius: 15px;
+  font-size: 16px;
 }
 
-.close-x {
+.form-session {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 35px;
+}
+
+.x-close {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
+}
+.login-form-container {
+  margin-bottom: 15px;
+  h3 {
+    font-size: 28px;
+  }
+
+  .submit-button {
+
+  }
+
 }
