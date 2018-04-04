@@ -1,11 +1,14 @@
 import React from 'react';
 import NavContainer from './nav/nav_container';
-import { Route } from 'react-router-dom';
-
+import { Route, Link } from 'react-router-dom';
+import Modal from './modal/modal';
 const App = () => (
   <div>
+    <Modal />
     <header>
-      <h1>Betwixt</h1>
+      <Link to="/" className="header-Link">
+        <h1>Betwixt</h1>
+      </Link>
       <NavContainer />
     </header>
   </div>
