@@ -35,15 +35,42 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 20px;
 }
 .login-form-container {
   margin-bottom: 15px;
   h3 {
     font-size: 28px;
   }
+  .other-form-button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+  }
 
-  .submit-button {
+  .other-form-button:hover {
+    cursor:pointer;
+    font-size: 16px;
 
   }
 
+  .submit-button {
+    background-color: black;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 0px;
+    color: white;
+  }
+
+  .submit-button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
 }
