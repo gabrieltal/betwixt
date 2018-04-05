@@ -136,15 +136,19 @@ header .greet-signout p {
   margin-right: 10px;
 }
 /* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .greet-signout welcome {
+  color: green;
+}
+/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .signout-button {
   margin-right: 10px;
 }
-/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 60, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout img {
   width: 50px;
   height: 50px;
 }
-/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .login-button, header .signout-button {
   border: none;
   background: none;
@@ -152,7 +156,7 @@ header .login-button, header .signout-button {
   color: green;
   font-size: 14px;
 }
-/* line 71, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 74, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .login-button:hover, header .signout-button:hover {
   cursor: pointer;
   text-decoration: underline black;
