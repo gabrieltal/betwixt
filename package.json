@@ -27,7 +27,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch"
+    "webpack": "webpack --watch",
+    'postinstall': "webpack"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,9 @@
   "bugs": {
     "url": "https://github.com/gabrieltal/betwixt/issues"
   },
-  "homepage": "https://github.com/gabrieltal/betwixt#readme"
+  "homepage": "https://github.com/gabrieltal/betwixt#readme",
+  "engines": {
+      "node": "4.1.1",
+      "npm": "2.1.x"
+  }
 }
