@@ -41,7 +41,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-  gem 'paperclip', '~> 5.0.0'
+  gem 'paperclip', '~> 5.2.0'
 end
 
 group :development do
