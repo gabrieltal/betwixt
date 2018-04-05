@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { signup, login, logout } from './actions/session_actions';
 import configureStore from './store/store';
 import Root from './components/root';
 
@@ -15,14 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-  //TESTING
-  window.store = store;
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
-
-  // END TESTING
-  window.dispatch = store.dispatch;
-
   ReactDOM.render(<Root store={ store }/>, root);
 });
