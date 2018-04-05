@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import { login } from '../../actions/session_actions';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Nav extends React.Component {
       <nav className='login-signup'>
         <button className='login-button' onClick={() => this.props.openModal('login')}>Sign in</button>
         <button className='signup-button' onClick={() => this.props.openModal('signup')}>Get started</button>
+        <button className='signup-button' onClick={() => dispatch(login({username: "gabriel", password: "password"}))}>Demo</button>
       </nav>
     )
   }
