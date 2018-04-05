@@ -41,6 +41,7 @@
     "npm": "5.6.0"
   },
   "scripts": {
+    "webpack": "webpack --watch",
     "postinstall": "webpack"
   }
 }
