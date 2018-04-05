@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import { Link } from 'react-router-dom';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class Nav extends React.Component {
     return (
       <div className='greet-signout'>
         <button className='signout-button' onClick={this.props.logout}>Sign Out</button>
-        <p>Welcome {user.username}!</p>
-        <img src={user.image_url}/>
+        <p>Welcome <Link to={`/user/${user.id}`} className="welcome">{user.username}</Link>!</p>
+        <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>
     );
   }

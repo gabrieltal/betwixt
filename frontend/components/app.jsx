@@ -1,7 +1,8 @@
 import React from 'react';
 import NavContainer from './nav/nav_container';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Modal from './modal/modal';
+import UserShowContainer from './user/user_show_container';
 const App = () => (
   <div>
     <Modal />
@@ -11,6 +12,9 @@ const App = () => (
       </Link>
       <NavContainer />
     </header>
+    <Switch>
+      <Route path="/user/:userId" component={UserShowContainer} />
+    </Switch>
   </div>
 );
 
