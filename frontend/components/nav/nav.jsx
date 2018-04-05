@@ -13,6 +13,7 @@ class Nav extends React.Component {
       <div className='greet-signout'>
         <button className='signout-button' onClick={this.props.logout}>Sign Out</button>
         <p>Welcome {user.username}!</p>
+        <img src={user.image_url}/>
       </div>
     );
   }
