@@ -1,0 +1,235 @@
+/* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 10;
+}
+
+/* line 11, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.modal-child {
+  position: absolute;
+  display: flex;
+  align-content: space-around;
+  align-items: space-around;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  background-color: #3CB371;
+  transform: translate(-50%, -50%);
+  padding: 100px;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+/* line 26, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.form-session {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 35px;
+}
+
+/* line 33, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.x-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* line 43, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container {
+  margin-bottom: 15px;
+}
+/* line 45, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container h3 {
+  font-size: 28px;
+}
+/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .other-form-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .other-form-button:hover {
+  cursor: pointer;
+  font-size: 16px;
+}
+/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .submit-button {
+  background-color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 0px;
+  color: white;
+}
+/* line 71, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .submit-button:hover {
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+/* line 4, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header {
+  display: block;
+  text-align: center;
+}
+/* line 7, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .header-Link {
+  display: inline-block;
+  color: black;
+  font-size: 60px;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 15, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-signup {
+  float: right;
+  margin-top: 10px;
+  font-family: sans-serif;
+}
+/* line 19, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-signup button {
+  margin-right: 15px;
+}
+/* line 23, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-signup .signup-button {
+  color: green;
+  font-size: 14px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid green;
+}
+/* line 34, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-signup .signup-button:hover {
+  color: white;
+  cursor: pointer;
+  background: green;
+}
+/* line 42, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .greet-signout {
+  float: right;
+  font-family: sans-serif;
+  display: flex;
+  margin-right: 10px;
+  font-size: 16px;
+  align-items: center;
+  margin-top: 15px;
+}
+/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .greet-signout p {
+  margin-right: 10px;
+}
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .greet-signout .signout-button {
+  margin-right: 10px;
+}
+/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .greet-signout img {
+  width: 50px;
+  height: 50px;
+}
+/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-button, header .signout-button {
+  border: none;
+  background: none;
+  padding: 0;
+  color: green;
+  font-size: 14px;
+}
+/* line 71, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+header .login-button:hover, header .signout-button:hover {
+  cursor: pointer;
+  text-decoration: underline black;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 7, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 28, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 32, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 35, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 38, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 46, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
