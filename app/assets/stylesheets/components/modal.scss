@@ -16,7 +16,7 @@
   text-align: center;
   top: 50%;
   left: 50%;
-  background-color: #3CB371;
+  background-color: $pale-pink;
   transform: translate(-50%, -50%);
   padding: 100px;
   border-radius: 15px;
@@ -32,13 +32,18 @@
 
 .x-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 25px;
+  right: 45px;
   cursor: pointer;
   border: none;
   background: none;
   font-weight: bold;
   font-size: 20px;
+}
+
+.x-close:hover {
+  font-size: 24px;
+  color: white;
 }
 .login-form-container {
   margin-bottom: 15px;
@@ -49,28 +54,34 @@
     background: none;
     border: none;
     font-size: 14px;
-    color: black;
+    color: $my-black;
     text-decoration: underline;
     font-weight: bold;
   }
 
   .other-form-button:hover {
     cursor:pointer;
-    font-size: 16px;
+    color: $burgundy;
 
   }
 
   .submit-button {
-    background-color: black;
+    background-color: $my-black;
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid $my-black;
     padding: 0px;
     color: white;
   }
 
   .submit-button:hover {
-    color: black;
+    color: $my-black;
     background-color: white;
     cursor: pointer;
   }
+
+  .errors {
+    font-style: bold;
+    font-size: 18px;
+  }
+
 }

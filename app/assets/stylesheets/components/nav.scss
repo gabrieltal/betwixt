@@ -6,7 +6,7 @@ header {
   text-align: center;
   .header-Link {
     display: inline-block;
-    color: black;
+    color: $my-black;
     font-size: 60px;
     text-decoration: none;
     font-weight: bold;
@@ -21,20 +21,20 @@ header {
     }
 
     .signup-button {
-      color: green;
+      color: $burgundy;
       font-size: 14px;
       padding: 10px;
       padding-left: 15px;
       padding-right: 15px;
       background: white;
       border-radius: 5px;
-      border: 2px solid green;
+      border: 2px solid $burgundy;
     }
 
     .signup-button:hover {
       color: white;
       cursor: pointer;
-      background: green;
+      background: $burgundy;
     }
 
   }
@@ -52,7 +52,7 @@ header {
       margin-right: 10px;
     }
     welcome {
-      color: green;
+      color: $burgundy;
     }
     .signout-button {
       margin-right: 10px;
@@ -68,7 +68,7 @@ header {
     border: none;
     background: none;
     padding: 0;
-    color: green;
+    color: $burgundy;
     font-size: 14px;
   }
 

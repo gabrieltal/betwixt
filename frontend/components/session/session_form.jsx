@@ -27,7 +27,6 @@ class SessionForm extends React.Component {
         <button className='x-close' onClick={this.props.closeModal}>X</button>
 
         <form onSubmit={this.handleSubmit} className='form-session'>
-
           <h3>{this.props.headerMessage}</h3>
           <br/>
           <label className="input-field"> Username
@@ -41,6 +40,7 @@ class SessionForm extends React.Component {
           <input onChange={this.update('password')} type="password" value={this.state.password}/>
         </label>
         <br/>
+        <p className="error-message">{this.props.errors}</p>
         <input className="submit-button" type="submit" value="Continue" />
         <br/>
 
