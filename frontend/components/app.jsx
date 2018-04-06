@@ -3,6 +3,8 @@ import NavContainer from './nav/nav_container';
 import { Route, Link, Switch } from 'react-router-dom';
 import Modal from './modal/modal';
 import UserShowContainer from './user/user_show_container';
+import StoryIndexContainer from './story/story_index_container';
+
 const App = () => (
   <div>
     <Modal />
@@ -14,6 +16,7 @@ const App = () => (
     </header>
     <Switch>
       <Route exact path="/user/:userId" component={UserShowContainer} />
+      <Route exact path="/" component={StoryIndexContainer} />
     </Switch>
   </div>
 );
