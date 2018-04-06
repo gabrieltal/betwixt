@@ -12,7 +12,7 @@ class Nav extends React.Component {
     const user = Object.values(this.props.currentUser)[0];
     return (
       <div className='greet-signout'>
-        <button className='signout-button' onClick={this.props.logout}>Sign Out</button>
+        <Link to={'/'}><button className='signout-button' onClick={this.props.logout}>Sign Out</button></Link>
         <p>Welcome <Link to={`/user/${user.id}`} className="welcome">{user.username}</Link>!</p>
         <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>

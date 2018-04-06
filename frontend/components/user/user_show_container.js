@@ -3,8 +3,11 @@ import UserShow from './user_show';
 import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const default_user = { id: '0', username: 'no_one', image_url: ''};
+  const user = state.users[ownProps.match.params.userId] || default_user;
+  console.log(user);
   return {
-    users: state.users,
+    user: user,
     userId: ownProps.match.params.userId
   }
 };
