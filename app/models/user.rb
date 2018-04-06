@@ -6,6 +6,11 @@ class User < ApplicationRecord
   :url =>':s3_domain_url',
   :path => '/:class/:attachment/:id_partition/:style/:filename'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  has_many :stories,
+    class_name: :Story,
+    foreign_key: :author_id
+
   attr_reader :password
   after_initialize :ensure_session_token
 
