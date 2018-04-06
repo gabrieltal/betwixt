@@ -1,5 +1,5 @@
 class Story < ApplicationRecord
-  validates :body, :title, :author_id, presence: true
+  validates :body, :title, :user, presence: true
 
   belongs_to :user,
     class_name: :User,
