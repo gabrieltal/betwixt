@@ -13,7 +13,7 @@ const App = () => (
       <NavContainer />
     </header>
     <Switch>
-      <Route path="/user/:userId" component={UserShowContainer} />
+      <Route exact path="/user/:userId" component={UserShowContainer} />
     </Switch>
   </div>
 );

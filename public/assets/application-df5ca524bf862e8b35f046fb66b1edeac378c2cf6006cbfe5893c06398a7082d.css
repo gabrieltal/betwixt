@@ -161,6 +161,18 @@ header .login-button:hover, header .signout-button:hover {
   cursor: pointer;
   text-decoration: underline black;
 }
+/* line 2, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show h3 {
+  font-size: 32px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+/* line 8, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show .user-profile-pic {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
