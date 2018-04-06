@@ -28,15 +28,18 @@ class Api::StoriesController < ApplicationController
   end
 
   def destroy
-    @story = params[:id]
+    @story = Story.find(params[:id])
     if @story
-      render 'api/story/show'
+      @story.destroy
+      render 'api/stories/index'
     else
       render json: ['Story not found'], status: 404
+    end
   end
 
   def index
     @stories = Story.all
+    render 'api/stories/index'
   end
 
   private
