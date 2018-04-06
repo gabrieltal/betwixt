@@ -13,6 +13,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user
       render 'api/users/show'
+    else
+      render json: ['User not found'], status: 404
     end
   end
 
