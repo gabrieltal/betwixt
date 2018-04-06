@@ -31308,11 +31308,9 @@ var _user_actions = __webpack_require__(68);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var default_user = { id: '0', username: 'no_one', image_url: '' };
-  var user = state.users[ownProps.match.params.userId] || default_user;
-  console.log(user);
+  var default_user = { username: '', image_url: '', created_at: '', bio: '' };
   return {
-    user: user,
+    user: state.users[ownProps.match.params.userId] || default_user,
     userId: ownProps.match.params.userId
   };
 };
@@ -31766,7 +31764,8 @@ var StoryIndexItem = function (_React$Component) {
         _react2.default.createElement(
           "p",
           null,
-          story.body.substring(0, 140)
+          story.body.substring(0, 140),
+          "..."
         ),
         _react2.default.createElement(
           "p",
