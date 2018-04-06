@@ -12,9 +12,10 @@ class UserShow extends React.Component{
     return (
       <div className="user-show">
         <h3>{user.username}</h3>
-        <p>Betwixt member since {user.created_at}</p>
-        <p>{user.bio}</p>
+        <p className="member-creation">Betwixt member since {user.created_at}</p>
+        <p className="bio">{user.bio}</p>
         <img className="user-profile-pic" src={user.image_url}/>
+
       </div>
     );
   }

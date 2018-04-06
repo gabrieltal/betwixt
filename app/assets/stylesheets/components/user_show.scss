@@ -1,13 +1,37 @@
 .user-show {
+  display: flex;
+  align-items: center;
+
+  left: 50px;
+  right: 50px;
+  flex-direction: column;
+  padding: 15px;
+  padding-top: 30px;
+  margin-top: 15px;
   h3 {
     font-size: 32px;
     font-family: sans-serif;
     font-weight: bold;
+    padding-bottom: 5px;
   }
 
   .user-profile-pic {
-    height: 150px;
-    width: 150px;
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
+    border: 2px solid black;
+  }
+
+  .member-creation {
+    color: darkgray;
+    font-family: sans;
+    font-size: 12px;
+  }
+
+  .bio {
+    font-family: sans;
+    font-size: 24px;
   }
 }
