@@ -5152,6 +5152,11 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement('input', { onChange: this.update('password'), type: 'password', value: this.state.password })
           ),
           _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'p',
+            { className: 'error-message' },
+            this.props.errors
+          ),
           _react2.default.createElement('input', { className: 'submit-button', type: 'submit', value: 'Continue' }),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
@@ -24408,13 +24413,18 @@ var _users_reducer = __webpack_require__(186);
 
 var _users_reducer2 = _interopRequireDefault(_users_reducer);
 
+var _stories_reducer = __webpack_require__(234);
+
+var _stories_reducer2 = _interopRequireDefault(_stories_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
   session: _session_reducer2.default,
   ui: _ui_reducer2.default,
   errors: _errors_reducer2.default,
-  users: _users_reducer2.default
+  users: _users_reducer2.default,
+  stories: _stories_reducer2.default
 });
 
 /***/ }),
@@ -26621,10 +26631,15 @@ var _session_errors_reducer = __webpack_require__(183);
 
 var _session_errors_reducer2 = _interopRequireDefault(_session_errors_reducer);
 
+var _form_errors_reducer = __webpack_require__(231);
+
+var _form_errors_reducer2 = _interopRequireDefault(_form_errors_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var errorsReducer = (0, _redux.combineReducers)({
-  session: _session_errors_reducer2.default
+  session: _session_errors_reducer2.default,
+  form: _form_errors_reducer2.default
 });
 
 exports.default = errorsReducer;
@@ -26737,7 +26752,7 @@ var usersReducer = function usersReducer() {
   Object.freeze(oldState);
   switch (action.type) {
     case _user_actions.RECEIVE_USER:
-      return (0, _merge2.default)({}, action.user);
+      return (0, _merge2.default)({}, oldState, action.user);
     default:
       return oldState;
   }
@@ -30991,6 +31006,10 @@ var _user_show_container = __webpack_require__(229);
 
 var _user_show_container2 = _interopRequireDefault(_user_show_container);
 
+var _story_index_container = __webpack_require__(235);
+
+var _story_index_container2 = _interopRequireDefault(_story_index_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -31015,7 +31034,8 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/:userId', component: _user_show_container2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/:userId', component: _user_show_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _story_index_container2.default })
     )
   );
 };
@@ -31360,13 +31380,13 @@ var UserShow = function (_React$Component) {
         ),
         _react2.default.createElement(
           "p",
-          null,
+          { className: "member-creation" },
           "Betwixt member since ",
           user.created_at
         ),
         _react2.default.createElement(
           "p",
-          null,
+          { className: "bio" },
           user.bio
         ),
         _react2.default.createElement("img", { className: "user-profile-pic", src: user.image_url })
@@ -31378,6 +31398,394 @@ var UserShow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = UserShow;
+
+/***/ }),
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _story_actions = __webpack_require__(232);
+
+var formErrorsReducer = function formErrorsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  Object.freeze(oldState);
+  switch (action.type) {
+    case _story_actions.RECEIVE_STORY:
+      return [];
+    case _story_actions.RECEIVE_FORM_ERRORS:
+      return action.errors;
+    default:
+      return oldState;
+  }
+};
+
+exports.default = formErrorsReducer;
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deleteStory = exports.updateStory = exports.createStory = exports.fetchStories = exports.fetchStory = exports.RECEIVE_FORM_ERRORS = exports.REMOVE_STORY = exports.RECEIVE_STORIES = exports.RECEIVE_STORY = undefined;
+
+var _story_api_util = __webpack_require__(233);
+
+var ApiStory = _interopRequireWildcard(_story_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_STORY = exports.RECEIVE_STORY = "RECEIVE_STORY";
+var RECEIVE_STORIES = exports.RECEIVE_STORIES = "RECEIVE_STORIES";
+var REMOVE_STORY = exports.REMOVE_STORY = "REMOVE_STORY";
+var RECEIVE_FORM_ERRORS = exports.RECEIVE_FORM_ERRORS = "RECEIVE_FORM_ERRORS";
+
+var fetchStory = exports.fetchStory = function fetchStory(id) {
+  return function (dispatch) {
+    return ApiStory.fetchStory(id).then(function (story) {
+      return dispatch(receiveStory(story));
+    });
+  };
+};
+
+var fetchStories = exports.fetchStories = function fetchStories() {
+  return function (dispatch) {
+    return ApiStory.fetchStories().then(function (stories) {
+      return dispatch(receiveStories(stories));
+    });
+  };
+};
+
+var createStory = exports.createStory = function createStory(story) {
+  return function (dispatch) {
+    return ApiStory.createStory(story).then(function (story) {
+      return dispatch(receiveStory(story));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
+    });
+  };
+};
+
+var updateStory = exports.updateStory = function updateStory(story) {
+  return function (dispatch) {
+    return ApiStory.updateStory(story).then(function (story) {
+      return dispatch(receiveStory(story));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
+    });
+  };
+};
+
+var deleteStory = exports.deleteStory = function deleteStory(storyId) {
+  return function (dispatch) {
+    return ApiStory.deleteStory(storyId).then(function (story) {
+      return dispatch(removeStory(storyId));
+    });
+  };
+};
+
+var removeStory = function removeStory(storyId) {
+  return {
+    type: REMOVE_STORY,
+    storyId: storyId
+  };
+};
+
+var receiveStories = function receiveStories(stories) {
+  return {
+    type: RECEIVE_STORIES,
+    stories: stories
+  };
+};
+
+var receiveStory = function receiveStory(story) {
+  return {
+    type: RECEIVE_STORY,
+    story: story
+  };
+};
+
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_FORM_ERRORS,
+    errors: errors
+  };
+};
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchStory = exports.fetchStory = function fetchStory(id) {
+  return $.ajax({
+    url: 'api/stories/' + id,
+    method: 'GET'
+  });
+};
+
+var fetchStories = exports.fetchStories = function fetchStories() {
+  return $.ajax({
+    url: 'api/stories',
+    method: 'GET'
+  });
+};
+
+var createStory = exports.createStory = function createStory(story) {
+  return $.ajax({
+    url: 'api/stories',
+    method: 'POST',
+    data: {
+      story: story
+    }
+  });
+};
+
+var updateStory = exports.updateStory = function updateStory(story) {
+  return $.ajax({
+    url: 'api/stories/' + story.id,
+    method: 'PATCH',
+    data: {
+      story: story
+    }
+  });
+};
+
+var deleteStory = exports.deleteStory = function deleteStory(id) {
+  return $.ajax({
+    url: 'api/stories/' + id,
+    method: 'DELETE'
+  });
+};
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _story_actions = __webpack_require__(232);
+
+var _merge = __webpack_require__(51);
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var storiesReducer = function storiesReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  Object.freeze(oldState);
+  switch (action.type) {
+    case _story_actions.RECEIVE_STORY:
+      return (0, _merge2.default)({}, oldState, action.story);
+    case _story_actions.RECEIVE_STORIES:
+      return (0, _merge2.default)({}, oldState, action.stories);
+    case _story_actions.REMOVE_STORY:
+      var newState = (0, _merge2.default)({}, oldState);
+      delete newState[action.storyId];
+      return newState;
+    default:
+      return oldState;
+  }
+};
+
+exports.default = storiesReducer;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(8);
+
+var _story_index = __webpack_require__(236);
+
+var _story_index2 = _interopRequireDefault(_story_index);
+
+var _story_actions = __webpack_require__(232);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { stories: state.stories };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchStories: function fetchStories() {
+      return dispatch((0, _story_actions.fetchStories)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_story_index2.default);
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _story_index_item = __webpack_require__(237);
+
+var _story_index_item2 = _interopRequireDefault(_story_index_item);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StoryIndex = function (_React$Component) {
+  _inherits(StoryIndex, _React$Component);
+
+  function StoryIndex() {
+    _classCallCheck(this, StoryIndex);
+
+    return _possibleConstructorReturn(this, (StoryIndex.__proto__ || Object.getPrototypeOf(StoryIndex)).apply(this, arguments));
+  }
+
+  _createClass(StoryIndex, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchStories();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var stories = this.props.stories;
+      stories = Object.keys(stories).map(function (id) {
+        return _react2.default.createElement(_story_index_item2.default, { key: id, story: stories[id] });
+      });
+      return _react2.default.createElement(
+        'section',
+        null,
+        _react2.default.createElement(
+          'ul',
+          null,
+          stories
+        )
+      );
+    }
+  }]);
+
+  return StoryIndex;
+}(_react2.default.Component);
+
+exports.default = StoryIndex;
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StoryIndexItem = function (_React$Component) {
+  _inherits(StoryIndexItem, _React$Component);
+
+  function StoryIndexItem() {
+    _classCallCheck(this, StoryIndexItem);
+
+    return _possibleConstructorReturn(this, (StoryIndexItem.__proto__ || Object.getPrototypeOf(StoryIndexItem)).apply(this, arguments));
+  }
+
+  _createClass(StoryIndexItem, [{
+    key: "render",
+    value: function render() {
+      var story = this.props.story;
+      return _react2.default.createElement(
+        "li",
+        { className: "story-item" },
+        _react2.default.createElement(
+          "h3",
+          null,
+          story.title
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          story.body.substring(0, 140)
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          story.created_at
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          story.author
+        )
+      );
+    }
+  }]);
+
+  return StoryIndexItem;
+}(_react2.default.Component);
+
+exports.default = StoryIndexItem;
 
 /***/ })
 /******/ ]);
@@ -31995,6 +32403,10 @@ exports.default = UserShow;
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
+
+}).call(this);
+(function() {
+
 
 }).call(this);
 (function() {
