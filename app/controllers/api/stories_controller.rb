@@ -1,5 +1,5 @@
 class Api::StoriesController < ApplicationController
-
+  before_action :require_sign_in
   def create
     @story = Story.new(story_params)
     if @story.save
