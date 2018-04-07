@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .story-index {
+  display: block;
+  box-sizing: border-box;
+  padding: 25px;
+  margin: 20px 10vw 20px 15vw;
   .story-item {
+    padding: 10px;
     .story-title {
       font-size: 24px;
       text-decoration: none;
@@ -11,6 +16,7 @@
     }
 
     .story-preview {
+      text-decoration: none;
       font-size: 14px;
       color: darkgray;
       font-family: serif;

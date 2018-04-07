@@ -42,7 +42,7 @@ feel embarrassed. After that he consulted a register on his table, and said:
 “Madame Meursault entered the Home three years ago. She had no private means
 and depended entirely on you."  })
 
-Story.create({title: 'The Stranger 2', author_id: 2, body: "FATHER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
+Story.create({title: 'hello i am small text', author_id: 2, body: "FATHER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
 Home says: YOUR MOTHER PASSED AWAY. FUNERAL TOMORROW. DEEP
 SYMPATHY. Which leaves the matter doubtful; it could have been yesterday.
 The Home for Aged Persons is at Marengo, some fifty miles from Algiers. With
@@ -77,7 +77,7 @@ feel embarrassed. After that he consulted a register on his table, and said:
 and depended entirely on you."  })
 
 
-Story.create({title: 'The Stranger 3', author_id: 3, body: "BROTHER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
+Story.create({title: 'THIS IS SUPER EXCITING TEXT AND A LONG TITLE WHO CARES IM GONNA LIVE FOREVER', author_id: 3, body: "BROTHER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
 Home says: YOUR MOTHER PASSED AWAY. FUNERAL TOMORROW. DEEP
 SYMPATHY. Which leaves the matter doubtful; it could have been yesterday.
 The Home for Aged Persons is at Marengo, some fifty miles from Algiers. With
@@ -112,7 +112,7 @@ feel embarrassed. After that he consulted a register on his table, and said:
 and depended entirely on you."  })
 
 
-Story.create({title: 'The Stranger 4', author_id: 3, body: "SISTER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
+Story.create({title: 'THIS is just ANOTHER dumb TEST CSS is hard', author_id: 3, body: "SISTER died today. Or, maybe, yesterday; I can’t be sure. The telegram from the
 Home says: YOUR MOTHER PASSED AWAY. FUNERAL TOMORROW. DEEP
 SYMPATHY. Which leaves the matter doubtful; it could have been yesterday.
 The Home for Aged Persons is at Marengo, some fifty miles from Algiers. With
