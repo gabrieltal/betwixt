@@ -7,11 +7,11 @@ class StoryIndexItem extends React.Component {
     const story = this.props.story;
     return (
       <li className="story-item">
-        <Link className="story-title" to={`/story/${story.id}`}>
+        <Link className="story-title" to={`/story/${story.id}/author/${story.author_id}`}>
           {story.title}
         </Link>
         <br/>
-        <Link className="story-preview" to={`/story/${story.id}`}>
+        <Link className="story-preview" to={`/story/${story.id}/author/${story.author_id}`}>
           {story.body.substring(0,140)}...
         </Link>
         <br/>

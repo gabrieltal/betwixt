@@ -12,10 +12,11 @@ const App = () => (
       <Link to="/" className="header-Link">
         <h1>Betwixt</h1>
       </Link>
+  
       <NavContainer />
     </header>
     <Switch>
-      <Route exact path="/story/:storyId" component={StoryShowContainer} />
+      <Route exact path="/story/:storyId/author/:authorId" component={StoryShowContainer} />
       <Route exact path="/user/:userId" component={UserShowContainer} />
       <Route exact path="/" component={StoryIndexContainer} />
     </Switch>

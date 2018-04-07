@@ -1,6 +1,12 @@
 .story-show-container {
+  display: block;
+  box-sizing: border-box;
+  padding: 25px;
+  margin: 30px 10vw 20px 15vw;
   .story-title {
-
+    text-align: center;
+    font-size: 28px;
+    font-family: sans-serif;
   }
 
   .story-author {
@@ -12,6 +18,6 @@
   }
 
   .story-create-date {
-    
+
   }
 }
