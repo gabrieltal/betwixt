@@ -12,7 +12,7 @@ class StoryIndex extends React.Component {
     });
     return (
       <section>
-        <ul>
+        <ul className="story-index">
           {stories}
         </ul>
       </section>

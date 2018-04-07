@@ -5,7 +5,7 @@ import { fetchUser } from '../../actions/user_actions';
 const mapStateToProps = (state, ownProps) => {
   const default_user = {username: '', image_url: '', created_at: '', bio: ''}
   return {
-    user: state.users[ownProps.match.params.userId] || default_user,
+    user: state.users[ownProps.match.params.userId],
     userId: ownProps.match.params.userId
   }
 };

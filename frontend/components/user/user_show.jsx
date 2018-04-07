@@ -8,16 +8,21 @@ class UserShow extends React.Component{
     this.props.fetchUser(this.props.userId)
   }
   render () {
-    const user = this.props.user;
-    return (
-      <div className="user-show">
-        <h3>{user.username}</h3>
-        <p className="member-creation">Betwixt member since {user.created_at}</p>
-        <p className="bio">{user.bio}</p>
-        <img className="user-profile-pic" src={user.image_url}/>
-
-      </div>
-    );
+    if (!!this.props.user) {
+      const user = this.props.user;
+      return (
+        <div className="user-show">
+          <h3>{user.username}</h3>
+          <p className="bio">{user.bio}</p>
+          <p className="member-creation">Betwixt member since {user.created_at}</p>
+          <img className="user-profile-pic" src={user.image_url}/>
+        </div>
+      );
+    } else {
+      return (
+        <div> Loading...</div>
+      );
+    }
   }
 }
 export default UserShow;
