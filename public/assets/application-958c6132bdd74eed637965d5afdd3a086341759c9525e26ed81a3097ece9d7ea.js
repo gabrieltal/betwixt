@@ -31010,6 +31010,10 @@ var _story_index_container = __webpack_require__(235);
 
 var _story_index_container2 = _interopRequireDefault(_story_index_container);
 
+var _story_show_container = __webpack_require__(239);
+
+var _story_show_container2 = _interopRequireDefault(_story_show_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -31034,6 +31038,7 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/story/:storyId/author/:authorId', component: _story_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/:userId', component: _user_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _story_index_container2.default })
     )
@@ -31305,12 +31310,17 @@ var _user_show2 = _interopRequireDefault(_user_show);
 
 var _user_actions = __webpack_require__(68);
 
+var _story_actions = __webpack_require__(232);
+
+var _selector = __webpack_require__(240);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var default_user = { username: '', image_url: '', created_at: '', bio: '' };
+  var user = state.users[ownProps.match.params.userId];
   return {
-    user: state.users[ownProps.match.params.userId] || default_user,
+    user: user,
+    authoredStories: (0, _selector.selectAuthoredStories)(state, user),
     userId: ownProps.match.params.userId
   };
 };
@@ -31319,6 +31329,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser(id) {
       return dispatch((0, _user_actions.fetchUser)(id));
+    },
+    fetchStories: function fetchStories() {
+      return dispatch((0, _story_actions.fetchStories)());
     }
   };
 };
@@ -31342,6 +31355,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _story_index_item = __webpack_require__(237);
+
+var _story_index_item2 = _interopRequireDefault(_story_index_item);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31360,35 +31377,53 @@ var UserShow = function (_React$Component) {
   }
 
   _createClass(UserShow, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.fetchUser(this.props.userId);
+      this.props.fetchStories();
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      var user = this.props.user;
-      return _react2.default.createElement(
-        "div",
-        { className: "user-show" },
-        _react2.default.createElement(
-          "h3",
+      if (!!this.props.user || !!this.props.authoredStories) {
+        var user = this.props.user;
+        var stories = this.props.authoredStories;
+        stories = Object.keys(stories).map(function (id) {
+          return _react2.default.createElement(_story_index_item2.default, { key: id, story: stories[id] });
+        });
+        return _react2.default.createElement(
+          'div',
+          { className: 'user-show' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            user.username
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'bio' },
+            user.bio
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'member-creation' },
+            'Betwixt member since ',
+            user.created_at
+          ),
+          _react2.default.createElement('img', { className: 'user-profile-pic', src: user.image_url }),
+          _react2.default.createElement(
+            'ul',
+            { className: 'user-stories' },
+            stories
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
           null,
-          user.username
-        ),
-        _react2.default.createElement(
-          "p",
-          { className: "member-creation" },
-          "Betwixt member since ",
-          user.created_at
-        ),
-        _react2.default.createElement(
-          "p",
-          { className: "bio" },
-          user.bio
-        ),
-        _react2.default.createElement("img", { className: "user-profile-pic", src: user.image_url })
-      );
+          ' Loading...'
+        );
+      }
     }
   }]);
 
@@ -31703,7 +31738,7 @@ var StoryIndex = function (_React$Component) {
         null,
         _react2.default.createElement(
           'ul',
-          null,
+          { className: 'story-index' },
           stories
         )
       );
@@ -31732,6 +31767,12 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(26);
+
+var _story_show = __webpack_require__(238);
+
+var _story_show2 = _interopRequireDefault(_story_show);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31750,32 +31791,39 @@ var StoryIndexItem = function (_React$Component) {
   }
 
   _createClass(StoryIndexItem, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var story = this.props.story;
       return _react2.default.createElement(
-        "li",
-        { className: "story-item" },
+        'li',
+        { className: 'story-item' },
         _react2.default.createElement(
-          "h3",
-          null,
+          _reactRouterDom.Link,
+          { className: 'story-title', to: '/story/' + story.id + '/author/' + story.author_id },
           story.title
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          "p",
-          null,
+          _reactRouterDom.Link,
+          { className: 'story-preview', to: '/story/' + story.id + '/author/' + story.author_id },
           story.body.substring(0, 140),
-          "..."
+          '...'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { className: 'author', to: '/user/' + story.author_id },
+          story.author
         ),
         _react2.default.createElement(
-          "p",
-          null,
+          'p',
+          { className: 'create-date' },
           story.created_at
         ),
         _react2.default.createElement(
-          "p",
-          null,
-          story.author
+          'p',
+          { className: 'update-date' },
+          story.updated_at
         )
       );
     }
@@ -31785,6 +31833,349 @@ var StoryIndexItem = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = StoryIndexItem;
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StoryShow = function (_React$Component) {
+  _inherits(StoryShow, _React$Component);
+
+  function StoryShow() {
+    _classCallCheck(this, StoryShow);
+
+    return _possibleConstructorReturn(this, (StoryShow.__proto__ || Object.getPrototypeOf(StoryShow)).apply(this, arguments));
+  }
+
+  _createClass(StoryShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchStory(this.props.storyId);
+      this.props.fetchUser(this.props.authorId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (!!this.props.story && !!this.props.author) {
+        var story = this.props.story;
+        var author = this.props.author;
+        return _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement("aside", null),
+          _react2.default.createElement(
+            "section",
+            { className: "story-show-container" },
+            _react2.default.createElement(
+              "h1",
+              { className: "story-title" },
+              story.title
+            ),
+            _react2.default.createElement(
+              "h3",
+              { className: "story-author" },
+              author.username
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: "story-body" },
+              story.body
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: "story-create-date" },
+              story.created_at
+            )
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          "div",
+          null,
+          "Loading..."
+        );
+      }
+    }
+  }]);
+
+  return StoryShow;
+}(_react2.default.Component);
+
+exports.default = StoryShow;
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(8);
+
+var _story_show = __webpack_require__(238);
+
+var _story_show2 = _interopRequireDefault(_story_show);
+
+var _story_actions = __webpack_require__(232);
+
+var _user_actions = __webpack_require__(68);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var story = state.stories[ownProps.match.params.storyId];
+  return {
+    storyId: ownProps.match.params.storyId,
+    authorId: ownProps.match.params.authorId,
+    story: story,
+    author: state.users[ownProps.match.params.authorId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchStory: function fetchStory(id) {
+      return dispatch((0, _story_actions.fetchStory)(id));
+    },
+    fetchUser: function fetchUser(id) {
+      return dispatch((0, _user_actions.fetchUser)(id));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_story_show2.default);
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.selectAuthoredStories = undefined;
+
+var _values = __webpack_require__(241);
+
+var _values2 = _interopRequireDefault(_values);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var selectAuthoredStories = exports.selectAuthoredStories = function selectAuthoredStories(state, author) {
+  return author ? author.authoredStories.map(function (id) {
+    return state.stories[id];
+  }) : [];
+};
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseValues = __webpack_require__(242),
+    keys = __webpack_require__(244);
+
+/**
+ * Creates an array of the own enumerable string keyed property values of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property values.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.values(new Foo);
+ * // => [1, 2] (iteration order is not guaranteed)
+ *
+ * _.values('hi');
+ * // => ['h', 'i']
+ */
+function values(object) {
+  return object == null ? [] : baseValues(object, keys(object));
+}
+
+module.exports = values;
+
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(243);
+
+/**
+ * The base implementation of `_.values` and `_.valuesIn` which creates an
+ * array of `object` property values corresponding to the property names
+ * of `props`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} props The property names to get values for.
+ * @returns {Object} Returns the array of property values.
+ */
+function baseValues(object, props) {
+  return arrayMap(props, function(key) {
+    return object[key];
+  });
+}
+
+module.exports = baseValues;
+
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports) {
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeKeys = __webpack_require__(169),
+    baseKeys = __webpack_require__(245),
+    isArrayLike = __webpack_require__(35);
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+module.exports = keys;
+
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isPrototype = __webpack_require__(58),
+    nativeKeys = __webpack_require__(246);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var overArg = __webpack_require__(158);
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+module.exports = nativeKeys;
+
 
 /***/ })
 /******/ ]);

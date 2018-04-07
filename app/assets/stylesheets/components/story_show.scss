@@ -1,23 +1,45 @@
 .story-show-container {
   display: block;
-  box-sizing: border-box;
   padding: 25px;
-  margin: 30px 10vw 20px 15vw;
-  .story-title {
-    text-align: center;
-    font-size: 28px;
-    font-family: sans-serif;
+  margin: auto;
+  width: 80%;
+  .author-display {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: auto;
+    width: 80%;
+    .user-profile-pic {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      border: 2px dashed $pastel-red;
+    }
+    .user-details {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
-  .story-author {
+  .story-display{
+    padding: 25px;
+    margin: 30px 10vw 20px 15vw;
+    .story-title {
+      text-align: center;
+      font-size: 28px;
+      font-family: sans-serif;
+    }
 
-  }
+    .story-author {
 
-  .story-body {
+    }
 
-  }
+    .story-body {
 
-  .story-create-date {
+    }
 
+    .story-create-date {
+
+    }
   }
 }

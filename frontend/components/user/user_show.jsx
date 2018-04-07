@@ -9,7 +9,7 @@ class UserShow extends React.Component{
     this.props.fetchStories();
   }
   render () {
-    if (!!this.props.user || !!this.props.authoredStories) {
+    if (!!this.props.user && !!this.props.authoredStories) {
       const user = this.props.user;
       let stories = this.props.authoredStories;
       stories = Object.keys(stories).map((id) => {

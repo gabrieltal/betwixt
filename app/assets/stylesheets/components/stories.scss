@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .story-index {
   display: block;
-  box-sizing: border-box;
   padding: 25px;
-  margin: 20px 10vw 20px 15vw;
+  margin: auto;
+  width: 85%;
+  margin-top: 35px;
   .story-item {
     padding: 10px;
     .story-title {
