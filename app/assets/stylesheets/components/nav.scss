@@ -50,8 +50,13 @@ header {
     p {
       margin-right: 10px;
     }
-    welcome {
+    .welcome {
       color: $burgundy;
+      text-decoration: none;
+    }
+
+    .welcome:hover {
+      text-decoration: underline;
     }
     .signout-button {
       margin-right: 10px;

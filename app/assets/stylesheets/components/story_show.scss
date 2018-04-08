@@ -23,23 +23,24 @@
 
   .story-display{
     padding: 25px;
-    margin: 30px 10vw 20px 15vw;
+    display: block;
+    margin: auto;
+    width: 80%;
     .story-title {
       text-align: center;
-      font-size: 28px;
+      font-size: 36px;
       font-family: sans-serif;
-    }
-
-    .story-author {
-
+      margin-bottom: 15px;
     }
 
     .story-body {
-
+      font-size: 18px;
+      font-family: serif;
+      margin-bottom: 15px;
     }
 
-    .story-create-date {
-
+    .story-date {
+      color: darkgray;
     }
   }
 }
