@@ -5,6 +5,9 @@ import Modal from './modal/modal';
 import UserShowContainer from './user/user_show_container';
 import StoryIndexContainer from './story/story_index_container';
 import StoryShowContainer from './story/story_show_container';
+import { ProtectedRoute } from '../util/route_util';
+import NewStoryContainer from './story/new_story_container';
+
 const App = () => (
   <div>
     <Modal />
@@ -12,11 +15,12 @@ const App = () => (
       <Link to="/" className="header-Link">
         <h1>Betwixt</h1>
       </Link>
-  
+
       <NavContainer />
     </header>
     <Switch>
       <Route exact path="/story/:storyId/author/:authorId" component={StoryShowContainer} />
+      <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
       <Route exact path="/user/:userId" component={UserShowContainer} />
       <Route exact path="/" component={StoryIndexContainer} />
     </Switch>

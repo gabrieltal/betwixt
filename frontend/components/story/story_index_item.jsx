@@ -20,7 +20,7 @@ class StoryIndexItem extends React.Component {
         </Link>
         <p className="create-date">{story.created_at}</p>
 
-        <p className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</p>
+        <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
       </li>
     );
   }
