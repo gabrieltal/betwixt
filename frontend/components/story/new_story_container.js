@@ -1,10 +1,19 @@
 import { connect } from 'react-redux';
 import StoryForm from './story_form';
 import { createStory } from '../../actions/story_actions';
-import React from 'react';
 
-const story = () => (
-  <div> Hi</div>
-);
+const mapStateToProps = (state, ownProps) => {
+  return {
+    errors: state.errors,
+    authorId: Object.keys(state.session.currentUser)[0],
+   }
+};
 
-export default story;
+const mapDispatchToProps = dispatch => ({
+  createStory: (story) => dispatch(createStory(story))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoryForm);
