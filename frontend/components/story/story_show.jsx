@@ -26,7 +26,7 @@ class StoryShow extends React.Component{
             <h1 className="story-title">{story.title}</h1>
             <p className="story-body">{story.body}</p>
             <p className="story-date">Created on {story.created_at}</p>
-            <p className="story-date">Updated {story.updated_at}</p>
+            <p className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</p>
           </section>
         </div>
       );

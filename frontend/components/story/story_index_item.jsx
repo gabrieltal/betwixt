@@ -19,7 +19,8 @@ class StoryIndexItem extends React.Component {
           {story.author}
         </Link>
         <p className="create-date">{story.created_at}</p>
-        <p className="update-date">{story.updated_at}</p>
+
+        <p className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</p>
       </li>
     );
   }

@@ -42,5 +42,30 @@
     .story-date {
       color: darkgray;
     }
+
+    .update-date {
+      display: none;
+    }
+    .story-date:hover + .update-date {
+      font-size: 16px;
+      position: absolute;
+      display: inline-block;
+      background-color: rgba(0, 0, 0, .9);
+      padding: 0px 7px 5px 7px;
+      border-radius: 5px;
+      color: white;
+      margin-top: 5px;
+      .arrow-up {
+        position: relative;
+        top: -7px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid black;
+      }
+
+    }
   }
 }

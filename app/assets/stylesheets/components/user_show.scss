@@ -1,49 +1,44 @@
-.user-show {
-  display: flex;
-  align-items: center;
-
-  left: 50px;
-  right: 50px;
-  flex-direction: column;
-  padding: 15px;
-  padding-top: 30px;
-  margin-top: 15px;
-  h3 {
-    font-size: 32px;
-    font-family: sans-serif;
-    font-weight: bold;
-    padding-bottom: 5px;
-  }
-
-  .user-profile-pic {
+.user-show-container {
+  display: block;
+  padding: 25px;
+  margin: auto;
+  width: 65%;
+  .user-header-info {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+  }
+  .user-profile-pic {
+    border-radius: 50%;
     height: 100px;
     width: 100px;
-    border-radius: 50%;
     border: 2px dashed $pastel-red;
   }
 
-  .member-creation {
-    color: darkgray;
-    font-family: sans;
-    font-size: 12px;
-  }
+  .user-details {
+    display: flex;
+    flex-direction: column;
 
-  .bio {
-    font-family: sans;
-    font-size: 24px;
+    h3 {
+      font-size: 18px;
+      font-family: sans-serif;
+    }
+
+    .bio {
+      color: darkgray;
+    }
+
+    .member-creation {
+      color: darkgray;
+    }
   }
 
   .user-stories {
-    .story-index {
-      display: block;
-      padding: 25px;
-      margin: auto;
-      width: 85%;
-      margin-top: 35px;
-      .story-item {
-        padding: 10px;
+    display: block;
+    padding: 15px;
+    margin: auto;;
+    margin-top: 15px;
+    .story-item {
+      padding: 10px;
         .story-title {
           font-size: 24px;
           text-decoration: none;
@@ -61,13 +56,29 @@
         .update-date {
           display: none;
         }
-
-
-        .create-date:hover {
-          .update-date {
-            font-size: 24px;
+        .arrow-up {
+          display: none;
+        }
+        .create-date:hover  + .update-date{
+            font-size: 16px;
+            position: absolute;
             display: inline-block;
-          }
+            background-color: rgba(0, 0, 0, .9);
+            padding: 0px 7px 5px 7px;
+            border-radius: 5px;
+            color: white;
+            margin-top: 5px;
+            .arrow-up {
+              position: relative;
+              top: -7px;
+              display: block;
+              width: 0;
+              height: 0;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+              border-bottom: 7px solid black;
+            }
+
         }
 
         .author {
@@ -77,11 +88,8 @@
           font-family: serif;
         }
 
-        .author:hover {
-          text-decoration: underline;
-        }
-
-      }
     }
+
   }
+
 }
