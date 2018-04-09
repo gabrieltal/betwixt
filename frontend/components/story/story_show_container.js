@@ -7,9 +7,9 @@ const mapStateToProps = (state, ownProps) => {
   const story = state.stories[ownProps.match.params.storyId];
   return {
     storyId: ownProps.match.params.storyId,
-    authorId: ownProps.match.params.authorId,
+    authorId: story.author_id,
     story,
-    author: state.users[ownProps.match.params.authorId]
+    author: state.users[story.author_id]
   };
 };
 

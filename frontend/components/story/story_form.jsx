@@ -12,7 +12,6 @@ class StoryForm extends React.Component {
   }
 
   update(field) {
-    console.log(this.state);
     return e => this.setState({
       [field]: e.target.value
     });
@@ -25,7 +24,11 @@ class StoryForm extends React.Component {
       body: JSON.stringify(this.state.quill.getText()),
       author_id: this.props.authorId
     };
-    this.props.createStory(story).then(this.props.history.push(`/`));
+    this.props.action(story).then(
+      data =>
+        this.props.history.push(`/story/${Object.keys(data.story)[0]}`)
+      );
+
   }
 
   componentDidMount () {
