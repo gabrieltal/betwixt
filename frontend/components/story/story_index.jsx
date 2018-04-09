@@ -8,7 +8,8 @@ class StoryIndex extends React.Component {
   render () {
     let stories = this.props.stories;
     stories = Object.keys(stories).map((id) => {
-      return <StoryIndexItem key={id} story={stories[id]}/>;
+      return <StoryIndexItem key={id} story={stories[id]}
+        currentUser={this.props.currentUser}/>;
     });
     return (
       <section>

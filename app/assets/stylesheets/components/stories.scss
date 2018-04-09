@@ -1,14 +1,25 @@
 // Place all the styles related to the Stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.editHide {
+  display: none;
+}
+
+.editShow {
+  display: block;
+}
+
 .story-index {
   display: block;
   padding: 25px;
   margin: auto;
-  width: 85%;
+  width: 65%;
   margin-top: 55px;
   .story-item {
     padding: 10px;
+
+
+
     .story-title {
       font-size: 24px;
       text-decoration: none;

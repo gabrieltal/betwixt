@@ -20,9 +20,9 @@ class Api::StoriesController < ApplicationController
   end
 
   def update
-    @story = params[:id]
-    if @story
-      render 'api/story/show'
+    @story = Story.find(params[:id])
+    if @story.update_attributes(story_params)
+      render 'api/stories/show'
     else
       render json: ["Story not found"], status: 404
     end
@@ -42,7 +42,7 @@ class Api::StoriesController < ApplicationController
     @stories = Story.all
     render 'api/stories/index'
   end
-  
+
   private
   def story_params
     params.require(:story).permit(:title, :body, :author_id)

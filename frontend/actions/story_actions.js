@@ -13,14 +13,12 @@ export const fetchStories = () => (dispatch) => (
 );
 
 export const createStory = (story) => (dispatch) => (
-  ApiStory.createStory(story).then((story) => dispatch(receiveStory(story)),
-  (errors) => dispatch(receiveErrors(errors.responseJSON)))
+  ApiStory.createStory(story).then((story) => dispatch(receiveStory(story)))
 );
 
 export const updateStory = (story) => (dispatch) => (
-  ApiStory.updateStory(story).then((story) => dispatch(receiveStory(story)),
-  (errors) => dispatch(receiveErrors(errors.responseJSON)))
-);
+  ApiStory.updateStory(story).then((story) => dispatch(receiveStory(story))
+));
 
 export const deleteStory = (storyId) => (dispatch) => (
   ApiStory.deleteStory(storyId).then((story) => dispatch(removeStory(storyId)))

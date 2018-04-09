@@ -8,7 +8,7 @@ const formErrorsReducer = (oldState=[], action) => {
     case RECEIVE_FORM_ERRORS:
       return action.errors;
     default:
-      return [oldState];
+      return oldState;
   }
 }
 

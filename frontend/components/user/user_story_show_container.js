@@ -5,7 +5,8 @@ const mapStateToProps = (state, ownProps) => {
   const user = ownProps.user;
   return {
     user,
-    authoredStories: ownProps.authoredStories
+    authoredStories: ownProps.authoredStories,
+    currentUser: state.session.currentUser
   };
 };
 

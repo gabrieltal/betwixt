@@ -17,12 +17,13 @@ export const signup = (userForm) => (dispatch) => (
     (errors) => dispatch(receiveErrors(errors.responseJSON)))
 );
 
+
 const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });

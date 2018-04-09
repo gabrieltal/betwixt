@@ -3,7 +3,10 @@ import StoryIndex from './story_index';
 import { fetchStories } from '../../actions/story_actions';
 
 const mapStateToProps = (state) => {
-  return { stories: state.stories };
+  return {
+    stories: state.stories,
+    currentUser: state.session.currentUser 
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({

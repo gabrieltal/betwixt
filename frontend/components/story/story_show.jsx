@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserDetailPaneContainer from './user_detail_pane_container';
+import UserDetailPaneContainer from '../user/user_detail_pane_container';
 
 class StoryShow extends React.Component{
   componentDidMount () {

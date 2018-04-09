@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import StoryShow from './story_show';
-class StoryIndexItem extends React.Component {
 
+class StoryIndexItem extends React.Component {
   render () {
+    let editClassName = "editHide";
     const story = this.props.story;
+    if (!!this.props.currentUser && parseInt(Object.keys(this.props.currentUser)[0]) === story.author_id) {
+      editClassName = "editShow";
+    }
     return (
       <li className="story-item">
         <Link className="story-title" to={`/story/${story.id}`}>
@@ -21,6 +25,7 @@ class StoryIndexItem extends React.Component {
         <p className="create-date">{story.created_at}</p>
 
         <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
+        <Link className={editClassName} to={`/story/${story.id}/edit`}>Edit</Link>
       </li>
     );
   }

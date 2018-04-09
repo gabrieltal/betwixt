@@ -1,12 +1,17 @@
 import React from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
+
 class StoryForm extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      title: '',
-      author_id: this.props.authorId,
-      quill: ''
+      id: this.props.story.id,
+      title: this.props.story.title,
+      author_id: this.props.story.authorId,
+      quill: '',
+      body: this.props.story.body
     };
+    debugger;
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -23,14 +28,14 @@ class StoryForm extends React.Component {
     const story = {
       title: this.state.title,
       body: (this.state.quill.getText()),
-      author_id: this.props.authorId
+      author_id: this.props.authorId,
+      id: this.props.story.id
     };
-
+    debugger;
     this.props.action(story).then(
       data =>
         this.props.history.push(`/story/${Object.keys(data.story)[0]}`)
       );
-
   }
 
   componentDidMount () {
@@ -50,7 +55,7 @@ class StoryForm extends React.Component {
         <label className="title-label">Title:
           <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
         </label>
-        <div id="editor"></div>
+        <div id="editor">{this.state.body}</div>
         <button className="input-publish" onClick={this.handleSubmit}>Publish</button>
       </div>
     );
@@ -58,4 +63,4 @@ class StoryForm extends React.Component {
 }
 
 
-export default StoryForm;
+export default withRouter(StoryForm);
