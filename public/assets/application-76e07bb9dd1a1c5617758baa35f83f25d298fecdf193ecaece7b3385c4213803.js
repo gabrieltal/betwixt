@@ -1332,8 +1332,6 @@ var createStory = exports.createStory = function createStory(story) {
   return function (dispatch) {
     return ApiStory.createStory(story).then(function (story) {
       return dispatch(receiveStory(story));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1342,8 +1340,6 @@ var updateStory = exports.updateStory = function updateStory(story) {
   return function (dispatch) {
     return ApiStory.updateStory(story).then(function (story) {
       return dispatch(receiveStory(story));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1588,7 +1584,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.logout = exports.login = exports.RECEIVE_SESSION_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
+exports.receiveErrors = exports.signup = exports.logout = exports.login = exports.RECEIVE_SESSION_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _session_api_util = __webpack_require__(120);
 
@@ -1636,7 +1632,7 @@ var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   };
 };
 
-var receiveErrors = function receiveErrors(errors) {
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
@@ -3180,7 +3176,11 @@ var StoryIndexItem = function (_React$Component) {
   _createClass(StoryIndexItem, [{
     key: 'render',
     value: function render() {
+      var editClassName = "editHide";
       var story = this.props.story;
+      if (!!this.props.currentUser && parseInt(Object.keys(this.props.currentUser)[0]) === story.author_id) {
+        editClassName = "editShow";
+      }
       return _react2.default.createElement(
         'li',
         { className: 'story-item' },
@@ -3213,6 +3213,11 @@ var StoryIndexItem = function (_React$Component) {
           _react2.default.createElement('div', { className: 'arrow-up' }),
           'Updated ',
           story.updated_at
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { className: editClassName, to: '/story/' + story.id + '/edit' },
+          'Edit'
         )
       );
     }
@@ -5305,6 +5310,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     ),
     closeModal: function closeModal() {
       return dispatch((0, _modal_actions.closeModal)());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.receiveErrors)([]));
     }
   };
 };
@@ -5357,6 +5365,11 @@ var SessionForm = function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -5482,6 +5495,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     ),
     closeModal: function closeModal() {
       return dispatch((0, _modal_actions.closeModal)());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.receiveErrors)([]));
     }
   };
 };
@@ -5507,6 +5523,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(8);
 
+var _user_detail_pane_container = __webpack_require__(343);
+
+var _user_detail_pane_container2 = _interopRequireDefault(_user_detail_pane_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5528,49 +5548,16 @@ var StoryShow = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.fetchStory(this.props.storyId);
-      this.props.fetchUser(this.props.authorId);
     }
   }, {
     key: 'render',
     value: function render() {
-      if (!!this.props.story && !!this.props.author) {
+      if (!!this.props.story) {
         var story = this.props.story;
-        var author = this.props.author;
         return _react2.default.createElement(
           'div',
           { className: 'story-show-container' },
-          _react2.default.createElement(
-            'aside',
-            { className: 'author-display' },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/user/' + author.id },
-              _react2.default.createElement('img', { className: 'user-profile-pic', src: author.image_url })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'user-details' },
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/user/' + author.id },
-                _react2.default.createElement(
-                  'h3',
-                  null,
-                  author.username
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                { className: 'bio' },
-                author.bio
-              ),
-              _react2.default.createElement(
-                'p',
-                { className: 'member-creation' },
-                author.created_at
-              )
-            )
-          ),
+          _react2.default.createElement(_user_detail_pane_container2.default, { authorId: this.props.story.author_id }),
           _react2.default.createElement(
             'section',
             { className: 'story-display' },
@@ -26945,8 +26932,7 @@ var _form_errors_reducer2 = _interopRequireDefault(_form_errors_reducer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var errorsReducer = (0, _redux.combineReducers)({
-  session: _session_errors_reducer2.default,
-  form: _form_errors_reducer2.default
+  session: _session_errors_reducer2.default
 });
 
 exports.default = errorsReducer;
@@ -27005,7 +26991,7 @@ var formErrorsReducer = function formErrorsReducer() {
     case _story_actions.RECEIVE_FORM_ERRORS:
       return action.errors;
     default:
-      return [oldState];
+      return oldState;
   }
 };
 
@@ -31463,6 +31449,11 @@ var App = function App() {
       'header',
       null,
       _react2.default.createElement(
+        'a',
+        { className: 'about', href: 'https://github.com/gabrieltal/betwixt' },
+        'About'
+      ),
+      _react2.default.createElement(
         _reactRouterDom.Link,
         { to: '/', className: 'header-Link' },
         _react2.default.createElement(
@@ -31604,17 +31595,6 @@ var Nav = function (_React$Component) {
           { className: 'create-text' },
           _react2.default.createElement('div', { className: 'arrow-up' }),
           'Create New Story'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Welcome ',
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/user/' + user.id, className: 'welcome' },
-            user.username
-          ),
-          '!'
         ),
         _react2.default.createElement(
           _reactRouterDom.Link,
@@ -31914,7 +31894,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = ownProps.user;
   return {
     user: user,
-    authoredStories: ownProps.authoredStories
+    authoredStories: ownProps.authoredStories,
+    currentUser: state.session.currentUser
   };
 };
 
@@ -31965,10 +31946,13 @@ var UserStoryShow = function (_React$Component) {
   _createClass(UserStoryShow, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       if (this.props.authoredStories.length > 0 && this.props.authoredStories[0] !== undefined) {
         var stories = this.props.authoredStories;
         stories = stories.map(function (story) {
-          return _react2.default.createElement(_story_index_item2.default, { key: story.id, story: story });
+          return _react2.default.createElement(_story_index_item2.default, { key: story.id, story: story,
+            currentUser: _this2.props.currentUser });
         });
         return _react2.default.createElement(
           'ul',
@@ -32215,7 +32199,10 @@ var _story_actions = __webpack_require__(10);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  return { stories: state.stories };
+  return {
+    stories: state.stories,
+    currentUser: state.session.currentUser
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -32274,9 +32261,12 @@ var StoryIndex = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var stories = this.props.stories;
       stories = Object.keys(stories).map(function (id) {
-        return _react2.default.createElement(_story_index_item2.default, { key: id, story: stories[id] });
+        return _react2.default.createElement(_story_index_item2.default, { key: id, story: stories[id],
+          currentUser: _this2.props.currentUser });
       });
       return _react2.default.createElement(
         'section',
@@ -32314,27 +32304,19 @@ var _story_show2 = _interopRequireDefault(_story_show);
 
 var _story_actions = __webpack_require__(10);
 
-var _user_actions = __webpack_require__(39);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var story = state.stories[ownProps.match.params.storyId];
   return {
     storyId: ownProps.match.params.storyId,
-    authorId: story.author_id,
-    story: story,
-    author: state.users[story.author_id]
+    story: state.stories[ownProps.match.params.storyId]
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchStory: function fetchStory(id) {
-      return dispatch((0, _story_actions.fetchStory)(id));
-    },
-    fetchUser: function fetchUser(id) {
-      return dispatch((0, _user_actions.fetchUser)(id));
+    fetchStory: function fetchStory(storyId) {
+      return dispatch((0, _story_actions.fetchStory)(storyId));
     }
   };
 };
@@ -32401,8 +32383,9 @@ var _story_actions = __webpack_require__(10);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
+  var story = { id: '', title: '', author_id: '', body: '' };
   return {
+    story: story,
     errors: state.errors,
     authorId: Object.keys(state.session.currentUser)[0]
   };
@@ -32435,6 +32418,8 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(8);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -32454,10 +32439,13 @@ var StoryForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (StoryForm.__proto__ || Object.getPrototypeOf(StoryForm)).call(this, props));
 
     _this.state = {
-      title: '',
-      author_id: _this.props.authorId,
-      quill: 'hi'
+      id: _this.props.story.id,
+      title: _this.props.story.title,
+      author_id: _this.props.story.authorId,
+      quill: '',
+      body: _this.props.story.body
     };
+    debugger;
     _this.update = _this.update.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
@@ -32480,9 +32468,11 @@ var StoryForm = function (_React$Component) {
       e.preventDefault();
       var story = {
         title: this.state.title,
-        body: JSON.stringify(this.state.quill.getText()),
-        author_id: this.props.authorId
+        body: this.state.quill.getText(),
+        author_id: this.props.authorId,
+        id: this.props.story.id
       };
+      debugger;
       this.props.action(story).then(function (data) {
         return _this3.props.history.push('/story/' + Object.keys(data.story)[0]);
       });
@@ -32506,15 +32496,19 @@ var StoryForm = function (_React$Component) {
         _react2.default.createElement('link', { href: "https://cdn.quilljs.com/1.3.6/quill.snow.css", rel: 'stylesheet' }),
         _react2.default.createElement(
           'label',
-          null,
+          { className: 'title-label' },
           'Title:',
-          _react2.default.createElement('input', { type: 'text', value: this.state.title, onChange: this.update('title') })
+          _react2.default.createElement('input', { className: 'title-input', type: 'text', value: this.state.title, onChange: this.update('title') })
         ),
-        _react2.default.createElement('div', { id: 'editor' }),
+        _react2.default.createElement(
+          'div',
+          { id: 'editor' },
+          this.state.body
+        ),
         _react2.default.createElement(
           'button',
-          { onClick: this.handleSubmit },
-          'Continue'
+          { className: 'input-publish', onClick: this.handleSubmit },
+          'Publish'
         )
       );
     }
@@ -32523,7 +32517,7 @@ var StoryForm = function (_React$Component) {
   return StoryForm;
 }(_react2.default.Component);
 
-exports.default = StoryForm;
+exports.default = (0, _reactRouterDom.withRouter)(StoryForm);
 
 /***/ }),
 /* 252 */,
@@ -32620,6 +32614,12 @@ exports.default = StoryForm;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -32634,15 +32634,18 @@ var _story_actions = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var defaultPost = {
-    title: '',
-    body: '',
-    author_id: '0'
-  };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var story = state.stories[ownProps.match.params.storyId] || defaultPost;
-  return { story: story };
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    story: state.stories[ownProps.match.params.storyId],
+    errors: state.errors,
+    authorId: Object.keys(state.session.currentUser)[0]
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -32655,6 +32658,175 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
+
+var EditStoryForm = function (_React$Component) {
+  _inherits(EditStoryForm, _React$Component);
+
+  function EditStoryForm() {
+    _classCallCheck(this, EditStoryForm);
+
+    return _possibleConstructorReturn(this, (EditStoryForm.__proto__ || Object.getPrototypeOf(EditStoryForm)).apply(this, arguments));
+  }
+
+  _createClass(EditStoryForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchStory(this.props.match.params.storyId);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!!this.props.story) {
+        return _react2.default.createElement(_story_form2.default, { action: this.props.action,
+          story: this.props.story, authorId: this.props.authorId });
+      } else {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'Loading...'
+        );
+      }
+    }
+  }]);
+
+  return EditStoryForm;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(EditStoryForm);
+
+/***/ }),
+/* 341 */,
+/* 342 */,
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(5);
+
+var _user_detail_pane = __webpack_require__(344);
+
+var _user_detail_pane2 = _interopRequireDefault(_user_detail_pane);
+
+var _user_actions = __webpack_require__(39);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    authorId: ownProps.authorId,
+    author: state.users[ownProps.authorId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchUser: function fetchUser(authorId) {
+      return dispatch((0, _user_actions.fetchUser)(authorId));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_user_detail_pane2.default);
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(8);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UserDetailPane = function (_React$Component) {
+  _inherits(UserDetailPane, _React$Component);
+
+  function UserDetailPane() {
+    _classCallCheck(this, UserDetailPane);
+
+    return _possibleConstructorReturn(this, (UserDetailPane.__proto__ || Object.getPrototypeOf(UserDetailPane)).apply(this, arguments));
+  }
+
+  _createClass(UserDetailPane, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchUser(this.props.authorId);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!!this.props.author) {
+        var author = this.props.author;
+        return _react2.default.createElement(
+          'aside',
+          { className: 'author-display' },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/user/' + author.id },
+            _react2.default.createElement('img', { className: 'user-profile-pic', src: author.image_url })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'user-details' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/user/' + author.id },
+              _react2.default.createElement(
+                'h3',
+                null,
+                author.username
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'bio' },
+              author.bio
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'member-creation' },
+              'Betwixt member since ',
+              author.created_at
+            )
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'Loading...'
+        );
+      }
+    }
+  }]);
+
+  return UserDetailPane;
+}(_react2.default.Component);
+
+exports.default = UserDetailPane;
 
 /***/ })
 /******/ ]);
