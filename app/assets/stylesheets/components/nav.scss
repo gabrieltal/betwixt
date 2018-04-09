@@ -2,17 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
-  display: block;
+  display: inline-block;
   position: fixed;
   width: 100%;
   top: 0;
+  margin: 0;
   background-color: white;
   text-align: center;
+  overflow: none;
   border-bottom: 1px solid lightgray;
+  .about {
+    float: left;
+    color: darkgray;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-left: 15px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .about:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 480px) {
+    .about {
+      display:none;
+    }
+  }
+
   .header-Link {
     display: inline-block;
+    text-align: center;
+    margin-top: 10px;
     color: $my-black;
-    font-size: 60px;
+    font-size: 45px;
     text-decoration: none;
     font-weight: bold;
   }
@@ -53,11 +77,12 @@ header {
     align-items: center;
 
     margin-top: 15px;
+
     .new-story-button {
-      font-size: 18px;
-      border: 1px solid $pale-pink;
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
       padding: 5px;
-      border-radius: 65%;
       margin: 0 10px 0 2px;
       text-decoration: none;
     }
@@ -68,13 +93,12 @@ header {
     }
 
   .new-story-button:hover {
-    color: white;
-    background-color: $burgundy;
+    text-decoration: underline;
     + .create-text {
       font-size: 16px;
-      position: absolute;
       top: 60px;
-      display: inline;
+      position: absolute;
+      display: inline-block;
       background-color: rgba(0, 0, 0, .9);
       padding: 0px 7px 5px 7px;
       border-radius: 5px;
@@ -83,13 +107,13 @@ header {
       .arrow-up {
         position: relative;
         left: 63px;
-        top: 7px;
+        top: -7px;
         display: block;
         width: 0;
         height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-top: 7px solid black;
+        border-bottom: 7px solid black;
       }
     }
 

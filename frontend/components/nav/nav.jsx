@@ -16,7 +16,6 @@ class Nav extends React.Component {
         <Link to={'/'}><button className='signout-button' onClick={this.props.logout}>Sign Out</button></Link>
         <Link to={'/story/new'} className='new-story-button'>+</Link>
         <div className="create-text"><div className="arrow-up"></div>Create New Story</div>
-        <p>Welcome <Link to={`/user/${user.id}`} className="welcome">{user.username}</Link>!</p>
         <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>
     );

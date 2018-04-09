@@ -14,6 +14,7 @@ class StoryForm extends React.Component {
   update(field) {
     return e => this.setState({
       [field]: e.target.value
+
     });
   }
 
@@ -21,9 +22,10 @@ class StoryForm extends React.Component {
     e.preventDefault();
     const story = {
       title: this.state.title,
-      body: JSON.stringify(this.state.quill.getText()),
+      body: (this.state.quill.getText()),
       author_id: this.props.authorId
     };
+
     this.props.action(story).then(
       data =>
         this.props.history.push(`/story/${Object.keys(data.story)[0]}`)
@@ -45,11 +47,11 @@ class StoryForm extends React.Component {
     return (
       <div className="story-form">
       <link href={"https://cdn.quilljs.com/1.3.6/quill.snow.css"} rel="stylesheet"/>
-        <label>Title:
-        <input type="text" value={this.state.title} onChange={this.update('title')}/>
+        <label className="title-label">Title:
+          <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
         </label>
         <div id="editor"></div>
-        <button onClick={this.handleSubmit}>Continue</button>
+        <button className="input-publish" onClick={this.handleSubmit}>Publish</button>
       </div>
     );
   }

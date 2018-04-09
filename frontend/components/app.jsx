@@ -13,6 +13,8 @@ const App = () => (
   <div>
     <Modal />
     <header>
+      <a className="about" href={'https://github.com/gabrieltal/betwixt'}>About</a>
+
       <Link to="/" className="header-Link">
         <h1>Betwixt</h1>
       </Link>
