@@ -32,7 +32,7 @@ class Api::StoriesController < ApplicationController
     @story = Story.find(params[:id])
     if @story
       @story.destroy
-      render 'api/stories/index'
+      render json: ['Successfully Deleted']
     else
       render json: ['Story not found'], status: 404
     end

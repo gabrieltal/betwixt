@@ -9,7 +9,7 @@ header {
   margin: 0;
   background-color: white;
   text-align: center;
-  overflow: none;
+  z-index: 1000;
   border-bottom: 1px solid lightgray;
   .about {
     float: left;
@@ -89,7 +89,6 @@ header {
 
     .create-text {
       display: none;
-
     }
 
   .new-story-button:hover {

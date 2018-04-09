@@ -1,12 +1,22 @@
 // Place all the styles related to the Stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.editHide {
+.controlsHide {
   display: none;
 }
 
-.editShow {
-  display: block;
+.controlsShow {
+  display: inline-block;
+  float: right;
+  position: relative;
+  bottom: 15px;
+  right: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.controlsShow:hover {
+  text-decoration: underline;
 }
 
 .story-index {
@@ -15,6 +25,7 @@
   margin: auto;
   width: 65%;
   margin-top: 55px;
+
   .story-item {
     padding: 10px;
 
@@ -34,24 +45,28 @@
       font-family: serif;
     }
 
-    .update-date {
+    .update-date{
       display: none;
     }
     .arrow-up {
       display: none;
     }
-    .create-date:hover  + .update-date{
+    .create-date {
+      display: inline-block;
+    }
+    .create-date:hover + .update-date {
         font-size: 16px;
         position: absolute;
-        display: inline-block;
+        display: block;
         background-color: rgba(0, 0, 0, .9);
         padding: 0px 7px 5px 7px;
         border-radius: 5px;
         color: white;
-        margin-top: 5px;
+        margin-top: 10px;
+
         .arrow-up {
           position: relative;
-          top: -7px;
+          top: -5px;
           display: block;
           width: 0;
           height: 0;
@@ -59,7 +74,6 @@
           border-right: 7px solid transparent;
           border-bottom: 7px solid black;
         }
-
     }
 
     .author {

@@ -2,7 +2,7 @@
   display: block;
   padding: 25px;
   margin: auto;
-  width: 65%;
+  width: 50%;
   margin-top: 55px;
   .user-header-info {
     display: flex;
@@ -38,8 +38,11 @@
     padding: 15px;
     margin: auto;;
     margin-top: 15px;
+
     .story-item {
       padding: 10px;
+        border: 1px solid lightgray;
+        margin-bottom: 10px;
         .story-title {
           font-size: 24px;
           text-decoration: none;
@@ -53,7 +56,10 @@
           color: darkgray;
           font-family: serif;
         }
-
+        .create-date {
+          display: block;
+          width: 20%;
+        }
         .update-date {
           display: none;
         }
@@ -63,15 +69,17 @@
         .create-date:hover  + .update-date{
             font-size: 16px;
             position: absolute;
-            display: inline-block;
+            display: block;
             background-color: rgba(0, 0, 0, .9);
             padding: 0px 7px 5px 7px;
             border-radius: 5px;
             color: white;
             margin-top: 5px;
+
             .arrow-up {
               position: relative;
               top: -7px;
+
               display: block;
               width: 0;
               height: 0;
