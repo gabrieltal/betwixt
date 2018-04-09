@@ -5,7 +5,7 @@ class StoryForm extends React.Component {
     this.state = {
       title: '',
       author_id: this.props.authorId,
-      quill: 'hi'
+      quill: ''
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

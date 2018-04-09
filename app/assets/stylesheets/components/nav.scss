@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
   display: block;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
   text-align: center;
+  border-bottom: 1px solid lightgray;
   .header-Link {
     display: inline-block;
     color: $my-black;
@@ -78,13 +83,13 @@ header {
       .arrow-up {
         position: relative;
         left: 63px;
-        top: -7px;
+        top: 7px;
         display: block;
         width: 0;
         height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-bottom: 7px solid black;
+        border-top: 7px solid black;
       }
     }
 
