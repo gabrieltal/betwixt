@@ -177,7 +177,7 @@ header {
   margin: 0;
   background-color: white;
   text-align: center;
-  overflow: none;
+  z-index: 1000;
   border-bottom: 1px solid lightgray;
 }
 /* line 14, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
@@ -258,11 +258,11 @@ header .greet-signout .new-story-button {
 header .greet-signout .create-text {
   display: none;
 }
-/* line 95, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 94, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .new-story-button:hover {
   text-decoration: underline;
 }
-/* line 97, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 96, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .new-story-button:hover + .create-text {
   font-size: 16px;
   top: 60px;
@@ -274,7 +274,7 @@ header .greet-signout .new-story-button:hover + .create-text {
   color: white;
   margin-top: 5px;
 }
-/* line 107, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 106, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .new-story-button:hover + .create-text .arrow-up {
   position: relative;
   left: 63px;
@@ -286,30 +286,30 @@ header .greet-signout .new-story-button:hover + .create-text .arrow-up {
   border-right: 7px solid transparent;
   border-bottom: 7px solid black;
 }
-/* line 122, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 121, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout p {
   margin-right: 10px;
 }
-/* line 125, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 124, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .welcome {
   color: #6B0504;
   text-decoration: none;
 }
-/* line 130, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 129, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .welcome:hover {
   text-decoration: underline;
 }
-/* line 133, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 132, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout .signout-button {
   margin-right: 10px;
 }
-/* line 136, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 135, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .greet-signout img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-/* line 143, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 142, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .login-button, header .signout-button {
   border: none;
   background: none;
@@ -317,23 +317,34 @@ header .login-button, header .signout-button {
   color: #6B0504;
   font-size: 14px;
 }
-/* line 151, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
+/* line 150, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
 header .login-button:hover, header .signout-button:hover {
   cursor: pointer;
   text-decoration: underline black;
 }
 
 /* line 4, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
-.editHide {
+.controlsHide {
   display: none;
 }
 
 /* line 8, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
-.editShow {
-  display: block;
+.controlsShow {
+  display: inline-block;
+  float: right;
+  position: relative;
+  bottom: 15px;
+  right: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-/* line 12, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 18, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+.controlsShow:hover {
+  text-decoration: underline;
+}
+
+/* line 22, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index {
   display: block;
   padding: 25px;
@@ -341,47 +352,51 @@ header .login-button:hover, header .signout-button:hover {
   width: 65%;
   margin-top: 55px;
 }
-/* line 18, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 29, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item {
   padding: 10px;
 }
-/* line 23, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 34, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .story-title {
   font-size: 24px;
   text-decoration: none;
   color: black;
   font-family: sans-serif;
 }
-/* line 30, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .story-preview {
   text-decoration: none;
   font-size: 14px;
   color: darkgray;
   font-family: serif;
 }
-/* line 37, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .update-date {
   display: none;
 }
-/* line 40, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .arrow-up {
   display: none;
 }
-/* line 43, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+.story-index .story-item .create-date {
+  display: inline-block;
+}
+/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .create-date:hover + .update-date {
   font-size: 16px;
   position: absolute;
-  display: inline-block;
+  display: block;
   background-color: rgba(0, 0, 0, 0.9);
   padding: 0px 7px 5px 7px;
   border-radius: 5px;
   color: white;
-  margin-top: 5px;
+  margin-top: 10px;
 }
-/* line 52, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 67, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .create-date:hover + .update-date .arrow-up {
   position: relative;
-  top: -7px;
+  top: -5px;
   display: block;
   width: 0;
   height: 0;
@@ -389,14 +404,14 @@ header .login-button:hover, header .signout-button:hover {
   border-right: 7px solid transparent;
   border-bottom: 7px solid black;
 }
-/* line 65, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 79, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .author {
   text-decoration: none;
   color: black;
   font-size: 16px;
   font-family: serif;
 }
-/* line 72, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
+/* line 86, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/stories.scss */
 .story-index .story-item .author:hover {
   text-decoration: underline;
 }
@@ -504,7 +519,7 @@ header .login-button:hover, header .signout-button:hover {
   display: block;
   padding: 25px;
   margin: auto;
-  width: 65%;
+  width: 50%;
   margin-top: 55px;
 }
 /* line 7, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
@@ -544,44 +559,51 @@ header .login-button:hover, header .signout-button:hover {
   margin: auto;
   margin-top: 15px;
 }
-/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 42, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item {
   padding: 10px;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
 }
-/* line 43, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 46, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .story-title {
   font-size: 24px;
   text-decoration: none;
   color: black;
   font-family: sans-serif;
 }
-/* line 50, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 53, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .story-preview {
   text-decoration: none;
   font-size: 14px;
   color: darkgray;
   font-family: serif;
 }
-/* line 57, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 59, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-stories .story-item .create-date {
+  display: block;
+  width: 20%;
+}
+/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .update-date {
   display: none;
 }
-/* line 60, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .arrow-up {
   display: none;
 }
-/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 69, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .create-date:hover + .update-date {
   font-size: 16px;
   position: absolute;
-  display: inline-block;
+  display: block;
   background-color: rgba(0, 0, 0, 0.9);
   padding: 0px 7px 5px 7px;
   border-radius: 5px;
   color: white;
   margin-top: 5px;
 }
-/* line 72, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 79, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .create-date:hover + .update-date .arrow-up {
   position: relative;
   top: -7px;
@@ -592,7 +614,7 @@ header .login-button:hover, header .signout-button:hover {
   border-right: 7px solid transparent;
   border-bottom: 7px solid black;
 }
-/* line 85, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 93, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-stories .story-item .author {
   text-decoration: none;
   color: black;
