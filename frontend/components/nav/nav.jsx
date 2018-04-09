@@ -2,6 +2,7 @@ import React from 'react';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import { Link } from 'react-router-dom';
+import NewStoryContainer from '../story/new_story_container';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class Nav extends React.Component {
     return (
       <div className='greet-signout'>
         <Link to={'/'}><button className='signout-button' onClick={this.props.logout}>Sign Out</button></Link>
+        <Link to={'/story/new'} className='new-story-button'>+</Link>
+        <div className="create-text"><div className="arrow-up"></div>Create New Story</div>
         <p>Welcome <Link to={`/user/${user.id}`} className="welcome">{user.username}</Link>!</p>
         <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>

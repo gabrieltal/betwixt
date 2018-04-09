@@ -42,7 +42,7 @@ class Api::StoriesController < ApplicationController
     @stories = Story.all
     render 'api/stories/index'
   end
-
+  
   private
   def story_params
     params.require(:story).permit(:title, :body, :author_id)

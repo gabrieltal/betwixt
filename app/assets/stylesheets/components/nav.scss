@@ -46,7 +46,50 @@ header {
     margin-right: 10px;
     font-size: 16px;
     align-items: center;
+
     margin-top: 15px;
+    .new-story-button {
+      font-size: 18px;
+      border: 1px solid $pale-pink;
+      padding: 5px;
+      border-radius: 65%;
+      margin: 0 10px 0 2px;
+      text-decoration: none;
+    }
+
+    .create-text {
+      display: none;
+
+    }
+
+  .new-story-button:hover {
+    color: white;
+    background-color: $burgundy;
+    + .create-text {
+      font-size: 16px;
+      position: absolute;
+      top: 60px;
+      display: inline;
+      background-color: rgba(0, 0, 0, .9);
+      padding: 0px 7px 5px 7px;
+      border-radius: 5px;
+      color: white;
+      margin-top: 5px;
+      .arrow-up {
+        position: relative;
+        left: 63px;
+        top: -7px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid black;
+      }
+    }
+
+  }
+
     p {
       margin-right: 10px;
     }
