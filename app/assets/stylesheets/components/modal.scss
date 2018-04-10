@@ -4,7 +4,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, .9);
   z-index: 10;
 }
 
@@ -16,7 +16,7 @@
   text-align: center;
   top: 50%;
   left: 50%;
-  background-color: $pale-pink;
+  background-color: lightgray;
   transform: translate(-50%, -50%);
   padding: 100px;
   border-radius: 15px;
@@ -78,10 +78,13 @@
     background-color: white;
     cursor: pointer;
   }
+}
 
-  .errors {
-    font-style: bold;
-    font-size: 18px;
-  }
-
+.error-message {
+  text-decoration: none;
+  list-style: none;
+  margin: 0 0 15px 0;
+  font-style: bold;
+  color: red;
+  font-size: 18px;
 }

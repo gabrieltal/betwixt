@@ -15,7 +15,7 @@ header {
     float: left;
     color: darkgray;
     text-decoration: none;
-    margin-top: 30px;
+    margin-top: 25px;
     margin-left: 15px;
     padding: 5px;
     text-align: center;
@@ -29,6 +29,11 @@ header {
     .about {
       display:none;
     }
+
+    .login-button {
+      display: none;
+    }
+
   }
 
   .header-Link {
@@ -39,20 +44,21 @@ header {
     font-size: 45px;
     text-decoration: none;
     font-weight: bold;
+    margin-bottom: 15px;
   }
 
   .login-signup {
     float: right;
-    margin-top: 10px;
+    margin-top: 20px;
     font-family: sans-serif;
     button {
       margin-right: 15px;
     }
 
-    .signup-button {
+    .signup-button, .signin-button {
       color: $burgundy;
       font-size: 14px;
-      padding: 10px 15px;
+      padding: 5px 10px;
 
       background: white;
       border-radius: 5px;
@@ -133,6 +139,7 @@ header {
       margin-right: 10px;
     }
     img {
+      bottom: 5px;
       width: 50px;
       height: 50px;
       border-radius: 50%;

@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
 import NewStoryContainer from '../story/new_story_container';
 
 class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   welcomeUser () {
     const user = Object.values(this.props.currentUser)[0];
     return (
