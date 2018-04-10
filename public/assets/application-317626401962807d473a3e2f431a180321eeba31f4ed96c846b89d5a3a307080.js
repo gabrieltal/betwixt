@@ -27367,7 +27367,7 @@ var storiesReducer = function storiesReducer() {
     case _story_actions.RECEIVE_STORY:
       return (0, _merge2.default)({}, oldState, action.story);
     case _story_actions.RECEIVE_STORIES:
-      return (0, _merge2.default)({}, oldState, action.stories);
+      return (0, _merge2.default)({}, action.stories);
     case _story_actions.REMOVE_STORY:
       var newState = (0, _merge2.default)({}, oldState);
       delete newState[action.storyId];

@@ -144,7 +144,7 @@ header .login-signup .signup-button, header .login-signup .signin-button, header
   border: 2px solid #6B0504;
 }
 /* line 72, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
-header .login-signup .signup-button:hover {
+header .login-signup .signup-button:hover, header .login-signup .demo-button:hover {
   color: white;
   cursor: pointer;
   background: #6B0504;
@@ -476,7 +476,7 @@ header .login-signup .signup-button, header .login-signup .signin-button, header
   border: 2px solid #6B0504;
 }
 /* line 72, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/nav.scss */
-header .login-signup .signup-button:hover {
+header .login-signup .signup-button:hover, header .login-signup .demo-button:hover {
   color: white;
   cursor: pointer;
   background: #6B0504;

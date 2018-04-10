@@ -7,7 +7,7 @@ const storiesReducer = (oldState={}, action) => {
     case RECEIVE_STORY:
       return merge({}, oldState, action.story);
     case RECEIVE_STORIES:
-      return merge({}, oldState, action.stories);
+      return merge({}, action.stories);
     case REMOVE_STORY:
       let newState = merge({}, oldState);
       delete newState[action.storyId];
