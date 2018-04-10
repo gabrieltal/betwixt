@@ -30,9 +30,8 @@ class Api::StoriesController < ApplicationController
 
   def destroy
     @story = Story.find(params[:id])
-      @story.destroy
+    @story.destroy
     render 'api/stories/show'
-
   end
 
   def index

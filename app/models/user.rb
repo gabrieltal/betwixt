@@ -12,6 +12,11 @@ class User < ApplicationRecord
     class_name: :Story,
     foreign_key: :author_id
 
+  has_many :comments,
+    dependent: :destroy,
+    class_name: :Comment,
+    foreign_key: :author_id
+
   attr_reader :password
   after_initialize :ensure_session_token
 
