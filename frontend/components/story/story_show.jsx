@@ -21,6 +21,7 @@ class StoryShow extends React.Component{
             <p className="story-date">Created on {story.created_at}</p>
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
+          <UserDetailPaneContainer authorId={this.props.story.author_id}/>
         </div>
       );
     } else {

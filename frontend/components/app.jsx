@@ -20,14 +20,15 @@ const App = () => (
       </Link>
       <NavContainer />
     </header>
+
     <Switch>
+      <Route exact path="/" component={StoryIndexContainer} />
       <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
       <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
       <Route exact path="/story/:storyId" component={StoryShowContainer} />
 
+      <Route path="/user/:userId" component={UserShowContainer} />
 
-      <Route exact path="/user/:userId" component={UserShowContainer} />
-      <Route exact path="/" component={StoryIndexContainer} />
     </Switch>
   </div>
 );

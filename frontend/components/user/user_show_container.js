@@ -5,10 +5,10 @@ import { fetchStories } from '../../actions/story_actions';
 import { selectAuthoredStories } from '../../reducers/selector';
 
 const mapStateToProps = (state, ownProps) => {
-  const user = state.users[ownProps.match.params.userId];
   return {
-    user,
     userId: ownProps.match.params.userId,
+    user: state.users[ownProps.match.params.userId],
+
   }
 };
 

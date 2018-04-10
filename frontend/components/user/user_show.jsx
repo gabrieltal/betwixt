@@ -4,8 +4,14 @@ import UserStoryShowContainer from './user_story_show_container';
 
 class UserShow extends React.Component{
   componentDidMount() {
-    this.props.fetchUser(this.props.userId);
+    this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchStories();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.userId !== nextProps.match.params.userId) {
+      this.props.fetchUser(nextProps.match.params.userId);
+    }
   }
 
   render () {

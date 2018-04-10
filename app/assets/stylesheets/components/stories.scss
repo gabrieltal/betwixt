@@ -7,12 +7,12 @@
 
 .controlsShow {
   display: inline-block;
-  float: right;
   position: relative;
-  bottom: 15px;
   right: 5px;
   text-decoration: none;
   color: black;
+  padding: 5px;
+  margin-right: 5px;
 }
 
 .controlsShow:hover {
@@ -25,6 +25,7 @@
   margin: auto;
   justify-content: center;
   max-width: 88%;
+  min-width: 280px;
 }
 .story-index {
   display: block;

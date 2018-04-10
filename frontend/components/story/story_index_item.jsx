@@ -41,8 +41,9 @@ class StoryIndexItem extends React.Component {
           </button>
         </div>
         </div>
-        <img className="story-header-img" src={story.image_url} />
-
+        <Link to={`/story/${story.id}`}>
+          <img className="story-header-img" src={story.image_url} />
+        </Link>
       </li>
     );
   }

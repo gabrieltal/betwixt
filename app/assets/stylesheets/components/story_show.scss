@@ -48,11 +48,15 @@
 }
 
 .story-show-container {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   padding: 25px;
   margin: auto;
-  width: 80%;
+  width: 100%;
   margin-top: 55px;
+
   .author-display {
     display: flex;
     flex-direction: row;
@@ -71,11 +75,24 @@
     }
   }
 
-  .story-display{
+  .story-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
     padding: 25px;
-    display: block;
+    padding: 5px;
+    margin-bottom: 5px;
     margin: auto;
     width: 80%;
+
+    .story-header-img {
+      width: 50vw;
+      height: 35%;
+      margin: 10px;
+      padding: 25px;
+    }
+
     .story-title {
       text-align: center;
       font-size: 36px;
@@ -90,6 +107,7 @@
     }
 
     .story-date {
+      margin: 15px 10px;
       color: darkgray;
     }
 
