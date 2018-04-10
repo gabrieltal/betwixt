@@ -10,11 +10,12 @@ class StoryShow extends React.Component{
   render () {
     if (!!this.props.story) {
       const story = this.props.story;
-
+      debugger;
       return (
         <div className="story-show-container">
         <UserDetailPaneContainer authorId={this.props.story.author_id}/>
           <section className="story-display">
+            <img className="story-header-img" src={story.image_url}/>
             <h1 className="story-title">{story.title}</h1>
             <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body}}/>
 

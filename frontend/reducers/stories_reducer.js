@@ -5,7 +5,7 @@ const storiesReducer = (oldState={}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_STORY:
-      return merge({}, oldState, action.story);
+      return merge({}, action.story);
     case RECEIVE_STORIES:
       return merge({}, action.stories);
     case REMOVE_STORY:

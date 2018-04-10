@@ -10,11 +10,14 @@ class StoryForm extends React.Component {
       title: this.props.story.title,
       author_id: this.props.story.authorId,
       body: this.props.story.body,
+      imageUrl: '',
+      imageFile: null,
       placeholder: 'Write something decent...'
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleQuillChange = this.handleQuillChange.bind(this);
+    this.fileAdd = this.fileAdd.bind(this);
   }
 
   update(field) {
@@ -23,32 +26,53 @@ class StoryForm extends React.Component {
     });
   }
 
+  goBack () {
+    this.props.history.push('/');
+  }
+
   handleQuillChange (value) {
     this.setState({body: value})
   }
 
+  fileAdd (e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({
+        imageUrl: reader.result,
+        imageFile: file
+      });
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const story = {
-      title: this.state.title,
-      body: (this.state.body),
-      author_id: this.props.authorId,
-      id: this.props.story.id
-    };
-
-    this.props.action(story).then(
-      data =>
-        this.props.history.push(`/story/${Object.keys(data.story)[0]}`)
-      );
+    let formData = new FormData();
+    debugger;
+    formData.append("story[title]", this.state.title);
+    formData.append("story[body]", this.state.body);
+    formData.append("story[author_id]", this.props.authorId);
+    formData.append("story[id]", this.props.story.id);
+    if (this.state.imageFile) formData.append("story[image]", this.state.imageFile);
+    this.props.action(formData)
+      .then(data => this.props.history.push(`/story/${Object.keys(data.story)[0]}`));
   }
 
   render () {
-
     return (
       <div className="story-form" >
       <link href={"https://cdn.quilljs.com/1.3.6/quill.snow.css"} rel="stylesheet"/>
         <label className="title-label">Title:
           <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
+        </label>
+
+        <label className="header-image-label">Header Image:
+          <input className="image-input" type="file" onChange={this.fileAdd}/>
+          <img src={this.state.image_url} />
         </label>
         <ReactQuill
           theme="snow"
