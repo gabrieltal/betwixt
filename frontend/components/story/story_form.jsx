@@ -52,7 +52,6 @@ class StoryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
-    debugger;
     formData.append("story[title]", this.state.title);
     formData.append("story[body]", this.state.body);
     formData.append("story[author_id]", this.props.authorId);
@@ -72,7 +71,7 @@ class StoryForm extends React.Component {
 
         <label className="header-image-label">Header Image:
           <input className="image-input" type="file" onChange={this.fileAdd}/>
-          <img src={this.state.image_url} />
+          <img className="story-header-img" src={this.state.image_url} />
         </label>
         <ReactQuill
           theme="snow"

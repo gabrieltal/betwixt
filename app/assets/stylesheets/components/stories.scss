@@ -18,7 +18,14 @@
 .controlsShow:hover {
   text-decoration: underline;
 }
-
+.story-item-li {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  margin: auto;
+  justify-content: center;
+  max-width: 88%;
+}
 .story-index {
   display: block;
   padding: 25px;
@@ -26,10 +33,17 @@
   width: 65%;
   margin-top: 55px;
 
+  .story-header-img {
+
+    top: 0;
+    height: 150px;
+    width: 150px;
+
+    width: 1;
+  }
   .story-item {
     padding: 10px;
-
-
+    width: 100%;
 
     .story-title {
       font-size: 24px;

@@ -10,7 +10,8 @@ class StoryIndexItem extends React.Component {
       userControlClassName = "controlsShow";
     }
     return (
-      <li className="story-item">
+      <li className="story-item-li">
+        <div className="story-item">
         <Link className="story-title" to={`/story/${story.id}`}>
             {story.title}
         </Link>
@@ -39,6 +40,8 @@ class StoryIndexItem extends React.Component {
             Delete Story
           </button>
         </div>
+        </div>
+        <img className="story-header-img" src={story.image_url} />
 
       </li>
     );

@@ -23,13 +23,14 @@ export const createStory = (formData) => (
   })
 );
 
-export const updateStory = (story) => (
+export const updateStory = (formData) => (
   $.ajax({
-    url: `api/stories/${story.id}`,
+    url: `api/stories/${formData.get("story[id]")}`,
     method: 'PATCH',
-    data: {
-      story
-    }
+    dataType: 'json',
+    contentType: false,
+    processData: false,
+    data: formData
   })
 );
 

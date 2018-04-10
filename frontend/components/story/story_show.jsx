@@ -10,7 +10,6 @@ class StoryShow extends React.Component{
   render () {
     if (!!this.props.story) {
       const story = this.props.story;
-      debugger;
       return (
         <div className="story-show-container">
         <UserDetailPaneContainer authorId={this.props.story.author_id}/>
