@@ -15,8 +15,9 @@ class StoryIndexItem extends React.Component {
             {story.title}
         </Link>
         <br/>
-      <Link className="story-preview" to  ={`/story/${story.id}`}>
-          {story.body.substring(0,140)}...
+        <Link className="story-preview" to  ={`/story/${story.id}`}>
+        <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body.substring(0,140)}}/>
+
         </Link>
         <br/>
         <Link className="author" to={`/user/${story.author_id}`}>

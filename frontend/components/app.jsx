@@ -18,12 +18,11 @@ const App = () => (
       <Link to="/" className="header-Link">
         <h1>Betwixt</h1>
       </Link>
-
       <NavContainer />
     </header>
     <Switch>
-      <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
       <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
+      <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
       <Route exact path="/story/:storyId" component={StoryShowContainer} />
 
 

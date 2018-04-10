@@ -4,6 +4,7 @@
   margin-top: 135px;
   width: 85%;
   text-align: center;
+
   .title-label {
     margin: auto;
     .title-input {
@@ -12,8 +13,55 @@
       margin-bottom: 15px;
     }
   }
-  
+
   .input-publish {
 
+  }
+
+  p {
+    font-style: inherit;
+  }
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  u {
+    text-decoration: underline;
+  }
+
+  s {
+    text-decoration: line-through;
+  }
+
+  h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  blockquote {
+    display: block;
+   margin-top: 1em;
+   margin-bottom: 1em;
+   margin-left: 40px;
+   margin-right: 40px;
   }
 }

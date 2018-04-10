@@ -34,6 +34,10 @@ header {
       display: none;
     }
 
+    .signup-button {
+      display: none;
+    }
+
   }
 
   .header-Link {
@@ -55,7 +59,7 @@ header {
       margin-right: 15px;
     }
 
-    .signup-button, .signin-button {
+    .signup-button, .signin-button, .demo-button {
       color: $burgundy;
       font-size: 14px;
       padding: 5px 10px;

@@ -22,7 +22,7 @@ class Nav extends React.Component {
       <nav className='login-signup'>
         <button className='login-button' onClick={() => this.props.openModal('login')}>Sign in</button>
         <button className='signup-button' onClick={() => this.props.openModal('signup')}>Get started</button>
-        <button className='signup-button' onClick={() => (this.props.login({username: "guest", password: "password"}))}>Demo</button>
+        <button className='demo-button' onClick={() => (this.props.login({username: "guest", password: "password"}))}>Demo</button>
       </nav>
     )
   }
