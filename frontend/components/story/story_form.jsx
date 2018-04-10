@@ -62,6 +62,9 @@ class StoryForm extends React.Component {
   }
 
   render () {
+    let errors = this.props.errors || [];
+    errors = errors.map(error => <li>{error}</li>);
+
     return (
       <div className="story-form" >
       <link href={"https://cdn.quilljs.com/1.3.6/quill.snow.css"} rel="stylesheet"/>
@@ -81,6 +84,9 @@ class StoryForm extends React.Component {
           formats={StoryForm.formats}
           placeholder={this.state.placeholder}
         />
+        <div className="error-message">
+          {errors}
+        </div>
         <button className="input-publish" onClick={this.handleSubmit}>Publish</button>
       </div>
     );

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StoryForm from './story_form';
-import { fetchStory, updateStory } from '../../actions/story_actions';
+import { fetchStory, updateStory, receiveErrors } from '../../actions/story_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     story: state.stories[ownProps.match.params.storyId],
-    errors: state.errors,
+    errors: state.errors.form,
     authorId: Object.keys(state.session.currentUser)[0]
   }
 };
@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchStory: (id) => dispatch(fetchStory(id)),
-    action: story => dispatch(updateStory(story))
+    action: story => dispatch(updateStory(story)),
+    clearErrors: () => dispatch(receiveErrors([]))
   };
 };
 

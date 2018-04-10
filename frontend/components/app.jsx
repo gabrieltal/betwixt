@@ -1,6 +1,6 @@
 import React from 'react';
 import NavContainer from './nav/nav_container';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Redirect, Route, Link, Switch } from 'react-router-dom';
 import Modal from './modal/modal';
 import UserShowContainer from './user/user_show_container';
 import StoryIndexContainer from './story/story_index_container';
@@ -22,13 +22,14 @@ const App = () => (
     </header>
 
     <Switch>
-      <Route exact path="/" component={StoryIndexContainer} />
       <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
       <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
       <Route exact path="/story/:storyId" component={StoryShowContainer} />
 
       <Route path="/user/:userId" component={UserShowContainer} />
 
+      <Route exact path="/" component={StoryIndexContainer} />
+      <Redirect from='/' to="/"/>
     </Switch>
   </div>
 );

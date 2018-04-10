@@ -41,7 +41,7 @@ const receiveStory = (story) => ({
   story
 });
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_FORM_ERRORS,
   errors
 });
