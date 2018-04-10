@@ -36,7 +36,6 @@ class StoryForm extends React.Component {
       id: this.props.story.id
     };
 
-    debugger;
     this.props.action(story).then(
       data =>
         this.props.history.push(`/story/${Object.keys(data.story)[0]}`)
