@@ -1332,7 +1332,7 @@ var updateStory = exports.updateStory = function updateStory(story) {
 var deleteStory = exports.deleteStory = function deleteStory(storyId) {
   return function (dispatch) {
     return ApiStory.deleteStory(storyId).then(function (story) {
-      return dispatch(removeStory(storyId));
+      return dispatch(removeStory(story.id));
     });
   };
 };
@@ -5645,7 +5645,6 @@ var StoryForm = function (_React$Component) {
         id: this.props.story.id
       };
 
-      debugger;
       this.props.action(story).then(function (data) {
         return _this3.props.history.push('/story/' + Object.keys(data.story)[0]);
       });
@@ -27315,7 +27314,7 @@ var usersReducer = function usersReducer() {
   Object.freeze(oldState);
   switch (action.type) {
     case _user_actions.RECEIVE_USER:
-      return (0, _merge2.default)({}, oldState, action.user);
+      return (0, _merge2.default)({}, action.user);
     default:
       return oldState;
   }
@@ -31944,8 +31943,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = state.users[ownProps.match.params.userId];
   return {
     user: user,
-    userId: ownProps.match.params.userId,
-    authoredStories: (0, _selector.selectAuthoredStories)(state, user)
+    userId: ownProps.match.params.userId
   };
 };
 
@@ -32211,13 +32209,15 @@ var _user_story_show2 = _interopRequireDefault(_user_story_show);
 
 var _story_actions = __webpack_require__(9);
 
+var _selector = __webpack_require__(243);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = ownProps.user;
   return {
     user: user,
-    authoredStories: ownProps.authoredStories,
+    authoredStories: (0, _selector.selectAuthoredStories)(state, user),
     currentUser: state.session.currentUser
   };
 };
@@ -32277,6 +32277,7 @@ var UserStoryShow = function (_React$Component) {
 
       if (this.props.authoredStories.length > 0 && this.props.authoredStories[0] !== undefined) {
         var stories = this.props.authoredStories;
+
         stories = stories.map(function (story) {
           if (typeof story !== "undefined") {
             return _react2.default.createElement(_story_index_item2.default, { key: story.id, story: story, deleteStory: _this2.props.deleteStory,

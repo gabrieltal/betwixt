@@ -5,6 +5,7 @@ class UserStoryShow extends React.Component{
   render () {
     if (this.props.authoredStories.length > 0 && this.props.authoredStories[0] !== undefined) {
       let stories = this.props.authoredStories;
+
       stories = stories.map((story) => {
         if (typeof story !== "undefined") {
           return <StoryIndexItem key={story.id} story={story} deleteStory={this.props.deleteStory}

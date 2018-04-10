@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user,
     userId: ownProps.match.params.userId,
-    authoredStories: selectAuthoredStories(state, user)
   }
 };
 

@@ -21,7 +21,7 @@ export const updateStory = (story) => (dispatch) => (
 ));
 
 export const deleteStory = (storyId) => (dispatch) => (
-  ApiStory.deleteStory(storyId).then((story) => dispatch(removeStory(storyId)))
+  ApiStory.deleteStory(storyId).then((story) => dispatch(removeStory(story.id)))
 );
 
 const removeStory = (storyId) => ({
