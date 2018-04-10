@@ -5760,15 +5760,6 @@ var StoryShow = function (_React$Component) {
     value: function render() {
       if (!!this.props.story) {
         var story = this.props.story;
-        var text = new _quillDelta2.default(JSON.parse(story.body)).map(function (op) {
-          debugger;
-          if (typeof op.insert === 'string') {
-            return op.insert;
-          } else {
-            return '';
-          }
-        }).join('');
-        debugger;
         return _react2.default.createElement(
           'div',
           { className: 'story-show-container' },
@@ -5784,7 +5775,7 @@ var StoryShow = function (_React$Component) {
             _react2.default.createElement(
               'p',
               { className: 'story-body' },
-              text
+              story.body
             ),
             _react2.default.createElement(
               'p',
