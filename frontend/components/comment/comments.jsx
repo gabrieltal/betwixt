@@ -13,7 +13,10 @@ class Comments extends React.Component {
       );
       return (
         <div className="comments-display">
-          <CommentForm />
+          <CommentForm story_id={this.props.storyId}
+            currentUser={this.props.currentUser}
+            openModal={this.props.openModal}
+          />
           <ul>
             {comments}
           </ul>

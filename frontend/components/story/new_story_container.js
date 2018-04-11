@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import StoryForm from './story_form';
-import { createStory } from '../../actions/story_actions';
-import { receiveErrors } from '../../actions/story_actions';
+import { createStory, receiveErrors } from '../../actions/story_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const story = { id: '', title: '', author_id: '', body: ''}
