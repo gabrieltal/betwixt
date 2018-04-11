@@ -24,6 +24,10 @@ class CommentForm extends React.Component {
     }
   }
 
+  scrollToBottom() {
+    this.el.scrollIntoView({behavior: "smooth"});
+  }
+
   handleQuillChange (value) {
     this.setState({body: value})
   }
@@ -31,13 +35,16 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createComment(this.state);
-
+    this.setState({body: ""})
+    this.messagesEnd.scrollIntoView();
   }
 
   render () {
     let ableToComment = () => this.props.openModal("comment-login");
+    let ableToSubmit = () => this.props.openModal("comment-login");
     if (!!this.state.author_id) {
       ableToComment = this.handleQuillChange;
+      ableToSubmit = this.handleSubmit;
     }
     let errors = this.props.errors.map((error, i) => <li key={i}>{error}</li> );
     return (
@@ -48,11 +55,13 @@ class CommentForm extends React.Component {
           onChange={ableToComment} modules={CommentForm.modules}
           formats={CommentForm.formats} placeholder={this.state.placeholder}
         />
-        <ul>
+        <ul className="error-message">
           {errors}
         </ul>
 
-        <button onClick={this.handleSubmit}>Publish</button>
+        <button onClick={ableToSubmit}>Publish</button>
+        <div ref={(el)=>{this.messagesEnd = el; }}>
+        </div>
       </form>
     );
   }

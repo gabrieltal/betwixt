@@ -5,5 +5,5 @@ export const selectAuthoredStories = (state, author) => {
 };
 
 export const selectStoryComments = (state, story) => {
-  return story ? story.comments.map(id => state.comments[id]) : [];
+  return story ? story.comments.map(comment => state.comments[comment.id]) : [];
 };

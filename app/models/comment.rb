@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :body, :story, :user, presence: false
+  validates :body, :story, :user, presence: true
 
   belongs_to :user,
     class_name: :User,

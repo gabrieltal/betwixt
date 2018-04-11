@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Comments from './comments';
-import { fetchComment } from '../../actions/comment_actions';
+import { selectStoryComments } from '../../reducers/selector';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     storyId: ownProps.story.id,
+    story: ownProps.story,
     currentUser: state.session.currentUser,
-    storyComments: ownProps.story.comments,
-    comments: state.comments
+    storyComments: selectStoryComments(state, ownProps.story)
   };
 };
 
