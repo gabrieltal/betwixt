@@ -32,14 +32,17 @@ class StoryIndexItem extends React.Component {
           Updated {story.updated_at}
         </div>
 
+
         <div className={userControlClassName}>
           <Link className="edit-link" to={`/story/${story.id}/edit`}>
             Edit Story
           </Link>
+
+
           <button onClick={() => this.props.deleteStory(story.id).then(this.props.history.push('/'))}>
             Delete Story
           </button>
-        </div>
+          </div>
         </div>
         <Link to={`/story/${story.id}`}>
           <img className="story-header-img" src={story.image_url} />

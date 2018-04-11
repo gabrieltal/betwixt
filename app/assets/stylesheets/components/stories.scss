@@ -20,6 +20,16 @@
 .controlsShow:hover {
   text-decoration: underline;
 }
+
+.options {
+  display: none;
+}
+
+.fa:target {
+  font-size: 32px;
+
+}
+
 .story-item-li {
   display: flex;
   flex-direction: row;
@@ -69,6 +79,7 @@
       display: none;
     }
     .create-date {
+      margin: 5px 0;
       display: inline-block;
     }
     .create-date:hover + .update-date {
@@ -79,7 +90,7 @@
         padding: 0px 7px 5px 7px;
         border-radius: 5px;
         color: white;
-        margin-top: 10px;
+        margin-top: 5px;
 
         .arrow-up {
           position: relative;

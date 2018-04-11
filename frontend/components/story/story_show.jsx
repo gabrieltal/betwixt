@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UserDetailPaneContainer from '../user/user_detail_pane_container';
 import ReactQuill from 'react-quill';
+import CommentContainer from '../comment/comment_container';
+
 class StoryShow extends React.Component{
   componentDidMount () {
     this.props.fetchStory(this.props.storyId);
@@ -22,6 +24,7 @@ class StoryShow extends React.Component{
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
           <UserDetailPaneContainer authorId={this.props.story.author_id}/>
+          <CommentContainer storyId={story.id}/>
         </div>
       );
     } else {
