@@ -1,53 +1,35 @@
-// Place all the styles related to the Stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.controlsHide {
-  display: none;
-}
-.edit-link {
-  margin-right: 10px;
-}
-.controlsShow {
-  display: inline-block;
-  position: relative;
-  right: 5px;
-  text-decoration: none;
-  color: black;
-  padding: 5px;
-  margin-right: 5px;
-}
-
-.controlsShow:hover {
-  text-decoration: underline;
-}
-.story-item-li {
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-  margin: auto;
-  justify-content: center;
-  max-width: 88%;
-  min-width: 280px;
-}
-.story-index {
+.user-stories {
   display: block;
-  padding: 25px;
+  padding: 15px;
   margin: auto;
-  width: 65%;
-  margin-top: 55px;
-
+  margin-top: 20px;
+  width: 100%;
   .story-header-img {
-
     top: 0;
     height: 150px;
     width: 150px;
-
+    padding: 5px;
+    padding-left: 10px;
     width: 1;
+    float: right;
   }
   .story-item {
+    display: flex;
+    flex-direction: column;
+    width: 3;
+    float: left;
+  }
+  .story-item-li {
     padding: 10px;
+    border: 1px solid lightgray;
+    margin: 15px;
     width: 100%;
+    min-width: 280px;
 
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
     .story-title {
       font-size: 24px;
       text-decoration: none;
@@ -61,17 +43,17 @@
       color: darkgray;
       font-family: serif;
     }
-
-    .update-date{
+    .create-date {
+      display: block;
+      width: 20%;
+    }
+    .update-date {
       display: none;
     }
     .arrow-up {
       display: none;
     }
-    .create-date {
-      display: inline-block;
-    }
-    .create-date:hover + .update-date {
+    .create-date:hover  + .update-date{
         font-size: 16px;
         position: absolute;
         display: block;
@@ -79,11 +61,12 @@
         padding: 0px 7px 5px 7px;
         border-radius: 5px;
         color: white;
-        margin-top: 10px;
+        margin-top: 5px;
 
         .arrow-up {
           position: relative;
-          top: -5px;
+          top: -7px;
+
           display: block;
           width: 0;
           height: 0;
@@ -91,17 +74,13 @@
           border-right: 7px solid transparent;
           border-bottom: 7px solid black;
         }
-    }
 
+    }
     .author {
       text-decoration: none;
       color: black;
       font-size: 16px;
       font-family: serif;
-    }
-
-    .author:hover {
-      text-decoration: underline;
     }
 
   }

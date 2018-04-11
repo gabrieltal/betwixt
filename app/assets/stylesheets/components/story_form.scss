@@ -7,17 +7,44 @@
 
   .title-label {
     margin: auto;
+    font-size: 18px;
     .title-input {
       width: 75%;
       margin-left: 5px;
       margin-bottom: 15px;
+      font-size: 18px;
+    }
+  }
+
+  .header-image-label {
+    display: inline-block;
+    input {
+      display: inline-block;
+      margin: 20px;
+    }
+    .story-header-img {
+      margin: 20px;
     }
   }
 
   .input-publish {
-
+    margin: 20px;
+    border: none;
+    background: none;
+    color: $burgundy;
+    font-size: 18px;
   }
 
+  .input-publish:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .error-message {
+    margin-top: 10px;
+    li {
+      padding: 5px;
+    }
+  }
   p {
     font-style: inherit;
   }

@@ -10,7 +10,7 @@ class StoryForm extends React.Component {
       title: this.props.story.title,
       author_id: this.props.story.authorId,
       body: this.props.story.body,
-      imageUrl: '',
+      imageUrl: this.props.story.image_url,
       imageFile: null,
       placeholder: 'Write something decent...'
     };
@@ -57,13 +57,14 @@ class StoryForm extends React.Component {
     formData.append("story[author_id]", this.props.authorId);
     formData.append("story[id]", this.props.story.id);
     if (this.state.imageFile) formData.append("story[image]", this.state.imageFile);
+
     this.props.action(formData)
       .then(data => this.props.history.push(`/story/${Object.keys(data.story)[0]}`));
   }
 
   render () {
     let errors = this.props.errors || [];
-    errors = errors.map(error => <li>{error}</li>);
+    errors = errors.map((error, i) => <li key={i}>{error}</li>);
 
     return (
       <div className="story-form" >
@@ -71,11 +72,12 @@ class StoryForm extends React.Component {
         <label className="title-label">Title:
           <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
         </label>
-
+        <br/>
         <label className="header-image-label">Header Image:
           <input className="image-input" type="file" onChange={this.fileAdd}/>
-          <img className="story-header-img" src={this.state.image_url} />
+          <img className="story-header-img" src={this.state.imageUrl} />
         </label>
+        <br/>
         <ReactQuill
           theme="snow"
           value={this.state.body}
@@ -84,9 +86,9 @@ class StoryForm extends React.Component {
           formats={StoryForm.formats}
           placeholder={this.state.placeholder}
         />
-        <div className="error-message">
+        <ul className="error-message">
           {errors}
-        </div>
+        </ul>
         <button className="input-publish" onClick={this.handleSubmit}>Publish</button>
       </div>
     );

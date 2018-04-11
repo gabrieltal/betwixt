@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
   }
 
   render () {
-    let errors = this.props.errors.map( error => <li>{error}</li>);
+    let errors = this.props.errors.map( (error, i) => <li key={i}>{error}</li>);
     return (
       <div className='login-form-container'>
         <button className='x-close' onClick={this.props.closeModal}>X</button>
@@ -45,9 +45,9 @@ class SessionForm extends React.Component {
           <input onChange={this.update('password')} type="password" value={this.state.password}/>
         </label>
         <br/>
-        <div className="error-message">
+        <ul className="error-message">
           {errors}
-        </div>
+        </ul>
         <input className="submit-button" type="submit" value="Continue" />
         <br/>
 
