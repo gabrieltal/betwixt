@@ -5699,8 +5699,7 @@ var StoryForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var errors = this.props.errors || [];
-      errors = errors.map(function (error, i) {
+      var errors = this.props.errors.map(function (error, i) {
         return _react2.default.createElement(
           'li',
           { key: i },
