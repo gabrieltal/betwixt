@@ -27,7 +27,7 @@ class UserShow extends React.Component{
               <p className="member-creation">Betwixt member since {user.created_at}</p>
             </div>
           </div>
-          <UserStoryShowContainer user={user} authoredStories={this.props.authoredStories}/>
+          <UserStoryShowContainer user={user}/>
         </div>
       );
     } else {

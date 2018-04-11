@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
+import {withRouter} from 'react-router-dom';
 class CommentForm extends React.Component {
   constructor (props) {
     super(props);
@@ -30,6 +31,7 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createComment(this.state);
+
   }
 
   render () {
@@ -62,4 +64,4 @@ CommentForm.modules = {
 
 CommentForm.formats = []
 
-export default CommentForm;
+export default withRouter(CommentForm);

@@ -6,8 +6,7 @@ import CommentContainer from '../comment/comment_container';
 
 class StoryShow extends React.Component{
   componentDidMount () {
-    this.props.fetchStory(this.props.storyId);
-    this.props.fetchComments();
+    this.props.fetchStory(this.props.match.params.storyId);
   }
 
   render () {

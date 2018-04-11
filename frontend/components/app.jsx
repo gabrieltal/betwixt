@@ -27,7 +27,6 @@ const App = () => (
       <Route exact path="/story/:storyId" component={StoryShowContainer} />
 
       <Route path="/user/:userId" component={UserShowContainer} />
-
       <Route exact path="/" component={StoryIndexContainer} />
       <Redirect from='/' to="/"/>
     </Switch>
