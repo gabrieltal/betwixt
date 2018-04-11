@@ -355,28 +355,34 @@ header .login-button:hover, header .signout-button:hover {
 /* line 11, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .modal-child {
   position: absolute;
-  display: flex;
-  align-content: space-around;
-  align-items: space-around;
-  text-align: center;
   top: 50%;
   left: 50%;
-  background-color: lightgray;
+  text-align: center;
+  background-color: #F4DBD8;
   transform: translate(-50%, -50%);
-  padding: 100px;
+  padding: 50px;
   border-radius: 15px;
   font-size: 16px;
+  margin-top: 90px;
+  min-height: 400px;
+  min-width: 380px;
 }
 
-/* line 26, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 27, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* line 32, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .form-session {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
+  display: block;
+  align-items: center;
+  align-content: center;
   padding: 35px;
 }
 
-/* line 33, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 39, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .x-close {
   position: absolute;
   top: 25px;
@@ -388,21 +394,21 @@ header .login-button:hover, header .signout-button:hover {
   font-size: 20px;
 }
 
-/* line 44, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 50, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .x-close:hover {
   font-size: 24px;
   color: white;
 }
 
-/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container {
   margin-bottom: 15px;
 }
-/* line 50, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 56, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container h3 {
   font-size: 28px;
 }
-/* line 53, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 59, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .other-form-button {
   background: none;
   border: none;
@@ -411,27 +417,43 @@ header .login-button:hover, header .signout-button:hover {
   text-decoration: underline;
   font-weight: bold;
 }
-/* line 62, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 68, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .other-form-button:hover {
   cursor: pointer;
   color: #6B0504;
 }
-/* line 68, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 74, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .input-field {
+  margin: auto;
+  font-size: 16px;
+  width: 30%;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+/* line 80, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+.login-form-container .input-field input {
+  margin: auto;
+  margin-bottom: 15px;
+  font-size: 16px;
+  width: 65%;
+}
+/* line 88, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .submit-button {
   background-color: #04151F;
   border-radius: 5px;
   border: 2px solid #04151F;
-  padding: 0px;
+  padding: 5px;
   color: white;
+  margin-bottom: 15px;
 }
-/* line 76, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 97, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .submit-button:hover {
   color: #04151F;
   background-color: white;
   cursor: pointer;
 }
 
-/* line 83, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 104, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .error-message {
   text-decoration: none;
   list-style: none;

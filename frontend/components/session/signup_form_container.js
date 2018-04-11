@@ -11,6 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     formType: 'signup',
     redirectPageMessage: 'Already have an account? ',
     headerMessage: 'Join Betwixt.',
+    modalMessage:
+      'Create an account join all the fun. All your friends are doing it. Write your own stories. Like other stories. Read more, it is good for you. Join today.'
   };
 };
 

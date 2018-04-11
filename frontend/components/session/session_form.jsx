@@ -34,6 +34,7 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className='form-session'>
           <h3>{this.props.headerMessage}</h3>
           <br/>
+          <p>{this.props.modalMessage}</p>
           <label className="input-field"> Username
             <br/>
             <input onChange={this.update('username')}

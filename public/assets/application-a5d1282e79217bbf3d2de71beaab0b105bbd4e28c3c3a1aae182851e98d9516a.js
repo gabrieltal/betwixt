@@ -5322,7 +5322,8 @@ var mapStateToProps = function mapStateToProps(state) {
     errors: state.errors.session,
     formType: 'login',
     redirectPageMessage: 'No account? ',
-    headerMessage: 'Welcome back.'
+    headerMessage: 'Welcome back.',
+    modalMessage: 'Sign in to access your account. You can like and follow and write your own stories if you can not find one that you like.'
   };
 };
 
@@ -5443,6 +5444,11 @@ var SessionForm = function (_React$Component) {
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
+            'p',
+            null,
+            this.props.modalMessage
+          ),
+          _react2.default.createElement(
             'label',
             { className: 'input-field' },
             ' Username',
@@ -5514,7 +5520,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     errors: state.errors.session,
     formType: 'signup',
     redirectPageMessage: 'Already have an account? ',
-    headerMessage: 'Join Betwixt.'
+    headerMessage: 'Join Betwixt.',
+    modalMessage: 'Create an account join all the fun. All your friends are doing it. Write your own stories. Like other stories. Read more, it is good for you. Join today.'
   };
 };
 
