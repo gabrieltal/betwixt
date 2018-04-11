@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     userId: ownProps.match.params.userId,
     user: state.users[ownProps.match.params.userId],
-
   }
 };
 

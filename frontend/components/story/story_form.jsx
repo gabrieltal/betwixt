@@ -98,8 +98,7 @@ StoryForm.modules = {
     [{ 'header': '1'}, {'header': '2'}],
     ['bold', 'italic', 'underline', 'strike'],
     [{'list': 'ordered'}, {'list': 'bullet'}],
-    ['link', 'image'],
-    ['clean']
+    ['image']
   ],
 }
 

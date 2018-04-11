@@ -7,6 +7,7 @@ import CommentContainer from '../comment/comment_container';
 class StoryShow extends React.Component{
   componentDidMount () {
     this.props.fetchStory(this.props.storyId);
+    this.props.fetchComments();
   }
 
   render () {
@@ -24,7 +25,7 @@ class StoryShow extends React.Component{
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
           <UserDetailPaneContainer authorId={this.props.story.author_id}/>
-          <CommentContainer storyId={story.id}/>
+          <CommentContainer story={story}/>
         </div>
       );
     } else {
