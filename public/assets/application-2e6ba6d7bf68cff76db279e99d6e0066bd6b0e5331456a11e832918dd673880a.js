@@ -686,6 +686,10 @@ Released under the MIT license
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
 /******/
  (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1284,7 +1288,7 @@ module.exports = isObject;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteStory = exports.updateStory = exports.createStory = exports.fetchStories = exports.fetchStory = exports.RECEIVE_FORM_ERRORS = exports.REMOVE_STORY = exports.RECEIVE_STORIES = exports.RECEIVE_STORY = undefined;
+exports.receiveErrors = exports.deleteStory = exports.updateStory = exports.createStory = exports.fetchStories = exports.fetchStory = exports.RECEIVE_FORM_ERRORS = exports.REMOVE_STORY = exports.RECEIVE_STORIES = exports.RECEIVE_STORY = undefined;
 
 var _story_api_util = __webpack_require__(190);
 
@@ -1317,6 +1321,8 @@ var createStory = exports.createStory = function createStory(story) {
   return function (dispatch) {
     return ApiStory.createStory(story).then(function (story) {
       return dispatch(receiveStory(story));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1325,6 +1331,8 @@ var updateStory = exports.updateStory = function updateStory(story) {
   return function (dispatch) {
     return ApiStory.updateStory(story).then(function (story) {
       return dispatch(receiveStory(story));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1358,7 +1366,7 @@ var receiveStory = function receiveStory(story) {
   };
 };
 
-var receiveErrors = function receiveErrors(errors) {
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_FORM_ERRORS,
     errors: errors
@@ -3185,52 +3193,61 @@ var StoryIndexItem = function (_React$Component) {
       }
       return _react2.default.createElement(
         'li',
-        { className: 'story-item' },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { className: 'story-title', to: '/story/' + story.id },
-          story.title
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { className: 'story-preview', to: '/story/' + story.id },
-          _react2.default.createElement('div', { className: 'story-show-body', dangerouslySetInnerHTML: { __html: story.body.substring(0, 140) } })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { className: 'author', to: '/user/' + story.author_id },
-          story.author
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'p',
-          { className: 'create-date' },
-          story.created_at
-        ),
+        { className: 'story-item-li' },
         _react2.default.createElement(
           'div',
-          { className: 'update-date' },
-          _react2.default.createElement('div', { className: 'arrow-up' }),
-          'Updated ',
-          story.updated_at
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: userControlClassName },
+          { className: 'story-item' },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: 'edit-link', to: '/story/' + story.id + '/edit' },
-            'Edit Story'
+            { className: 'story-title', to: '/story/' + story.id },
+            story.title
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { className: 'story-preview', to: '/story/' + story.id },
+            _react2.default.createElement('div', { className: 'story-show-body', dangerouslySetInnerHTML: { __html: story.body.substring(0, 140) } })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { className: 'author', to: '/user/' + story.author_id },
+            story.author
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'p',
+            { className: 'create-date' },
+            story.created_at
           ),
           _react2.default.createElement(
-            'button',
-            { onClick: function onClick() {
-                return _this2.props.deleteStory(story.id).then(_this2.props.history.push('/'));
-              } },
-            'Delete Story'
+            'div',
+            { className: 'update-date' },
+            _react2.default.createElement('div', { className: 'arrow-up' }),
+            'Updated ',
+            story.updated_at
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: userControlClassName },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'edit-link', to: '/story/' + story.id + '/edit' },
+              'Edit Story'
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: function onClick() {
+                  return _this2.props.deleteStory(story.id).then(_this2.props.history.push('/'));
+                } },
+              'Delete Story'
+            )
           )
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/story/' + story.id },
+          _react2.default.createElement('img', { className: 'story-header-img', src: story.image_url })
         )
       );
     }
@@ -5401,10 +5418,10 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var errors = this.props.errors.map(function (error) {
+      var errors = this.props.errors.map(function (error, i) {
         return _react2.default.createElement(
           'li',
-          null,
+          { key: i },
           error
         );
       });
@@ -5443,7 +5460,7 @@ var SessionForm = function (_React$Component) {
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
-            'div',
+            'ul',
             { className: 'error-message' },
             errors
           ),
@@ -5549,7 +5566,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var story = { id: '', title: '', author_id: '', body: '' };
   return {
     story: story,
-    errors: state.errors,
+    errors: state.errors.form,
     authorId: Object.keys(state.session.currentUser)[0]
   };
 };
@@ -5558,6 +5575,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     action: function action(story) {
       return dispatch((0, _story_actions.createStory)(story));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _story_actions.receiveErrors)([]));
     }
   };
 };
@@ -5610,11 +5630,14 @@ var StoryForm = function (_React$Component) {
       title: _this.props.story.title,
       author_id: _this.props.story.authorId,
       body: _this.props.story.body,
+      imageUrl: _this.props.story.image_url,
+      imageFile: null,
       placeholder: 'Write something decent...'
     };
     _this.update = _this.update.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleQuillChange = _this.handleQuillChange.bind(_this);
+    _this.fileAdd = _this.fileAdd.bind(_this);
     return _this;
   }
 
@@ -5628,30 +5651,62 @@ var StoryForm = function (_React$Component) {
       };
     }
   }, {
+    key: 'goBack',
+    value: function goBack() {
+      this.props.history.push('/');
+    }
+  }, {
     key: 'handleQuillChange',
     value: function handleQuillChange(value) {
       this.setState({ body: value });
     }
   }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
+    key: 'fileAdd',
+    value: function fileAdd(e) {
       var _this3 = this;
 
-      e.preventDefault();
-      var story = {
-        title: this.state.title,
-        body: this.state.body,
-        author_id: this.props.authorId,
-        id: this.props.story.id
+      var reader = new FileReader();
+      var file = e.currentTarget.files[0];
+      reader.onloadend = function () {
+        return _this3.setState({
+          imageUrl: reader.result,
+          imageFile: file
+        });
       };
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({ imageUrl: "", imageFile: null });
+      }
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      var _this4 = this;
 
-      this.props.action(story).then(function (data) {
-        return _this3.props.history.push('/story/' + Object.keys(data.story)[0]);
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append("story[title]", this.state.title);
+      formData.append("story[body]", this.state.body);
+      formData.append("story[author_id]", this.props.authorId);
+      formData.append("story[id]", this.props.story.id);
+      if (this.state.imageFile) formData.append("story[image]", this.state.imageFile);
+
+      this.props.action(formData).then(function (data) {
+        return _this4.props.history.push('/story/' + Object.keys(data.story)[0]);
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      var errors = this.props.errors || [];
+      errors = errors.map(function (error, i) {
+        return _react2.default.createElement(
+          'li',
+          { key: i },
+          error
+        );
+      });
 
       return _react2.default.createElement(
         'div',
@@ -5663,6 +5718,15 @@ var StoryForm = function (_React$Component) {
           'Title:',
           _react2.default.createElement('input', { className: 'title-input', type: 'text', value: this.state.title, onChange: this.update('title') })
         ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          { className: 'header-image-label' },
+          'Header Image:',
+          _react2.default.createElement('input', { className: 'image-input', type: 'file', onChange: this.fileAdd }),
+          _react2.default.createElement('img', { className: 'story-header-img', src: this.state.imageUrl })
+        ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(_reactQuill2.default, {
           theme: 'snow',
           value: this.state.body,
@@ -5671,6 +5735,11 @@ var StoryForm = function (_React$Component) {
           formats: StoryForm.formats,
           placeholder: this.state.placeholder
         }),
+        _react2.default.createElement(
+          'ul',
+          { className: 'error-message' },
+          errors
+        ),
         _react2.default.createElement(
           'button',
           { className: 'input-publish', onClick: this.handleSubmit },
@@ -5745,7 +5814,6 @@ var StoryShow = function (_React$Component) {
     value: function render() {
       if (!!this.props.story) {
         var story = this.props.story;
-
         return _react2.default.createElement(
           'div',
           { className: 'story-show-container' },
@@ -5753,6 +5821,7 @@ var StoryShow = function (_React$Component) {
           _react2.default.createElement(
             'section',
             { className: 'story-display' },
+            _react2.default.createElement('img', { className: 'story-header-img', src: story.image_url }),
             _react2.default.createElement(
               'h1',
               { className: 'story-title' },
@@ -5772,7 +5841,8 @@ var StoryShow = function (_React$Component) {
               'Updated ',
               story.updated_at
             )
-          )
+          ),
+          _react2.default.createElement(_user_detail_pane_container2.default, { authorId: this.props.story.author_id })
         );
       } else {
         return _react2.default.createElement(
@@ -27120,7 +27190,8 @@ var _form_errors_reducer2 = _interopRequireDefault(_form_errors_reducer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var errorsReducer = (0, _redux.combineReducers)({
-  session: _session_errors_reducer2.default
+  session: _session_errors_reducer2.default,
+  form: _form_errors_reducer2.default
 });
 
 exports.default = errorsReducer;
@@ -27209,23 +27280,25 @@ var fetchStories = exports.fetchStories = function fetchStories() {
   });
 };
 
-var createStory = exports.createStory = function createStory(story) {
+var createStory = exports.createStory = function createStory(formData) {
   return $.ajax({
     url: 'api/stories',
     method: 'POST',
-    data: {
-      story: story
-    }
+    dataType: 'json',
+    contentType: false,
+    processData: false,
+    data: formData
   });
 };
 
-var updateStory = exports.updateStory = function updateStory(story) {
+var updateStory = exports.updateStory = function updateStory(formData) {
   return $.ajax({
-    url: 'api/stories/' + story.id,
+    url: 'api/stories/' + formData.get("story[id]"),
     method: 'PATCH',
-    data: {
-      story: story
-    }
+    dataType: 'json',
+    contentType: false,
+    processData: false,
+    data: formData
   });
 };
 
@@ -27365,7 +27438,7 @@ var storiesReducer = function storiesReducer() {
   Object.freeze(oldState);
   switch (action.type) {
     case _story_actions.RECEIVE_STORY:
-      return (0, _merge2.default)({}, oldState, action.story);
+      return (0, _merge2.default)({}, action.story);
     case _story_actions.RECEIVE_STORIES:
       return (0, _merge2.default)({}, action.stories);
     case _story_actions.REMOVE_STORY:
@@ -31658,8 +31731,9 @@ var App = function App() {
       _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/story/new', component: _new_story_container2.default }),
       _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/story/:storyId/edit', component: _edit_story_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/story/:storyId', component: _story_show_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/:userId', component: _user_show_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _story_index_container2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/user/:userId', component: _user_show_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _story_index_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/' })
     )
   );
 };
@@ -31940,10 +32014,10 @@ var _selector = __webpack_require__(243);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var user = state.users[ownProps.match.params.userId];
   return {
-    user: user,
-    userId: ownProps.match.params.userId
+    userId: ownProps.match.params.userId,
+    user: state.users[ownProps.match.params.userId]
+
   };
 };
 
@@ -32005,8 +32079,15 @@ var UserShow = function (_React$Component) {
   _createClass(UserShow, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.fetchUser(this.props.userId);
+      this.props.fetchUser(this.props.match.params.userId);
       this.props.fetchStories();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props.match.params.userId !== nextProps.match.params.userId) {
+        this.props.fetchUser(nextProps.match.params.userId);
+      }
     }
   }, {
     key: 'render',
@@ -32724,7 +32805,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     story: state.stories[ownProps.match.params.storyId],
-    errors: state.errors,
+    errors: state.errors.form,
     authorId: Object.keys(state.session.currentUser)[0]
   };
 };
@@ -32736,6 +32817,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     action: function action(story) {
       return dispatch((0, _story_actions.updateStory)(story));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _story_actions.receiveErrors)([]));
     }
   };
 };
