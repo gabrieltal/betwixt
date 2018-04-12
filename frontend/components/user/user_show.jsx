@@ -1,7 +1,7 @@
 import React from 'react';
 import StoryIndexItem from '../story/story_index_item';
 import UserStoryShowContainer from './user_story_show_container';
-
+import { Link } from 'react-router-dom';
 class UserShow extends React.Component{
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
@@ -25,6 +25,9 @@ class UserShow extends React.Component{
               <h3>{user.username}</h3>
               <p className="bio">{user.bio}</p>
               <p className="member-creation">Betwixt member since {user.created_at}</p>
+              <Link to={`/user/${user.id}/edit`}>
+                Edit Profile
+              </Link>
             </div>
           </div>
           <UserStoryShowContainer user={user}/>

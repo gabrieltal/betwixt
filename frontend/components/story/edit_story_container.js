@@ -1,12 +1,11 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import StoryForm from './story_form';
 import { fetchStory, updateStory, receiveErrors } from '../../actions/story_actions';
-
+import React from 'react';
 const mapStateToProps = (state, ownProps) => {
   return {
-    story: state.stories[ownProps.match.params.storyId],
     errors: state.errors.form,
+    story: state.stories[ownProps.match.params.storyId],
     authorId: Object.keys(state.session.currentUser)[0]
   }
 };
@@ -27,7 +26,7 @@ class EditStoryForm extends React.Component {
   render () {
     if (!!this.props.story) {
     return (
-      <StoryForm action={this.props.action}
+      <StoryForm action={this.props.action} errors={this.props.errors}
         story={this.props.story} authorId={this.props.authorId} />
     );
   } else {

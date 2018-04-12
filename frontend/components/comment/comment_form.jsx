@@ -18,6 +18,10 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount () {
+    this.props.clearErrors();
+  }
+
   componentWillReceiveProps(nextProps) {
     if(this.props.currentUser !== nextProps.currentUser) {
       this.setState({author_id: Object.keys(nextProps.currentUser)[0]});
@@ -30,7 +34,7 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.state);
+    this.props.createComment(this.state).then(this.props.clearErrors());
     this.setState({body: ""});
   }
 

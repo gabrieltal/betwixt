@@ -26,6 +26,7 @@ class SessionForm extends React.Component {
   }
 
   render () {
+    debugger;
     let errors = this.props.errors.map( (error, i) => <li key={i}>{error}</li>);
     return (
       <div className='login-form-container'>

@@ -18,9 +18,18 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      render 'api/users/show'
+    else
+      render json: ["Could not update"], status: 422
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :image, :bio)
   end
 end

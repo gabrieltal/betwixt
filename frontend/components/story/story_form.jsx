@@ -63,6 +63,7 @@ class StoryForm extends React.Component {
   }
 
   render () {
+    debugger;
     let errors = this.props.errors.map((error, i) => <li key={i}>{error}</li>);
 
     return (

@@ -5,6 +5,7 @@ import { fetchStories } from '../../actions/story_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    errors: state.errors.form,
     userId: ownProps.match.params.userId,
     user: state.users[ownProps.match.params.userId],
   }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Comments from './comments';
-import {fetchComments } from '../../actions/comment_actions';
+import { fetchComments, receiveErrors } from '../../actions/comment_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     storyId: ownProps.story.id,
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchComments: (storyId) => dispatch(fetchComments(storyId))
+  fetchComments: (storyId) => dispatch(fetchComments(storyId)),
+  clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(
