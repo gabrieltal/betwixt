@@ -16,16 +16,16 @@
   .story-item {
     display: flex;
     flex-direction: column;
-    width: 3;
+    width: 100%;
     float: left;
-
+    padding: 5px;
   }
   .story-item-li {
     padding: 10px;
     border: 1px solid lightgray;
     margin: 15px;
     width: 100%;
-    min-width: 280px;
+    min-width: 380px;
 
     display: flex;
     flex-direction: row;

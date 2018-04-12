@@ -51,23 +51,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
   padding: 25px;
   margin: auto;
   width: 100%;
-  margin-top: 55px;
-
+  margin-top: 65px;
+  align-items: center;
+  align-content: center;
   .author-display {
     display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     flex-direction: row;
     padding: 10px;
-    margin: auto;
+
     width: 80%;
+    margin-bottom: 25px;
     .user-profile-pic {
       border-radius: 50%;
       height: 100px;
       width: 100px;
       border: 2px dashed $pastel-red;
+      padding: 5px;
+      margin-right: 10px;
     }
     .user-details {
       display: flex;
@@ -95,9 +101,18 @@
 
     .story-title {
       text-align: center;
-      font-size: 36px;
+      font-size: 40px;
       font-family: sans-serif;
       margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .story-subtitle {
+      margin: 15px 0;
+      text-align: center;
+      font-family: serif;
+      font-size: 24px;
+      color: gray;
     }
 
     .story-body {

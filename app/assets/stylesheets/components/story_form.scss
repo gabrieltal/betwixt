@@ -14,20 +14,40 @@
       margin-bottom: 15px;
       font-size: 18px;
     }
+    margin-bottom: 15px;
+  }
+
+  .subtitle-label {
+    margin: auto;
+    font-size: 16px;
+    .subtitle-input {
+      width: 65%;
+      margin-left: 5px;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  }
+  .image-input {
+    display: inline-block;
+    margin: 20px;
   }
 
   .header-image-label {
     display: inline-block;
     margin: auto;
-    input {
-      display: inline-block;
-      margin: 20px;
-    }
-    .story-header-img {
-      margin: 20px;
-      width: 500px;
-      height: 400px;
-    }
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .story-header-img {
+    margin: 20px;
+    width: 500px;
+    height: 400px;
+  }
+
+  .quill {
+    margin: 15px;
+
   }
 
   .input-publish {
@@ -36,6 +56,7 @@
     background: none;
     color: $burgundy;
     font-size: 18px;
+    margin-bottom: 35px;
   }
 
   .input-publish:hover {

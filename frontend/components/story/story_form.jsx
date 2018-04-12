@@ -5,11 +5,13 @@ import ReactQuill from 'react-quill';
 class StoryForm extends React.Component {
   constructor (props) {
     super(props);
+    let subtitle = this.props.story.subtitle || '';
     this.state = {
       id: this.props.story.id,
       title: this.props.story.title,
       author_id: this.props.story.authorId,
       body: this.props.story.body,
+      subtitle: subtitle,
       imageUrl: this.props.story.image_url,
       imageFile: null,
       placeholder: 'Write something decent...'
@@ -56,6 +58,7 @@ class StoryForm extends React.Component {
     formData.append("story[body]", this.state.body);
     formData.append("story[author_id]", this.props.authorId);
     formData.append("story[id]", this.props.story.id);
+    formData.append("story[subtitle]", this.state.subtitle);
     if (this.state.imageFile) formData.append("story[image]", this.state.imageFile);
 
     this.props.action(formData)
@@ -72,10 +75,14 @@ class StoryForm extends React.Component {
           <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
         </label>
         <br/>
+        <label className="subtitle-label">Subtitle:
+          <input className="subtitle-input" type="text" value={this.state.subtitle} onChange={this.update('subtitle')}/>
+        </label>
+        <br/>
         <label className="header-image-label">Header Image:
+        </label>
           <input className="image-input" type="file" onChange={this.fileAdd}/>
           <img className="story-header-img" src={this.state.imageUrl} />
-        </label>
         <br/>
         <ReactQuill
           theme="snow"

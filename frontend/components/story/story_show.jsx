@@ -16,14 +16,14 @@ class StoryShow extends React.Component{
         <div className="story-show-container">
         <UserDetailPaneContainer authorId={this.props.story.author_id}/>
           <section className="story-display">
-            <img className="story-header-img" src={story.image_url}/>
             <h1 className="story-title">{story.title}</h1>
+            <h3 className="story-subtitle">{story.subtitle}</h3>
+            <img className="story-header-img" src={story.image_url}/>
             <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body}}/>
 
             <p className="story-date">Created on {story.created_at}</p>
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
-          <UserDetailPaneContainer authorId={this.props.story.author_id}/>
           <CommentContainer story={story}/>
         </div>
       );

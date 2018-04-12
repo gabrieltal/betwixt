@@ -1,9 +1,14 @@
 .user-show-container {
-  display: block;
+  display: flex;
+  justify-content: center;
   padding: 25px;
-  margin: auto;
   width: 65%;
-  margin-top: 55px;
+  margin: auto;
+  align-items: center;
+  margin-top: 65px;
+  align-content: center;
+  flex-direction: column;
+
   .user-header-info {
     display: flex;
     flex-direction: row;
@@ -13,6 +18,8 @@
     height: 100px;
     width: 100px;
     border: 2px dashed $pastel-red;
+    padding: 5px;
+    margin-right: 10px;
   }
 
   .user-details {
