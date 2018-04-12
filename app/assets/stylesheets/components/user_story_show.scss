@@ -30,6 +30,20 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    .edit-link {
+        margin-top: 10px;
+        border: none;
+        background: none;
+        color: $burgundy;
+        font-size: 18px;
+        text-decoration: none;
+      }
+
+      .edit-link:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     .story-title {
       font-size: 24px;
       text-decoration: none;

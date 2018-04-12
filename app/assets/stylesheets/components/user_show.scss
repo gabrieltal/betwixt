@@ -31,5 +31,22 @@
     .member-creation {
       color: darkgray;
     }
+
+    .cannot-edit {
+      display: none;
+    }
+    .edit-link {
+        margin-top: 10px;
+        border: none;
+        background: none;
+        color: $burgundy;
+        font-size: 18px;
+        text-decoration: none;
+      }
+
+      .edit-link:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
-}

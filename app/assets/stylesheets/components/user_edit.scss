@@ -1,3 +1,48 @@
 .user-edit-form {
+  margin: auto;
+  align-items: center;
+  text-align: center;
   margin-top: 100px;
+  .username {
+    font-size: 18px;
+    margin-bottom: 10px;
+    input {
+      margin-left: 5px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .bio {
+    font-size: 18px;
+    margin-bottom: 10px;
+    input {
+      margin-left: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .user-image {
+    .image-input {
+      margin-left: 10px;
+
+    }
+    img {
+      width: 175px;
+      height: 175px;
+    }
+  }
+
+  .input-publish {
+    margin-top: 10px;
+    border: none;
+    background: none;
+    color: $burgundy;
+    font-size: 18px;
+  }
+
+  .input-publish:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

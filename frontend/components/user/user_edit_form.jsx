@@ -68,7 +68,7 @@ class UserEdit extends React.Component {
             <input type="text" onChange={this.update('bio')} value={this.state.bio}/>
           </label>
           <br/>
-          <label className="user-image">Profile Picture
+          <label className="user-image">Profile Picture:
             <input className="image-input" type="file" onChange={this.fileAdd} />
             <img className="user-profile-img" src={this.state.imageUrl} />
           </label>
@@ -76,7 +76,7 @@ class UserEdit extends React.Component {
           <ul className="error-message">
             {errors}
           </ul>
-          <button className="input-publish" onClick={this.handleSubmit}>Edit</button>
+          <button className="input-publish" onClick={this.handleSubmit}>Update Profile</button>
         </form>
       );
     } else {

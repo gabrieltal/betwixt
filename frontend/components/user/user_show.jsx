@@ -17,6 +17,7 @@ class UserShow extends React.Component{
   render () {
     if (!!this.props.user) {
       const user = this.props.user;
+      const canEdit = parseInt(Object.keys(this.props.currentUser)[0]) === user.id ? "edit-link" : "cannot-edit";
       return (
         <div className="user-show-container">
           <div className="user-header-info">
@@ -25,7 +26,7 @@ class UserShow extends React.Component{
               <h3>{user.username}</h3>
               <p className="bio">{user.bio}</p>
               <p className="member-creation">Betwixt member since {user.created_at}</p>
-              <Link to={`/user/${user.id}/edit`}>
+              <Link className={canEdit} to={`/user/${user.id}/edit`}>
                 Edit Profile
               </Link>
             </div>
