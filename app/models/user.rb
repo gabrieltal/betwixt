@@ -8,6 +8,8 @@ class User < ApplicationRecord
     :path => '/:class/:attachment/:id_partition/:style/:filename'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  has_many :likes
+
   has_many :stories,
     dependent: :destroy,
     class_name: :Story,

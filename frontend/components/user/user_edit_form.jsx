@@ -4,10 +4,11 @@ class UserEdit extends React.Component {
   constructor (props) {
     super(props);
     const user = Object.values(this.props.user)[0];
+    let bio = user.bio || '';
     this.state = {
       id: user.id,
       username: user.username,
-      bio: user.bio,
+      bio: bio,
       image_url: user.image_url,
       imageUrl: user.image_url,
       imageFile: null

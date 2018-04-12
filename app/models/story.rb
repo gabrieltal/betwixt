@@ -16,4 +16,6 @@ class Story < ApplicationRecord
     class_name: :Comment,
     foreign_key: :story_id
 
+  has_many :likes
+
 end

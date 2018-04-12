@@ -4073,11 +4073,7 @@ var StoryIndexItem = function (_React$Component) {
           _react2.default.createElement(
             _reactRouterDom.Link,
             { className: 'story-preview', to: '/story/' + story.id },
-            _react2.default.createElement(
-              'p',
-              { className: 'story-show-body' },
-              story.subtitle
-            )
+            _react2.default.createElement('div', { className: 'story-show-body', dangerouslySetInnerHTML: { __html: story.body.substring(0, 140) } })
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
@@ -6280,13 +6276,11 @@ var StoryForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (StoryForm.__proto__ || Object.getPrototypeOf(StoryForm)).call(this, props));
 
-    var subtitle = _this.props.story.subtitle || '';
     _this.state = {
       id: _this.props.story.id,
       title: _this.props.story.title,
       author_id: _this.props.story.authorId,
       body: _this.props.story.body,
-      subtitle: subtitle,
       imageUrl: _this.props.story.image_url,
       imageFile: null,
       placeholder: 'Write something decent...'
@@ -6347,7 +6341,6 @@ var StoryForm = function (_React$Component) {
       formData.append("story[body]", this.state.body);
       formData.append("story[author_id]", this.props.authorId);
       formData.append("story[id]", this.props.story.id);
-      formData.append("story[subtitle]", this.state.subtitle);
       if (this.state.imageFile) formData.append("story[image]", this.state.imageFile);
 
       this.props.action(formData).then(function (data) {
@@ -6378,18 +6371,11 @@ var StoryForm = function (_React$Component) {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'label',
-          { className: 'subtitle-label' },
-          'Subtitle:',
-          _react2.default.createElement('input', { className: 'subtitle-input', type: 'text', value: this.state.subtitle, onChange: this.update('subtitle') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'label',
           { className: 'header-image-label' },
-          'Header Image:'
+          'Header Image:',
+          _react2.default.createElement('input', { className: 'image-input', type: 'file', onChange: this.fileAdd }),
+          _react2.default.createElement('img', { className: 'story-header-img', src: this.state.imageUrl })
         ),
-        _react2.default.createElement('input', { className: 'image-input', type: 'file', onChange: this.fileAdd }),
-        _react2.default.createElement('img', { className: 'story-header-img', src: this.state.imageUrl }),
         _react2.default.createElement('br', null),
         _react2.default.createElement(_reactQuill2.default, {
           theme: 'snow',
@@ -18704,17 +18690,12 @@ var StoryShow = function (_React$Component) {
           _react2.default.createElement(
             'section',
             { className: 'story-display' },
+            _react2.default.createElement('img', { className: 'story-header-img', src: story.image_url }),
             _react2.default.createElement(
               'h1',
               { className: 'story-title' },
               story.title
             ),
-            _react2.default.createElement(
-              'h3',
-              { className: 'story-subtitle' },
-              story.subtitle
-            ),
-            _react2.default.createElement('img', { className: 'story-header-img', src: story.image_url }),
             _react2.default.createElement('div', { className: 'story-show-body', dangerouslySetInnerHTML: { __html: story.body } }),
             _react2.default.createElement(
               'p',
@@ -18730,6 +18711,7 @@ var StoryShow = function (_React$Component) {
               story.updated_at
             )
           ),
+          _react2.default.createElement(_user_detail_pane_container2.default, { authorId: this.props.story.author_id }),
           _react2.default.createElement(_comment_container2.default, { story: story })
         );
       } else {
@@ -53596,10 +53578,14 @@ var CommentForm = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var ableToComment = function ableToComment() {
+        return _this2.props.openModal("comment-login");
+      };
       var ableToSubmit = function ableToSubmit() {
         return _this2.props.openModal("comment-login");
       };
       if (!!this.state.author_id) {
+        ableToComment = this.handleQuillChange;
         ableToSubmit = this.handleSubmit;
       }
       var errors = this.props.errors.map(function (error, i) {
@@ -53614,7 +53600,7 @@ var CommentForm = function (_React$Component) {
         null,
         _react2.default.createElement('link', { href: "https://cdn.quilljs.com/1.3.6/quill.snow.css", rel: 'stylesheet' }),
         _react2.default.createElement(_reactQuill2.default, { theme: 'snow', value: this.state.body,
-          onChange: this.handleQuillChange, modules: CommentForm.modules,
+          onClick: ableToComment, modules: CommentForm.modules,
           formats: CommentForm.formats, placeholder: this.state.placeholder
         }),
         _react2.default.createElement(
@@ -54930,6 +54916,10 @@ exports.default = UserEdit;
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
+
+}).call(this);
+(function() {
+
 
 }).call(this);
 (function() {

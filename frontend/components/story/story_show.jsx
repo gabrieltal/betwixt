@@ -9,6 +9,13 @@ class StoryShow extends React.Component{
     this.props.fetchStory(this.props.match.params.storyId);
   }
 
+  likeButton () {
+    return (
+      <p>{story.likes.length} Likes</p>
+      <button onClick={this.doSomething.bind(this)}>Likes!!!!</button>
+    );
+  }
+
   render () {
     if (!!this.props.story) {
       const story = this.props.story;
@@ -20,10 +27,12 @@ class StoryShow extends React.Component{
             <h3 className="story-subtitle">{story.subtitle}</h3>
             <img className="story-header-img" src={story.image_url}/>
             <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body}}/>
-
             <p className="story-date">Created on {story.created_at}</p>
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
+          <aside className="like-container">
+            {this.likeButton}
+          </aside>
           <CommentContainer story={story}/>
         </div>
       );

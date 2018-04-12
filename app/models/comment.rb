@@ -8,4 +8,6 @@ class Comment < ApplicationRecord
   belongs_to :story,
     class_name: :Story,
     foreign_key: :story_id
+
+  has_many :likes
 end
