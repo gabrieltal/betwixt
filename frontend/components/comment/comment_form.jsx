@@ -39,10 +39,8 @@ class CommentForm extends React.Component {
   }
 
   render () {
-    let ableToComment = () => this.props.openModal("comment-login");
     let ableToSubmit = () => this.props.openModal("comment-login");
     if (!!this.state.author_id) {
-      ableToComment = this.handleQuillChange;
       ableToSubmit = this.handleSubmit;
     }
     let errors = this.props.errors.map((error, i) => <li key={i}>{error}</li> );
@@ -51,7 +49,7 @@ class CommentForm extends React.Component {
       <link href={"https://cdn.quilljs.com/1.3.6/quill.snow.css"} rel="stylesheet"/>
 
         <ReactQuill theme='snow' value={this.state.body}
-          onChange={ableToComment} modules={CommentForm.modules}
+          onChange={this.handleQuillChange} modules={CommentForm.modules}
           formats={CommentForm.formats} placeholder={this.state.placeholder}
         />
         <ul className="error-message">
