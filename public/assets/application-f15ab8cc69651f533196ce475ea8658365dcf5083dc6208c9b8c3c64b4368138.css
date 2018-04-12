@@ -497,9 +497,10 @@ p {
 }
 /* line 56, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container h3 {
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: bold;
 }
-/* line 59, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 60, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .other-form-button {
   background: none;
   border: none;
@@ -508,12 +509,12 @@ p {
   text-decoration: underline;
   font-weight: bold;
 }
-/* line 68, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 69, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .other-form-button:hover {
   cursor: pointer;
   color: #6B0504;
 }
-/* line 74, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 75, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .input-field {
   margin: auto;
   font-size: 16px;
@@ -521,14 +522,14 @@ p {
   margin-bottom: 20px;
   padding: 5px;
 }
-/* line 80, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 81, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .input-field input {
   margin: auto;
   margin-bottom: 15px;
   font-size: 16px;
   width: 65%;
 }
-/* line 88, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 89, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .submit-button {
   background-color: #04151F;
   border-radius: 5px;
@@ -537,14 +538,14 @@ p {
   color: white;
   margin-bottom: 15px;
 }
-/* line 97, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 98, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .login-form-container .submit-button:hover {
   color: #04151F;
   background-color: white;
   cursor: pointer;
 }
 
-/* line 104, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
+/* line 105, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .error-message {
   text-decoration: none;
   list-style: none;

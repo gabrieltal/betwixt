@@ -3817,7 +3817,6 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      debugger;
       var errors = this.props.errors.map(function (error, i) {
         return _react2.default.createElement(
           'li',
@@ -53579,14 +53578,10 @@ var CommentForm = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var ableToComment = function ableToComment() {
-        return _this2.props.openModal("comment-login");
-      };
       var ableToSubmit = function ableToSubmit() {
         return _this2.props.openModal("comment-login");
       };
       if (!!this.state.author_id) {
-        ableToComment = this.handleQuillChange;
         ableToSubmit = this.handleSubmit;
       }
       var errors = this.props.errors.map(function (error, i) {
@@ -53601,7 +53596,7 @@ var CommentForm = function (_React$Component) {
         null,
         _react2.default.createElement('link', { href: "https://cdn.quilljs.com/1.3.6/quill.snow.css", rel: 'stylesheet' }),
         _react2.default.createElement(_reactQuill2.default, { theme: 'snow', value: this.state.body,
-          onChange: ableToComment, modules: CommentForm.modules,
+          onChange: this.handleQuillChange, modules: CommentForm.modules,
           formats: CommentForm.formats, placeholder: this.state.placeholder
         }),
         _react2.default.createElement(
