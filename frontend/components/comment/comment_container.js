@@ -1,18 +1,17 @@
 import { connect } from 'react-redux';
 import Comments from './comments';
-import { selectStoryComments } from '../../reducers/selector';
-
+import {fetchComments } from '../../actions/comment_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     storyId: ownProps.story.id,
     story: ownProps.story,
     currentUser: state.session.currentUser,
-    storyComments: selectStoryComments(state, ownProps.story)
+    storyComments: state.comments
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchComment: (id) => dispatch(fetchComment(id))
+  fetchComments: (storyId) => dispatch(fetchComments(storyId))
 });
 
 export default connect(

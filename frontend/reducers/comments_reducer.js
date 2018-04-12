@@ -7,7 +7,7 @@ const commentsReducer = (oldState={}, action) => {
     case RECEIVE_COMMENT:
       return merge({}, action.comment);
     case RECEIVE_COMMENTS:
-      return merge({}, oldState, action.comments);
+      return merge({}, action.comments);
     case REMOVE_COMMENT:
       let newState = merge({}, oldState);
       delete newState[action.commentId];

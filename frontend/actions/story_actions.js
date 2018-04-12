@@ -36,7 +36,7 @@ const receiveStories = (stories) => ({
   stories
 });
 
-const receiveStory = (story) => ({
+export const receiveStory = (story) => ({
   type: RECEIVE_STORY,
   story
 });

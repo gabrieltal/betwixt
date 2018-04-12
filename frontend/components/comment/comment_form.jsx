@@ -24,10 +24,6 @@ class CommentForm extends React.Component {
     }
   }
 
-  scrollToBottom() {
-    this.el.scrollIntoView({behavior: "smooth"});
-  }
-
   handleQuillChange (value) {
     this.setState({body: value})
   }
@@ -35,8 +31,7 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createComment(this.state);
-    this.setState({body: ""})
-    this.messagesEnd.scrollIntoView();
+    this.setState({body: ""});
   }
 
   render () {
@@ -60,8 +55,6 @@ class CommentForm extends React.Component {
         </ul>
 
         <button onClick={ableToSubmit}>Publish</button>
-        <div ref={(el)=>{this.messagesEnd = el; }}>
-        </div>
       </form>
     );
   }

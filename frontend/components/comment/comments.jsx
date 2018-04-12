@@ -5,14 +5,27 @@ import CommentFormContainer from './comment_form_container';
 class Comments extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      storyComments: this.props.storyComments
+    }
+  }
+
+  componentDidMount () {
+    this.props.fetchComments(this.props.storyId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (Object.keys(this.props.storyComments).slice(-1)[0]
+      !== Object.keys(nextProps.storyComments).slice(-1)[0]) {
+      this.props.fetchComments(this.props.storyId);
+    }
   }
   render () {
     if (!!this.props.storyComments) {
-      let comments = this.props.storyComments.map((comment) => {
-        if (typeof comment !== "undefined") {
-          return <CommentIndexItem comment={comment} key={comment.id}/>;
-        }
-      });
+        let comments = Object.values(this.props.storyComments).map(comment =>
+          <CommentIndexItem key={comment.id} comment={comment}/>
+        );
+
       return (
         <div className="comments-container">
           <CommentFormContainer storyId={this.props.storyId} />
@@ -20,14 +33,11 @@ class Comments extends React.Component {
             {comments}
           </ul>
         </div>
-      )
-    } else {
-      return (
-        <div>
-        </div>
       );
-    }
+  } else {
+    return (<div> Loading...</div>);
   }
+}
 }
 
 export default Comments;
