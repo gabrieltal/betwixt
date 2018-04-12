@@ -261,17 +261,20 @@ header .login-button:hover, header .signout-button:hover {
 /* line 19, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label {
   display: inline-block;
+  margin: auto;
 }
-/* line 21, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 22, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label input {
   display: inline-block;
   margin: 20px;
 }
-/* line 25, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 26, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label .story-header-img {
   margin: 20px;
+  width: 500px;
+  height: 400px;
 }
-/* line 30, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 33, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .input-publish {
   margin: 20px;
   border: none;
@@ -279,40 +282,40 @@ header .login-button:hover, header .signout-button:hover {
   color: #6B0504;
   font-size: 18px;
 }
-/* line 38, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .input-publish:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 42, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 45, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .error-message {
   margin-top: 10px;
 }
-/* line 44, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 47, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .error-message li {
   padding: 5px;
 }
-/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form p {
   font-style: inherit;
 }
-/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form strong {
   font-weight: bold;
 }
-/* line 55, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 58, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form em {
   font-style: italic;
 }
-/* line 59, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 62, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form u {
   text-decoration: underline;
 }
-/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form s {
   text-decoration: line-through;
 }
-/* line 67, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 70, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form h1 {
   display: block;
   font-size: 2em;
@@ -322,7 +325,7 @@ header .login-button:hover, header .signout-button:hover {
   margin-right: 0;
   font-weight: bold;
 }
-/* line 77, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 80, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form h2 {
   display: block;
   font-size: 1.5em;
@@ -332,7 +335,7 @@ header .login-button:hover, header .signout-button:hover {
   margin-right: 0;
   font-weight: bold;
 }
-/* line 87, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 90, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form blockquote {
   display: block;
   margin-top: 1em;
@@ -867,17 +870,20 @@ header .login-button:hover, header .signout-button:hover {
 /* line 19, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label {
   display: inline-block;
+  margin: auto;
 }
-/* line 21, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 22, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label input {
   display: inline-block;
   margin: 20px;
 }
-/* line 25, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 26, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .header-image-label .story-header-img {
   margin: 20px;
+  width: 500px;
+  height: 400px;
 }
-/* line 30, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 33, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .input-publish {
   margin: 20px;
   border: none;
@@ -885,40 +891,40 @@ header .login-button:hover, header .signout-button:hover {
   color: #6B0504;
   font-size: 18px;
 }
-/* line 38, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .input-publish:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 42, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 45, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .error-message {
   margin-top: 10px;
 }
-/* line 44, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 47, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form .error-message li {
   padding: 5px;
 }
-/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form p {
   font-style: inherit;
 }
-/* line 51, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form strong {
   font-weight: bold;
 }
-/* line 55, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 58, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form em {
   font-style: italic;
 }
-/* line 59, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 62, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form u {
   text-decoration: underline;
 }
-/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form s {
   text-decoration: line-through;
 }
-/* line 67, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 70, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form h1 {
   display: block;
   font-size: 2em;
@@ -928,7 +934,7 @@ header .login-button:hover, header .signout-button:hover {
   margin-right: 0;
   font-weight: bold;
 }
-/* line 77, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 80, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form h2 {
   display: block;
   font-size: 1.5em;
@@ -938,7 +944,7 @@ header .login-button:hover, header .signout-button:hover {
   margin-right: 0;
   font-weight: bold;
 }
-/* line 87, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
+/* line 90, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/story_form.scss */
 .story-form blockquote {
   display: block;
   margin-top: 1em;
@@ -1091,6 +1097,57 @@ header .login-button:hover, header .signout-button:hover {
   border-bottom: 7px solid black;
 }
 
+/* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form {
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+/* line 6, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .username {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+/* line 9, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .username input {
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+/* line 15, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .bio {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+/* line 18, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .bio input {
+  margin-left: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+/* line 26, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .user-image .image-input {
+  margin-left: 10px;
+}
+/* line 30, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .user-image img {
+  width: 175px;
+  height: 175px;
+}
+/* line 36, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .input-publish {
+  margin-top: 10px;
+  border: none;
+  background: none;
+  color: #6B0504;
+  font-size: 18px;
+}
+/* line 44, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .input-publish:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container {
   display: block;
@@ -1129,6 +1186,24 @@ header .login-button:hover, header .signout-button:hover {
 .user-show-container .user-details .member-creation {
   color: darkgray;
 }
+/* line 35, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-details .cannot-edit {
+  display: none;
+}
+/* line 38, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-details .edit-link {
+  margin-top: 10px;
+  border: none;
+  background: none;
+  color: #6B0504;
+  font-size: 18px;
+  text-decoration: none;
+}
+/* line 47, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-details .edit-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 /* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories {
@@ -1166,34 +1241,48 @@ header .login-button:hover, header .signout-button:hover {
   flex-direction: row;
   justify-content: center;
 }
-/* line 33, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 34, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+.user-stories .story-item-li .edit-link {
+  margin-top: 10px;
+  border: none;
+  background: none;
+  color: #6B0504;
+  font-size: 18px;
+  text-decoration: none;
+}
+/* line 43, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+.user-stories .story-item-li .edit-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* line 47, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .story-title {
   font-size: 24px;
   text-decoration: none;
   color: black;
   font-family: sans-serif;
 }
-/* line 40, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 54, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .story-preview {
   text-decoration: none;
   font-size: 14px;
   color: darkgray;
   font-family: serif;
 }
-/* line 46, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 60, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .create-date {
   display: block;
   width: 20%;
 }
-/* line 50, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 64, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .update-date {
   display: none;
 }
-/* line 53, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 67, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .arrow-up {
   display: none;
 }
-/* line 56, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 70, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .create-date:hover + .update-date {
   font-size: 16px;
   position: absolute;
@@ -1204,7 +1293,7 @@ header .login-button:hover, header .signout-button:hover {
   color: white;
   margin-top: 5px;
 }
-/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 80, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .create-date:hover + .update-date .arrow-up {
   position: relative;
   top: -7px;
@@ -1215,7 +1304,7 @@ header .login-button:hover, header .signout-button:hover {
   border-right: 7px solid transparent;
   border-bottom: 7px solid black;
 }
-/* line 79, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
+/* line 93, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */
 .user-stories .story-item-li .author {
   text-decoration: none;
   color: black;

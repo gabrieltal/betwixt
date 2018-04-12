@@ -18,12 +18,15 @@
 
   .header-image-label {
     display: inline-block;
+    margin: auto;
     input {
       display: inline-block;
       margin: 20px;
     }
     .story-header-img {
       margin: 20px;
+      width: 500px;
+      height: 400px;
     }
   }
 

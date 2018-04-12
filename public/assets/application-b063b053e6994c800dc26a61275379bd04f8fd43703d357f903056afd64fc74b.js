@@ -1142,53 +1142,6 @@ module.exports = invariant;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var freeGlobal = __webpack_require__(79);
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-
-/***/ }),
-/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1244,6 +1197,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var freeGlobal = __webpack_require__(79);
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
 
 
 /***/ }),
@@ -2361,7 +2361,7 @@ module.exports = assocIndexOf;
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(6);
+var root = __webpack_require__(7);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -2714,7 +2714,7 @@ module.exports = Stack;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(15),
-    root = __webpack_require__(6);
+    root = __webpack_require__(7);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -2973,7 +2973,7 @@ module.exports = isLength;
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(6),
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(7),
     stubFalse = __webpack_require__(190);
 
 /** Detect free variable `exports`. */
@@ -3115,7 +3115,7 @@ module.exports = identity;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchUser = exports.RECEIVE_USER = undefined;
+exports.updateUser = exports.receiveErrors = exports.fetchUser = exports.RECEIVE_USER_FORM_ERRORS = exports.RECEIVE_USER = undefined;
 
 var _user_api_util = __webpack_require__(216);
 
@@ -3124,6 +3124,7 @@ var ApiUser = _interopRequireWildcard(_user_api_util);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RECEIVE_USER = exports.RECEIVE_USER = "RECEIVE_USER";
+var RECEIVE_USER_FORM_ERRORS = exports.RECEIVE_USER_FORM_ERRORS = "RECEIVE_USER_FORM_ERRORS";
 
 var fetchUser = exports.fetchUser = function fetchUser(id) {
   return function (dispatch) {
@@ -3137,6 +3138,23 @@ var receiveUser = function receiveUser(user) {
   return {
     type: RECEIVE_USER,
     user: user
+  };
+};
+
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_USER_FORM_ERRORS,
+    errors: errors
+  };
+};
+
+var updateUser = exports.updateUser = function updateUser(user) {
+  return function (dispatch) {
+    return ApiUser.updateUser(user).then(function (user) {
+      return dispatch(receiveUser(user));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.repsonseJSON));
+    });
   };
 };
 
@@ -3747,7 +3765,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3799,6 +3817,7 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      debugger;
       var errors = this.props.errors.map(function (error, i) {
         return _react2.default.createElement(
           'li',
@@ -3891,7 +3910,7 @@ module.exports.Toolbar = __webpack_require__(315);
 var baseMatches = __webpack_require__(267),
     baseMatchesProperty = __webpack_require__(292),
     identity = __webpack_require__(53),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     property = __webpack_require__(302);
 
 /**
@@ -3959,7 +3978,7 @@ module.exports = baseIsEqual;
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(7),
+var isArray = __webpack_require__(8),
     isSymbol = __webpack_require__(36);
 
 /** Used to match property names within property paths. */
@@ -4007,7 +4026,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _story_show = __webpack_require__(121);
 
@@ -4842,7 +4861,7 @@ module.exports = baseFor;
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(6);
+var root = __webpack_require__(7);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -4948,7 +4967,7 @@ module.exports = keysIn;
 
 var baseTimes = __webpack_require__(198),
     isArguments = __webpack_require__(48),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isBuffer = __webpack_require__(50),
     isIndex = __webpack_require__(52),
     isTypedArray = __webpack_require__(51);
@@ -6234,7 +6253,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _reactQuill = __webpack_require__(64);
 
@@ -18281,7 +18300,7 @@ module.exports = baseGet;
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(7),
+var isArray = __webpack_require__(8),
     isKey = __webpack_require__(67),
     stringToPath = __webpack_require__(294),
     toString = __webpack_require__(297);
@@ -18624,7 +18643,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _user_detail_pane_container = __webpack_require__(323);
 
@@ -38332,7 +38351,7 @@ module.exports = isMasked;
 /* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(6);
+var root = __webpack_require__(7);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -38720,7 +38739,7 @@ var assignMergeValue = __webpack_require__(81),
     copyArray = __webpack_require__(185),
     initCloneObject = __webpack_require__(186),
     isArguments = __webpack_require__(48),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isArrayLikeObject = __webpack_require__(189),
     isBuffer = __webpack_require__(50),
     isFunction = __webpack_require__(43),
@@ -38814,7 +38833,7 @@ module.exports = baseMergeDeep;
 /* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(6);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(7);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -39792,15 +39811,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _story_actions = __webpack_require__(12);
 
+var _user_actions = __webpack_require__(54);
+
 var formErrorsReducer = function formErrorsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
   Object.freeze(oldState);
   switch (action.type) {
+    case _user_actions.RECEIVE_USER:
     case _story_actions.RECEIVE_STORY:
       return [];
     case _story_actions.RECEIVE_FORM_ERRORS:
+    case _user_actions.RECEIVE_USER_FORM_ERRORS:
       return action.errors;
     default:
       return oldState;
@@ -39965,6 +39988,17 @@ var fetchUser = exports.fetchUser = function fetchUser(id) {
   });
 };
 
+var updateUser = exports.updateUser = function updateUser(formData) {
+  return $.ajax({
+    url: 'api/users/' + formData.get("user[id]"),
+    method: 'PATCH',
+    dataType: 'json',
+    contentType: false,
+    processData: false,
+    data: formData
+  });
+};
+
 /***/ }),
 /* 217 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -40096,7 +40130,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _app = __webpack_require__(257);
 
@@ -44298,7 +44332,7 @@ var _nav_container = __webpack_require__(258);
 
 var _nav_container2 = _interopRequireDefault(_nav_container);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _modal = __webpack_require__(319);
 
@@ -44325,6 +44359,10 @@ var _new_story_container2 = _interopRequireDefault(_new_story_container);
 var _edit_story_container = __webpack_require__(339);
 
 var _edit_story_container2 = _interopRequireDefault(_edit_story_container);
+
+var _user_edit_container = __webpack_require__(340);
+
+var _user_edit_container2 = _interopRequireDefault(_user_edit_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44358,7 +44396,8 @@ var App = function App() {
       _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/story/new', component: _new_story_container2.default }),
       _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/story/:storyId/edit', component: _edit_story_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/story/:storyId', component: _story_show_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/user/:userId', component: _user_show_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/:userId', component: _user_show_container2.default }),
+      _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/user/:userId/edit', component: _user_edit_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _story_index_container2.default }),
       _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/' })
     )
@@ -44435,7 +44474,7 @@ var _signup_form_container = __webpack_require__(104);
 
 var _signup_form_container2 = _interopRequireDefault(_signup_form_container);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 var _new_story_container = __webpack_require__(105);
 
@@ -48050,7 +48089,7 @@ var Stack = __webpack_require__(41),
     equalByTag = __webpack_require__(274),
     equalObjects = __webpack_require__(277),
     getTag = __webpack_require__(286),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isBuffer = __webpack_require__(50),
     isTypedArray = __webpack_require__(51);
 
@@ -48515,7 +48554,7 @@ module.exports = getAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(280),
-    isArray = __webpack_require__(7);
+    isArray = __webpack_require__(8);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -48775,7 +48814,7 @@ module.exports = getTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(15),
-    root = __webpack_require__(6);
+    root = __webpack_require__(7);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -48788,7 +48827,7 @@ module.exports = DataView;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(15),
-    root = __webpack_require__(6);
+    root = __webpack_require__(7);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -48801,7 +48840,7 @@ module.exports = Promise;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(15),
-    root = __webpack_require__(6);
+    root = __webpack_require__(7);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -48814,7 +48853,7 @@ module.exports = Set;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(15),
-    root = __webpack_require__(6);
+    root = __webpack_require__(7);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -49114,7 +49153,7 @@ module.exports = toString;
 
 var Symbol = __webpack_require__(32),
     arrayMap = __webpack_require__(117),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isSymbol = __webpack_require__(36);
 
 /** Used as references for various `Number` constants. */
@@ -49216,7 +49255,7 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(116),
     isArguments = __webpack_require__(48),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isIndex = __webpack_require__(52),
     isLength = __webpack_require__(49),
     toKey = __webpack_require__(37);
@@ -49595,7 +49634,7 @@ module.exports = toNumber;
 var arraySome = __webpack_require__(112),
     baseIteratee = __webpack_require__(65),
     baseSome = __webpack_require__(311),
-    isArray = __webpack_require__(7),
+    isArray = __webpack_require__(8),
     isIterateeCall = __webpack_require__(90);
 
 /**
@@ -52929,6 +52968,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+    currentUser: state.session.currentUser || '',
+    errors: state.errors.form,
     userId: ownProps.match.params.userId,
     user: state.users[ownProps.match.params.userId]
   };
@@ -52972,6 +53013,8 @@ var _user_story_show_container = __webpack_require__(330);
 
 var _user_story_show_container2 = _interopRequireDefault(_user_story_show_container);
 
+var _reactRouterDom = __webpack_require__(6);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53007,6 +53050,7 @@ var UserShow = function (_React$Component) {
     value: function render() {
       if (!!this.props.user) {
         var user = this.props.user;
+        var canEdit = parseInt(Object.keys(this.props.currentUser)[0]) === user.id ? "edit-link" : "cannot-edit";
         return _react2.default.createElement(
           'div',
           { className: 'user-show-container' },
@@ -53032,6 +53076,11 @@ var UserShow = function (_React$Component) {
                 { className: 'member-creation' },
                 'Betwixt member since ',
                 user.created_at
+              ),
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: canEdit, to: '/user/' + user.id + '/edit' },
+                'Edit Profile'
               )
             )
           ),
@@ -53107,7 +53156,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53218,6 +53267,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchComments: function fetchComments(storyId) {
       return dispatch((0, _comment_actions.fetchComments)(storyId));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _comment_actions.receiveErrors)([]));
     }
   };
 };
@@ -53333,7 +53385,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53465,7 +53517,7 @@ var _reactQuill = __webpack_require__(64);
 
 var _reactQuill2 = _interopRequireDefault(_reactQuill);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53499,6 +53551,11 @@ var CommentForm = function (_React$Component) {
   }
 
   _createClass(CommentForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.currentUser !== nextProps.currentUser) {
@@ -53514,7 +53571,7 @@ var CommentForm = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createComment(this.state);
+      this.props.createComment(this.state).then(this.props.clearErrors());
       this.setState({ body: "" });
     }
   }, {
@@ -53933,7 +53990,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53966,10 +54023,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
 var _reactRedux = __webpack_require__(2);
 
 var _story_form = __webpack_require__(106);
@@ -53977,6 +54030,10 @@ var _story_form = __webpack_require__(106);
 var _story_form2 = _interopRequireDefault(_story_form);
 
 var _story_actions = __webpack_require__(12);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53988,8 +54045,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    story: state.stories[ownProps.match.params.storyId],
     errors: state.errors.form,
+    story: state.stories[ownProps.match.params.storyId],
     authorId: Object.keys(state.session.currentUser)[0]
   };
 };
@@ -54026,7 +54083,7 @@ var EditStoryForm = function (_React$Component) {
     key: 'render',
     value: function render() {
       if (!!this.props.story) {
-        return _react2.default.createElement(_story_form2.default, { action: this.props.action,
+        return _react2.default.createElement(_story_form2.default, { action: this.props.action, errors: this.props.errors,
           story: this.props.story, authorId: this.props.authorId });
       } else {
         return _react2.default.createElement(
@@ -54042,6 +54099,207 @@ var EditStoryForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(EditStoryForm);
+
+/***/ }),
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(2);
+
+var _user_edit_form = __webpack_require__(341);
+
+var _user_edit_form2 = _interopRequireDefault(_user_edit_form);
+
+var _user_actions = __webpack_require__(54);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    userId: ownProps.match.params.userId,
+    user: state.session.currentUser,
+    errors: state.errors.form || []
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    clearErrors: function clearErrors() {
+      return dispatch((0, _user_actions.receiveErrors)([]));
+    },
+    updateUser: function updateUser(user) {
+      return dispatch((0, _user_actions.updateUser)(user));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_user_edit_form2.default);
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UserEdit = function (_React$Component) {
+  _inherits(UserEdit, _React$Component);
+
+  function UserEdit(props) {
+    _classCallCheck(this, UserEdit);
+
+    var _this = _possibleConstructorReturn(this, (UserEdit.__proto__ || Object.getPrototypeOf(UserEdit)).call(this, props));
+
+    var user = Object.values(_this.props.user)[0];
+    _this.state = {
+      id: user.id,
+      username: user.username,
+      bio: user.bio,
+      image_url: user.image_url,
+      imageUrl: user.image_url,
+      imageFile: null
+    };
+
+    _this.update = _this.update.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.fileAdd = _this.fileAdd.bind(_this);
+    return _this;
+  }
+
+  _createClass(UserEdit, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "fileAdd",
+    value: function fileAdd(e) {
+      var _this3 = this;
+
+      var reader = new FileReader();
+      var file = e.currentTarget.files[0];
+      reader.onloadend = function () {
+        return _this3.setState({
+          imageUrl: reader.result,
+          imageFile: file
+        });
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({ imageUrl: "", imageFile: imageFile });
+      }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append("user[username]", this.state.username);
+      formData.append("user[bio]", this.state.bio);
+      formData.append("user[id]", this.state.id);
+      if (this.state.imageFile) formData.append("user[image]", this.state.imageFile);
+
+      this.props.updateUser(formData).then(function (data) {
+        return _this4.props.history.push("/user/" + Object.keys(data.user)[0]);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var errors = this.props.errors.map(function (error, i) {
+        return _react2.default.createElement(
+          "li",
+          { key: i },
+          error
+        );
+      });
+      if (!!this.props.user && Object.keys(this.props.user)[0] === this.props.userId) {
+        return _react2.default.createElement(
+          "form",
+          { className: "user-edit-form" },
+          _react2.default.createElement(
+            "label",
+            { className: "username" },
+            "Username:",
+            _react2.default.createElement("input", { type: "text", onChange: this.update('username'), value: this.state.username })
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "label",
+            { className: "bio" },
+            "Bio:",
+            _react2.default.createElement("input", { type: "text", onChange: this.update('bio'), value: this.state.bio })
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "label",
+            { className: "user-image" },
+            "Profile Picture:",
+            _react2.default.createElement("input", { className: "image-input", type: "file", onChange: this.fileAdd }),
+            _react2.default.createElement("img", { className: "user-profile-img", src: this.state.imageUrl })
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "ul",
+            { className: "error-message" },
+            errors
+          ),
+          _react2.default.createElement(
+            "button",
+            { className: "input-publish", onClick: this.handleSubmit },
+            "Update Profile"
+          )
+        );
+      } else {
+        this.props.history.push("/");
+        return _react2.default.createElement("div", null);
+      }
+    }
+  }]);
+
+  return UserEdit;
+}(_react2.default.Component);
+
+exports.default = UserEdit;
 
 /***/ })
 /******/ ]);
