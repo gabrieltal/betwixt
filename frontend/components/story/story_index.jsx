@@ -7,8 +7,8 @@ class StoryIndex extends React.Component {
 
   render () {
     let stories;
-    if (!!this.props.currentUser) {
-      stories = this.props.storiesList || this.props.stories;
+    if (!!this.props.currentUser && !!this.props.storiesList.length) {
+      stories = this.props.storiesList
     } else {
       stories = Object.values(this.props.stories);
     }
