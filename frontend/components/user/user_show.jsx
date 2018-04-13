@@ -31,7 +31,11 @@ class UserShow extends React.Component{
               <Link className={canEdit} to={`/user/${user.id}/edit`}>
                 Edit Profile
               </Link>
-              <FollowContainer user={user}/>
+              <FollowContainer user={user.id}/>
+              <div className="following-info">
+                <p>{user.followers.length} Followers</p>
+                <p>{user.following.length} Following</p>
+              </div>
             </div>
           </div>
           <UserStoryShowContainer user={user}/>

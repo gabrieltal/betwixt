@@ -3,12 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .follow-container {
+  margin: 5px;
+  padding: 5px;
   .Follow {
-    color: red;
+    color: $burgundy;
+    font-size: 12px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid $burgundy;
+  }
+
+  .Follow {
+    cursor: pointer;
   }
 
   .Following {
-    color: blue;
+    color: white;
+    background: $burgundy;
+    border-radius: 5px;
+    border: 2px solid $burgundy;
   }
 
+  .Following {
+    cursor: pointer;
+  }
 }

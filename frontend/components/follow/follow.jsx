@@ -5,12 +5,12 @@ class Follow extends React.Component {
     let following = "Follow";
     let ableOrAlreadyFollow = () => this.props.openModal("follow-login");
     if (!!this.props.currentUser) {
-      let user = this.props.user;
+      let userId = this.props.userId;
       let currentUser = Object.values(this.props.currentUser)[0];
-      ableOrAlreadyFollow = () => this.props.createFollow({follower_id: currentUser.id, following_id: user.id });
-      if (user.followers.includes(currentUser.id)) {
+      ableOrAlreadyFollow = () => this.props.createFollow({follower_id: currentUser.id, following_id: userId });
+      if (currentUser.following.includes(userId)) {
         following = "Following";
-        ableOrAlreadyFollow = () => this.props.deleteFollow({follower_id: currentUser.id, following_id: user.id});
+        ableOrAlreadyFollow = () => this.props.deleteFollow({follower_id: currentUser.id, following_id: userId});
       }
     }
     return (

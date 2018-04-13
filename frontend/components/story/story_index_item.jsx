@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import StoryShow from './story_show';
+import FollowContainer from '../follow/follow_container';
 
 class StoryIndexItem extends React.Component {
   render () {
@@ -24,6 +25,7 @@ class StoryIndexItem extends React.Component {
         <Link className="author" to={`/user/${story.author_id}`}>
           {story.author}
         </Link>
+        <FollowContainer user={story.author_id} />
         <br/>
         <p className="create-date">{story.created_at}</p>
 

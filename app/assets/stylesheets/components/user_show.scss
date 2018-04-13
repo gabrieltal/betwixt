@@ -43,6 +43,7 @@
     .cannot-edit {
       display: none;
     }
+    
     .edit-link {
         margin-top: 10px;
         border: none;
@@ -55,6 +56,14 @@
       .edit-link:hover {
         text-decoration: underline;
         cursor: pointer;
+      }
+
+      .following-info {
+        display: flex;
+        p {
+          font-size: 12px;
+          margin: 5px;
+        }
       }
     }
   }

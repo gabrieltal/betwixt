@@ -19,7 +19,7 @@ class UserDetailPane extends React.Component {
             <Link to={`/user/${author.id}`}><h3>{author.username}</h3></Link>
             <p className="bio">{author.bio}</p>
             <p className="member-creation">Betwixt member since {author.created_at}</p>
-            <FollowContainer user={author}/>
+            <FollowContainer user={author.id}/>
           </div>
         </aside>
       );

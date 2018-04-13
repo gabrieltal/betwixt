@@ -2,7 +2,7 @@ import React from 'react';
 import CommentIndexItem from './comment_index_item';
 import CommentFormContainer from './comment_form_container';
 
-class Comments extends React.Component {
+class CommentIndex extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ class Comments extends React.Component {
 }
 }
 
-export default Comments;
+export default CommentIndex;

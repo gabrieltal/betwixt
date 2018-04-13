@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Comments from './comments';
+import CommentIndex from './comment_index';
 import { fetchComments, receiveErrors } from '../../actions/comment_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Comments);
+)(CommentIndex);

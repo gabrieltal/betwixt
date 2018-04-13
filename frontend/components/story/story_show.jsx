@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UserDetailPaneContainer from '../user/user_detail_pane_container';
 import ReactQuill from 'react-quill';
-import CommentContainer from '../comment/comment_container';
+import CommentIndexContainer from '../comment/comment_index_container';
 
 class StoryShow extends React.Component{
   constructor (props) {
@@ -53,7 +53,7 @@ class StoryShow extends React.Component{
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
             {this.likeButton()}
-          <CommentContainer story={story}/>
+          <CommentIndexContainer story={story}/>
         </div>
       );
     } else {
