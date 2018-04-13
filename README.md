@@ -11,9 +11,9 @@ Betwixt is a web application that lets users read, like and publish stories, and
    * User number of followers and following are also featured on their website
 
   ### Story creation
-   * Users can create stories using React-Quill * This allows the user to set headers, images as well as bullet points and list elements in the stories they create.
+   * Users can create stories using [React-Quill](https://github.com/zenoamaro/react-quill) This allows the user to set headers, images as well as bullet points and list elements in the stories they create.
    * Users can edit their stories and the edit date will also be reflected on the site allowing users to know when the story was edited
-   * Users can also upload their own header images as well as edit their own custom profile pictures. The photos are retrieved using AWS and uses Paperclip as a file attachment for the Rails backend.
+   * Users can also upload their own header images as well as edit their own custom profile pictures. The photos are retrieved using AWS and uses [Paperclip](https://github.com/thoughtbot/paperclip) as a file attachment for the Rails backend.
  ### Follows
    * When users begin following users their main feed will first be populated with stories from users they follow
    * Users can follow other users from the main page or on their profile page or when reading one of their stories
