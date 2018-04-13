@@ -453,6 +453,15 @@ header .login-button:hover, header .signout-button:hover {
   padding: 5px;
 }
 
+/* line 6, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container .Follow {
+  color: red;
+}
+/* line 10, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container .Following {
+  color: blue;
+}
+
 /* line 2, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
 .like-container {
   text-align: center;
@@ -1279,6 +1288,10 @@ header .login-button:hover, header .signout-button:hover {
   height: 175px;
 }
 /* line 36, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+.user-edit-form .error-message {
+  margin: 10px 0;
+}
+/* line 40, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
 .user-edit-form .input-publish {
   margin-top: 10px;
   border: none;
@@ -1286,7 +1299,7 @@ header .login-button:hover, header .signout-button:hover {
   color: #6B0504;
   font-size: 18px;
 }
-/* line 44, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
+/* line 48, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_edit.scss */
 .user-edit-form .input-publish:hover {
   text-decoration: underline;
   cursor: pointer;

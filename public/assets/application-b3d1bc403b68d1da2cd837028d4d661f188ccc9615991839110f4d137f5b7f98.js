@@ -1902,7 +1902,7 @@ module.exports = isArrayLike;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.removeLike = exports.deleteLike = exports.receiveLike = exports.createLike = exports.updateUser = exports.receiveErrors = exports.fetchUser = exports.REMOVE_LIKE = exports.RECEIVE_LIKE = exports.RECEIVE_USER_FORM_ERRORS = exports.RECEIVE_USER = undefined;
+exports.deleteFollow = exports.createFollow = exports.removeLike = exports.deleteLike = exports.receiveLike = exports.createLike = exports.receiveErrors = exports.updateUser = exports.fetchUser = exports.REMOVE_FOLLOW = exports.RECEIVE_FOLLOW = exports.REMOVE_LIKE = exports.RECEIVE_LIKE = exports.RECEIVE_USER_FORM_ERRORS = exports.RECEIVE_USER = undefined;
 
 var _user_api_util = __webpack_require__(213);
 
@@ -1912,17 +1912,33 @@ var _like_api_util = __webpack_require__(214);
 
 var ApiLike = _interopRequireWildcard(_like_api_util);
 
+var _follow_api_util = __webpack_require__(345);
+
+var ApiFollow = _interopRequireWildcard(_follow_api_util);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RECEIVE_USER = exports.RECEIVE_USER = "RECEIVE_USER";
 var RECEIVE_USER_FORM_ERRORS = exports.RECEIVE_USER_FORM_ERRORS = "RECEIVE_USER_FORM_ERRORS";
 var RECEIVE_LIKE = exports.RECEIVE_LIKE = "RECEIVE_LIKE";
 var REMOVE_LIKE = exports.REMOVE_LIKE = "REMOVE_LIKE";
+var RECEIVE_FOLLOW = exports.RECEIVE_FOLLOW = "RECEIVE_FOLLOW";
+var REMOVE_FOLLOW = exports.REMOVE_FOLLOW = "REMOVE_FOLLOW";
 
 var fetchUser = exports.fetchUser = function fetchUser(id) {
   return function (dispatch) {
     return ApiUser.fetchUser(id).then(function (user) {
       return dispatch(receiveUser(user));
+    });
+  };
+};
+
+var updateUser = exports.updateUser = function updateUser(user) {
+  return function (dispatch) {
+    return ApiUser.updateUser(user).then(function (user) {
+      return dispatch(receiveUser(user));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1938,16 +1954,6 @@ var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_USER_FORM_ERRORS,
     errors: errors
-  };
-};
-
-var updateUser = exports.updateUser = function updateUser(user) {
-  return function (dispatch) {
-    return ApiUser.updateUser(user).then(function (user) {
-      return dispatch(receiveUser(user));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.repsonseJSON));
-    });
   };
 };
 
@@ -1980,6 +1986,38 @@ var removeLike = exports.removeLike = function removeLike(like) {
   return {
     type: REMOVE_LIKE,
     like: like
+  };
+};
+
+var createFollow = exports.createFollow = function createFollow(follow) {
+  return function (dispatch) {
+    return ApiFollow.createFollow(follow).then(function (follow) {
+      return dispatch(receiveFollow(follow));
+    });
+  };
+};
+
+var deleteFollow = exports.deleteFollow = function deleteFollow(_ref2) {
+  var follower_id = _ref2.follower_id,
+      following_id = _ref2.following_id;
+  return function (dispatch) {
+    return ApiFollow.deleteFollow({ follower_id: follower_id, following_id: following_id }).then(function (follow) {
+      return dispatch(removeFollow(follow));
+    });
+  };
+};
+
+var receiveFollow = function receiveFollow(follow) {
+  return {
+    type: RECEIVE_FOLLOW,
+    follow: follow
+  };
+};
+
+var removeFollow = function removeFollow(follow) {
+  return {
+    type: REMOVE_FOLLOW,
+    follow: follow
   };
 };
 
@@ -18722,12 +18760,7 @@ var StoryShow = function (_React$Component) {
   function StoryShow(props) {
     _classCallCheck(this, StoryShow);
 
-    var _this = _possibleConstructorReturn(this, (StoryShow.__proto__ || Object.getPrototypeOf(StoryShow)).call(this, props));
-
-    _this.state = {
-      currentUser: _this.props.currentUser || ''
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (StoryShow.__proto__ || Object.getPrototypeOf(StoryShow)).call(this, props));
   }
 
   _createClass(StoryShow, [{
@@ -18740,11 +18773,6 @@ var StoryShow = function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.currentUser !== nextProps.currentUser) {
         this.props.closeModal();
-        if (!!nextProps.users) {
-          this.setState({
-            currentUser: nextProps.users[Object.keys(this.props.currentUser)[0]]
-          });
-        }
       }
     }
   }, {
@@ -18756,8 +18784,8 @@ var StoryShow = function (_React$Component) {
       var ableToLike = function ableToLike() {
         return _this2.props.openModal("like-login");
       };
-      if (!!this.state.currentUser) {
-        var userId = parseInt(Object.keys(this.state.currentUser)[0]);
+      if (!!this.props.currentUser) {
+        var userId = parseInt(Object.keys(this.props.currentUser)[0]);
         ableToLike = function ableToLike() {
           return _this2.props.createLike({ user_id: userId, story_id: _this2.props.story.id });
         };
@@ -37922,6 +37950,8 @@ var _merge = __webpack_require__(30);
 
 var _merge2 = _interopRequireDefault(_merge);
 
+var _user_actions = __webpack_require__(22);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _nullUser = Object.freeze({
@@ -37933,10 +37963,31 @@ var sessionReducer = function sessionReducer() {
   var action = arguments[1];
 
   Object.freeze(oldState);
+  var newState = void 0;
+  var index = void 0;
   switch (action.type) {
     case _session_actions.RECEIVE_CURRENT_USER:
       var currentUser = action.currentUser;
       return (0, _merge2.default)({}, { currentUser: currentUser });
+    case _user_actions.RECEIVE_FOLLOW:
+      newState = (0, _merge2.default)({}, oldState);
+      Object.values(Object.values(newState)[0])[0].following.push(action.follow.following_id);
+      return (0, _merge2.default)({}, newState);
+    case _user_actions.REMOVE_FOLLOW:
+      newState = (0, _merge2.default)({}, oldState);
+      index = Object.values(Object.values(newState)[0])[0].following.indexOf(action.follow.following_id);
+      Object.values(Object.values(newState)[0])[0].following.splice(index, 1);
+      return newState;
+    case _user_actions.RECEIVE_LIKE:
+      newState = (0, _merge2.default)({}, oldState);
+      Object.values(Object.values(newState)[0])[0].likes.push(action.like.story_id);
+      return newState;
+    case _user_actions.REMOVE_LIKE:
+      newState = (0, _merge2.default)({}, oldState);
+      index = Object.values(Object.values(newState)[0])[0].likes.indexOf(action.like.story_id);
+      Object.values(Object.values(newState)[0])[0].likes.splice(index, 1);
+      return newState;
+
     default:
       return oldState;
   }
@@ -40123,6 +40174,7 @@ var usersReducer = function usersReducer() {
   var action = arguments[1];
 
   var newState = void 0;
+  var index = void 0;
   Object.freeze(oldState);
   switch (action.type) {
     case _user_actions.RECEIVE_USER:
@@ -40135,9 +40187,18 @@ var usersReducer = function usersReducer() {
       newState = (0, _merge3.default)({}, oldState);
       var nsArray = Object.values(newState)[0];
       var idxOfState = Object.keys(newState)[0];
-      var index = nsArray.likes.indexOf(action.like.id);
+      index = nsArray.likes.indexOf(action.like.id);
       nsArray.likes.splice(index, 1);
       return (0, _merge3.default)({}, _defineProperty({}, idxOfState, nsArray));
+    case _user_actions.RECEIVE_FOLLOW:
+      newState = (0, _merge3.default)({}, oldState);
+      Object.values(newState)[0].followers.push(action.follow.follower_id);
+      return (0, _merge3.default)({}, newState);
+    case _user_actions.REMOVE_FOLLOW:
+      newState = (0, _merge3.default)({}, oldState);
+      index = Object.values(newState)[0].followers.indexOf(action.follow.follower_id);
+      Object.values(newState)[0].followers.splice(index, 1);
+      return newState;
     default:
       return oldState;
   }
@@ -52993,6 +53054,10 @@ var _like_login_container = __webpack_require__(344);
 
 var _like_login_container2 = _interopRequireDefault(_like_login_container);
 
+var _follow_modal_container = __webpack_require__(348);
+
+var _follow_modal_container2 = _interopRequireDefault(_follow_modal_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Modal = function Modal(_ref) {
@@ -53016,6 +53081,9 @@ var Modal = function Modal(_ref) {
       break;
     case 'like-login':
       component = _react2.default.createElement(_like_login_container2.default, null);
+      break;
+    case 'follow-login':
+      component = _react2.default.createElement(_follow_modal_container2.default, null);
       break;
     default:
       return null;
@@ -53125,6 +53193,10 @@ var _user_story_show_container2 = _interopRequireDefault(_user_story_show_contai
 
 var _reactRouterDom = __webpack_require__(6);
 
+var _follow_container = __webpack_require__(346);
+
+var _follow_container2 = _interopRequireDefault(_follow_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53191,7 +53263,8 @@ var UserShow = function (_React$Component) {
                 _reactRouterDom.Link,
                 { className: canEdit, to: '/user/' + user.id + '/edit' },
                 'Edit Profile'
-              )
+              ),
+              _react2.default.createElement(_follow_container2.default, { user: user })
             )
           ),
           _react2.default.createElement(_user_story_show_container2.default, { user: user })
@@ -53268,6 +53341,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(6);
 
+var _follow_container = __webpack_require__(346);
+
+var _follow_container2 = _interopRequireDefault(_follow_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53325,7 +53402,8 @@ var UserDetailPane = function (_React$Component) {
               { className: 'member-creation' },
               'Betwixt member since ',
               author.created_at
-            )
+            ),
+            _react2.default.createElement(_follow_container2.default, { user: author })
           )
         );
       } else {
@@ -54545,6 +54623,218 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_session_form2.default);
 
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var createFollow = exports.createFollow = function createFollow(follow) {
+  return $.ajax({
+    url: 'api/follows',
+    method: 'POST',
+    data: {
+      follow: follow
+    }
+  });
+};
+
+var deleteFollow = exports.deleteFollow = function deleteFollow(follow) {
+  return $.ajax({
+    url: 'api/follows/' + follow.follower_id + '/' + follow.following_id,
+    method: 'DELETE'
+  });
+};
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(2);
+
+var _follow = __webpack_require__(347);
+
+var _follow2 = _interopRequireDefault(_follow);
+
+var _user_actions = __webpack_require__(22);
+
+var _modal_actions = __webpack_require__(17);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    user: ownProps.user,
+    currentUser: state.session.currentUser
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    clearErrors: function clearErrors() {
+      return dispatch((0, _user_actions.receiveErrors)([]));
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0, _modal_actions.openModal)(modal));
+    },
+    closeModal: function closeModal() {
+      return dispatch((0, _modal_actions.closeModal)());
+    },
+    createFollow: function createFollow(follow) {
+      return dispatch((0, _user_actions.createFollow)(follow));
+    },
+    deleteFollow: function deleteFollow(follow) {
+      return dispatch((0, _user_actions.deleteFollow)(follow));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_follow2.default);
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Follow = function (_React$Component) {
+  _inherits(Follow, _React$Component);
+
+  function Follow() {
+    _classCallCheck(this, Follow);
+
+    return _possibleConstructorReturn(this, (Follow.__proto__ || Object.getPrototypeOf(Follow)).apply(this, arguments));
+  }
+
+  _createClass(Follow, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var following = "Follow";
+      var ableOrAlreadyFollow = function ableOrAlreadyFollow() {
+        return _this2.props.openModal("follow-login");
+      };
+      if (!!this.props.currentUser) {
+        var user = this.props.user;
+        var currentUser = Object.values(this.props.currentUser)[0];
+        ableOrAlreadyFollow = function ableOrAlreadyFollow() {
+          return _this2.props.createFollow({ follower_id: currentUser.id, following_id: user.id });
+        };
+        if (user.followers.includes(currentUser.id)) {
+          following = "Following";
+          ableOrAlreadyFollow = function ableOrAlreadyFollow() {
+            return _this2.props.deleteFollow({ follower_id: currentUser.id, following_id: user.id });
+          };
+        }
+      }
+      return _react2.default.createElement(
+        "div",
+        { className: "follow-container" },
+        _react2.default.createElement(
+          "button",
+          { className: following, onClick: ableOrAlreadyFollow },
+          following
+        )
+      );
+    }
+  }]);
+
+  return Follow;
+}(_react2.default.Component);
+
+exports.default = Follow;
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(2);
+
+var _session_actions = __webpack_require__(19);
+
+var _modal_actions = __webpack_require__(17);
+
+var _session_form = __webpack_require__(63);
+
+var _session_form2 = _interopRequireDefault(_session_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    errors: state.errors.session,
+    formType: 'signup',
+    redirectPageMessage: 'Already have an account? ',
+    headerMessage: 'Never miss any stories from ya boy',
+    modalMessage: 'Make an account and follow your favorite writers. Be inspired and try your hand at writing something original!'
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    processForm: function processForm(user) {
+      return dispatch((0, _session_actions.signup)(user));
+    },
+    otherForm: _react2.default.createElement(
+      'button',
+      { className: 'other-form-button', onClick: function onClick() {
+          return dispatch((0, _modal_actions.openModal)('login'));
+        } },
+      'Login.'
+    ),
+    closeModal: function closeModal() {
+      return dispatch((0, _modal_actions.closeModal)());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.receiveErrors)([]));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_session_form2.default);
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map
@@ -55161,6 +55451,10 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
+
+}).call(this);
+(function() {
+
 
 }).call(this);
 (function() {
