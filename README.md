@@ -17,6 +17,11 @@ Betwixt is a web application that lets users read, like and publish stories, and
  ### Follows
    * When users begin following users their main feed will first be populated with stories from users they follow
    * Users can follow other users from the main page or on their profile page or when reading one of their stories
+ ### Additional Resources
+   * [Wireframe Proposal](https://github.com/gabrieltal/betwixt/wiki/Component-Hierarchy-with-Wireframes)
+   * [Database Schema](https://github.com/gabrieltal/betwixt/wiki/Database-Schema)
+   * [Sample State](https://github.com/gabrieltal/betwixt/wiki/Sample-State)
+   * [API Endpoints](https://github.com/gabrieltal/betwixt/wiki/Routes)
  ### Future
    * Implementation of Tagging to allow users to search for specific stories and to better organize stories on the front page
    * Implementation of editing, deleting and liking comments
