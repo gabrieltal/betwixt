@@ -10,11 +10,11 @@ class StoryIndex extends React.Component {
     if (!!this.props.currentUser) {
       stories = this.props.storiesList || this.props.stories;
     } else {
-      stories = this.props.stories;
+      stories = Object.values(this.props.stories);
     }
-    let storiesItems = Object.keys(stories).map((id) => {
-      return <StoryIndexItem key={id}
-        story={stories[id]}/>;
+    let storiesItems = stories.map((story) => {
+      return <StoryIndexItem key={story.id}
+        story={story}/>;
     });
     return (
       <section>
