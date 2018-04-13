@@ -54411,12 +54411,11 @@ var StoryIndex = function (_React$Component) {
     key: 'render',
     value: function render() {
       var stories = void 0;
-      if (!!this.props.currentUser) {
-        stories = this.props.storiesList || this.props.stories;
+      if (!!this.props.currentUser && !!this.props.storiesList.length) {
+        stories = this.props.storiesList;
       } else {
         stories = Object.values(this.props.stories);
       }
-      debugger;
       var storiesItems = stories.map(function (story) {
         return _react2.default.createElement(_story_index_item2.default, { key: story.id,
           story: story });
