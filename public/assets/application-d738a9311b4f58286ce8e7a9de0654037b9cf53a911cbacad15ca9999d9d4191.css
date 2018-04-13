@@ -453,6 +453,91 @@ header .login-button:hover, header .signout-button:hover {
   padding: 5px;
 }
 
+/* line 2, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.like-container {
+  text-align: center;
+}
+
+/* line 6, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.heart {
+  background-color: red;
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+/* line 17, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+/* line 27, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.heart:before {
+  top: -15px;
+  left: 0;
+}
+
+/* line 32, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.heart:after {
+  left: 15px;
+  top: 0;
+}
+
+/* line 37, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.heart:hover {
+  cursor: pointer;
+}
+
+/* line 41, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.sad:hover {
+  cursor: pointer;
+}
+
+/* line 45, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.sad {
+  background-color: gray;
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+
+/* line 56, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.sad:before,
+.sad:after {
+  content: "";
+  background-color: gray;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+/* line 66, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.sad:before {
+  top: -15px;
+  left: 0;
+}
+
+/* line 71, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
+.sad:after {
+  left: 15px;
+  top: 0;
+}
+
 /* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/modal.scss */
 .modal-background {
   position: fixed;
