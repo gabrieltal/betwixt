@@ -22,7 +22,7 @@ export const receiveErrors = (errors) => ({
 
 export const updateUser = (user) => (dispatch) => (
   ApiUser.updateUser(user).then((user) => dispatch(receiveUser(user)),
-    (errors) => dispatch(receiveErrors(errors.repsonseJSON))
+    (errors) => dispatch(receiveErrors(errors.responseJSON))
 ));
 
 export const createLike = like => dispatch => (
