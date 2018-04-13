@@ -5,6 +5,8 @@ import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import CommentLoginFormContainer from './comment_login_form_container';
 import LikeLoginFormContainer from './like_login_container';
+import FollowModalContainer from './follow_modal_container';
+
 const Modal = ({ modal, closeModal }) => {
   if (!modal) {
     return null;
@@ -23,6 +25,9 @@ const Modal = ({ modal, closeModal }) => {
       break;
     case 'like-login':
       component = <LikeLoginFormContainer />;
+      break;
+    case 'follow-login':
+      component = <FollowModalContainer />;
       break;
     default:
       return null;

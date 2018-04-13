@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FollowContainer from '../follow/follow_container';
+
 class UserDetailPane extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.authorId);
@@ -17,6 +19,7 @@ class UserDetailPane extends React.Component {
             <Link to={`/user/${author.id}`}><h3>{author.username}</h3></Link>
             <p className="bio">{author.bio}</p>
             <p className="member-creation">Betwixt member since {author.created_at}</p>
+            <FollowContainer user={author}/>
           </div>
         </aside>
       );

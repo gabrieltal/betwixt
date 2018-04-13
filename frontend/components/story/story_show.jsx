@@ -7,9 +7,6 @@ import CommentContainer from '../comment/comment_container';
 class StoryShow extends React.Component{
   constructor (props) {
     super(props);
-    this.state = {
-      currentUser: this.props.currentUser || ''
-    };
   }
 
   componentDidMount () {
@@ -19,19 +16,14 @@ class StoryShow extends React.Component{
   componentWillReceiveProps (nextProps) {
     if (this.props.currentUser !== nextProps.currentUser) {
       this.props.closeModal();
-      if (!!nextProps.users) {
-        this.setState({
-          currentUser: nextProps.users[Object.keys(this.props.currentUser)[0]]
-        });
-      }
     }
   }
 
   likeButton () {
     let liked = "sad";
     let ableToLike = () => this.props.openModal("like-login");
-    if (!!this.state.currentUser) {
-      let userId = parseInt(Object.keys(this.state.currentUser)[0]);
+    if (!!this.props.currentUser) {
+      let userId = parseInt(Object.keys(this.props.currentUser)[0]);
       ableToLike = () => this.props.createLike({user_id: userId, story_id: this.props.story.id});
       if (this.props.story.likes.includes(userId)) {
         liked = "heart";

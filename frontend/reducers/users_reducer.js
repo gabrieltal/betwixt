@@ -21,7 +21,8 @@ const usersReducer = (oldState={}, action) => {
       return merge({}, {[idxOfState]: nsArray});
     case RECEIVE_FOLLOW:
       newState = merge({}, oldState);
-      debugger;
+      Object.values(newState)[0].followers.push(action.follow.follower_id);
+      return merge({}, newState);
     default:
       return oldState;
   }
