@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     storyId: ownProps.match.params.storyId,
     story: state.stories[ownProps.match.params.storyId],
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    user: state.users
   };
 };
 

@@ -10,9 +10,13 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by_story_id_and_user_id(params[:user_id], params[:story_id])
-    @like.destroy
-    render 'api/likes/show'
+    @like = Like.find_by_user_id_and_story_id(params[:user_id], params[:story_id])
+    if @like
+      @like.destroy
+      render 'api/likes/show'
+    else
+      render json: ['Error server side'], status: 404
+    end
   end
 
 
