@@ -1,47 +1,23 @@
-# Production Readme
+README
+Betwixt
+Betwixt is a web application that lets users read, like and publish stories, and follow other authors as well. Inspired by Medium it was built using Rails, React, Redux and Javascript.
 
-To complete your full stack project you will have to create a production
-readme.  The purpose of the readme is to show off your technical skills
-and guide someone who is visiting your repo for the first time.  Think
-of it like a resume or cover letter - the production readme is an
-introduction to you as a skilled developer!  There's a lot of great code
-hidden in your repo (and potentially some code you're okay with an
-employer not seeing), so use the readme to show off the places you
-excel.    
+Live Link
 
-### Features of a great production readme:
-* Brief explanation of what the app is and does
-* Link to live site
-* Discussion of technologies used
-* Delve deep into ~2 features that show off your technical abilities.
-  Discuss both the challenges faced and your brilliant solutions.    
-* Code snippets to highlight your best code (markdown code snippets, NOT
-screenshots)
-
-
-### Pitfalls to avoid:
-* Do not list out every single feature on your app.
-* No screenshots; only screen clippings.  i.e.  Don't show your entire
-browser window and several other open tabs.
-* Don't refer to your app as your 'App Academy Full-Stack Project'.
-Present it as a professional site.
-* Don't wax on about the features that you didn't have time to
-implement.  Simply list them at the bottom of the readme as future
-directions for the project.   
-* Markdown rendering errors
-
-Make sure to allot at least 3 hours to write your readme.
-
-
-### Helpful links
-* You can find some fantastic examples [here][readme_examples].  Do not copy /
-paste any portion of this readme!
-* There is a very helpful markdown cheatsheet
-[here][markdown-cheatsheet]. To preview your markdown in Atom, type
-ctrl-shift-m.
-* This [link][screenshots] explains how to take screenshots on Mac.
-
-
-[screenshots]: https://support.apple.com/en-us/HT201361
-[readme_examples]: https://github.com/matiassingers/awesome-readme
-[markdown-cheatsheet]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+Features
+User Authentication
+Users can create accounts, log in and out
+User created stories are featured on their profile pages
+User number of followers and following are also featured on their website
+Story creation
+Users can create stories using React-Quill * This allows the user to set headers, images as well as bullet points and list elements in the stories they create.
+Users can edit their stories and the edit date will also be reflected on the site allowing users to know when the story was edited
+Users can also upload their own header images as well as edit their own custom profile pictures. The photos are retrieved using AWS and uses Paperclip as a file attachment for the Rails backend.
+Follows
+When users begin following users their main feed will first be populated with stories from users they follow
+Users can follow other users from the main page or on their profile page or when reading one of their stories
+Future
+Implementation of Tagging to allow users to search for specific stories and to better organize stories on the front page
+Implementation of editing, deleting and liking comments
+Feature user's comments, likes and who they are following on their profile page at a click of a button
+Allow saving of drafts of stories so users can come back to finish their works at a later date
