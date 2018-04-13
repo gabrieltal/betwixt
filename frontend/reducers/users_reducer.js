@@ -4,6 +4,7 @@ import {
 import merge from 'lodash/merge';
 const usersReducer = (oldState={}, action) => {
   let newState;
+  let index;
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_USER:
@@ -16,13 +17,18 @@ const usersReducer = (oldState={}, action) => {
       newState = merge({}, oldState);
       let nsArray = Object.values(newState)[0];
       let idxOfState = Object.keys(newState)[0];
-      let index = nsArray.likes.indexOf(action.like.id);
+      index = nsArray.likes.indexOf(action.like.id);
       nsArray.likes.splice(index, 1);
       return merge({}, {[idxOfState]: nsArray});
     case RECEIVE_FOLLOW:
       newState = merge({}, oldState);
       Object.values(newState)[0].followers.push(action.follow.follower_id);
       return merge({}, newState);
+    case REMOVE_FOLLOW:
+      newState = merge({}, oldState);
+      index = Object.values(newState)[0].followers.indexOf(action.follow.follower_id);
+      Object.values(newState)[0].followers.splice(index, 1);
+      return newState;
     default:
       return oldState;
   }

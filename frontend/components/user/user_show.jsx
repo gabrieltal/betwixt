@@ -2,6 +2,8 @@ import React from 'react';
 import StoryIndexItem from '../story/story_index_item';
 import UserStoryShowContainer from './user_story_show_container';
 import { Link } from 'react-router-dom';
+import FollowContainer from '../follow/follow_container';
+
 class UserShow extends React.Component{
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
@@ -29,6 +31,7 @@ class UserShow extends React.Component{
               <Link className={canEdit} to={`/user/${user.id}/edit`}>
                 Edit Profile
               </Link>
+              <FollowContainer user={user}/>
             </div>
           </div>
           <UserStoryShowContainer user={user}/>

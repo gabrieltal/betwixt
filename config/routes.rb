@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :follows, only: [ :create, :destroy ]
   end
   delete 'api/likes/:user_id/:story_id', :to => 'api/likes#destroy'
-  delete 'api/follows/:follower_id/:following_id', :to => 'api/likes#destroy'
-  
+  delete 'api/follows/:follower_id/:following_id', :to => 'api/follows#destroy'
+
   root "static_pages#root"
 
 end

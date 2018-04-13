@@ -5,7 +5,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: Object.values(ownProps.author)[0],
+    user: ownProps.user,
     currentUser: state.session.currentUser
   }
 };
