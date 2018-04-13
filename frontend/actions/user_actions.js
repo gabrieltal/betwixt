@@ -34,11 +34,11 @@ export const receiveLike = (like) => ({
   like
 });
 
-export const deleteLike = (id) => dispatch => (
-  ApiLike.removeLike(id).then(like => dispatch(removeLike(like)))
+export const deleteLike = ({user_id, story_id}) => dispatch => (
+  ApiLike.deleteLike({user_id, story_id}).then(like => dispatch(removeLike(like)))
 );
 
-export const removeLike = (id) => ({
+export const removeLike = (like) => ({
   type: REMOVE_LIKE,
-  id
+  like
 });

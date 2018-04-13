@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     resources :stories do
       resources :comments, only: [:index]
     end
-    resources :comments, only: [:create, :destroy]
-    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy ]
+    resources :likes, only: [:create ]
   end
-
+  delete 'api/likes/:user_id/:story_id', :to => 'api/likes#destroy'
   root "static_pages#root"
 
 end

@@ -1,6 +1,5 @@
 class Api::LikesController < ApplicationController
   before_action :require_sign_in
-
   def create
     @like = Like.new(like_params)
     if @like.save
@@ -10,8 +9,8 @@ class Api::LikesController < ApplicationController
     end
   end
 
-  def delete
-    @like = Like.find(params[:id])
+  def destroy
+    @like = Like.find_by_story_id_and_user_id(params[:user_id], params[:story_id])
     @like.destroy
     render 'api/likes/show'
   end

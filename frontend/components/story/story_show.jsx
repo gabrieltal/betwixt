@@ -9,12 +9,30 @@ class StoryShow extends React.Component{
     this.props.fetchStory(this.props.match.params.storyId);
   }
 
-  likeButton () {
-    return (
-      <p>{story.likes.length} Likes</p>
-      <button onClick={this.doSomething.bind(this)}>Likes!!!!</button>
-    );
+  componentWillReceiveProps (nextProps) {
+    if (this.props.currentUser !== nextProps.currentUser) {
+      this.props.closeModal();
+    }
   }
+
+  likeButton () {
+    let liked = "sad";
+    let ableToLike = () => this.props.openModal("like-login");
+    if (!!this.props.currentUser) {
+      let userId = Object.keys(this.props.currentUser)[0];
+      ableToLike = () => this.props.createLike({user_id: userId, story_id: this.props.story.id});
+      if (this.props.story.likes.includes(parseInt(userId))) {
+        liked = "heart";
+        ableToLike = () => this.props.deleteLike({user_id: userId, story_id: this.props.story.id});
+      }
+    }
+      return (
+        <aside className="like-container">
+        <p>{this.props.story.likes.length}</p>
+        <span className={liked} onClick={ableToLike}></span>
+        </aside>
+      );
+    }
 
   render () {
     if (!!this.props.story) {
@@ -30,9 +48,7 @@ class StoryShow extends React.Component{
             <p className="story-date">Created on {story.created_at}</p>
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>
-          <aside className="like-container">
-            {this.likeButton}
-          </aside>
+            {this.likeButton()}
           <CommentContainer story={story}/>
         </div>
       );

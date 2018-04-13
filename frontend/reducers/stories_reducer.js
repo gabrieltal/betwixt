@@ -21,9 +21,10 @@ const storiesReducer = (oldState={}, action) => {
     case REMOVE_LIKE:
       newState = merge({}, oldState);
       let nsArray = Object.values(newState)[0];
-      let idOfState = Object.keys(newState)[0];
-      let index = nsArray.indexOf(action.like.user_id);
-      return merge({}, {[idxOfState]: nsArray.splie(index, 1)});
+      let idxOfState = Object.keys(newState)[0];
+      let index = nsArray.likes.indexOf(action.like.user_id);
+      nsArray.likes.splice(index, 1);
+      return merge({}, {[idxOfState]: nsArray});
     default:
       return oldState;
   }

@@ -3,8 +3,6 @@ import {
 } from '../actions/user_actions';
 import merge from 'lodash/merge';
 const usersReducer = (oldState={}, action) => {
-  console.log(action.like);
-  console.log(oldState);
   let newState;
   Object.freeze(oldState);
   switch (action.type) {
@@ -12,14 +10,15 @@ const usersReducer = (oldState={}, action) => {
       return merge({}, action.user);
     case RECEIVE_LIKE:
       newState = merge({}, oldState);
-      Object.values(newState)[0]["likes"].push(action.like.id);
+      Object.values(newState)[0]["likes"].push(action.like.story_id);
       return newState;
     case REMOVE_LIKE:
       newState = merge({}, oldState);
       let nsArray = Object.values(newState)[0];
       let idxOfState = Object.keys(newState)[0];
-      let index = nsArray.indexOf(action.like.id);
-      return merge({}, {[idxOfState]: nsArray.splice(index, 1)});
+      let index = nsArray.likes.indexOf(action.like.id);
+      nsArray.likes.splice(index, 1);
+      return merge({}, {[idxOfState]: nsArray});
     default:
       return oldState;
   }
