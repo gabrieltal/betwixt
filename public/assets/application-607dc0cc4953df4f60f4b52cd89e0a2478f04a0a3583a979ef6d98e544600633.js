@@ -4107,6 +4107,10 @@ var _story_show = __webpack_require__(121);
 
 var _story_show2 = _interopRequireDefault(_story_show);
 
+var _follow_container = __webpack_require__(346);
+
+var _follow_container2 = _interopRequireDefault(_follow_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4161,6 +4165,7 @@ var StoryIndexItem = function (_React$Component) {
             { className: 'author', to: '/user/' + story.author_id },
             story.author
           ),
+          _react2.default.createElement(_follow_container2.default, { user: story.author_id }),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'p',
@@ -18742,9 +18747,9 @@ var _reactQuill = __webpack_require__(64);
 
 var _reactQuill2 = _interopRequireDefault(_reactQuill);
 
-var _comment_container = __webpack_require__(326);
+var _comment_index_container = __webpack_require__(350);
 
-var _comment_container2 = _interopRequireDefault(_comment_container);
+var _comment_index_container2 = _interopRequireDefault(_comment_index_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18846,7 +18851,7 @@ var StoryShow = function (_React$Component) {
             )
           ),
           this.likeButton(),
-          _react2.default.createElement(_comment_container2.default, { story: story })
+          _react2.default.createElement(_comment_index_container2.default, { story: story })
         );
       } else {
         return _react2.default.createElement(
@@ -53264,7 +53269,23 @@ var UserShow = function (_React$Component) {
                 { className: canEdit, to: '/user/' + user.id + '/edit' },
                 'Edit Profile'
               ),
-              _react2.default.createElement(_follow_container2.default, { user: user })
+              _react2.default.createElement(_follow_container2.default, { user: user.id }),
+              _react2.default.createElement(
+                'div',
+                { className: 'following-info' },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  user.followers.length,
+                  ' Followers'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  user.following.length,
+                  ' Following'
+                )
+              )
             )
           ),
           _react2.default.createElement(_user_story_show_container2.default, { user: user })
@@ -53403,7 +53424,7 @@ var UserDetailPane = function (_React$Component) {
               'Betwixt member since ',
               author.created_at
             ),
-            _react2.default.createElement(_follow_container2.default, { user: author })
+            _react2.default.createElement(_follow_container2.default, { user: author.id })
           )
         );
       } else {
@@ -53422,141 +53443,8 @@ var UserDetailPane = function (_React$Component) {
 exports.default = UserDetailPane;
 
 /***/ }),
-/* 326 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactRedux = __webpack_require__(2);
-
-var _comments = __webpack_require__(327);
-
-var _comments2 = _interopRequireDefault(_comments);
-
-var _comment_actions = __webpack_require__(55);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    storyId: ownProps.story.id,
-    story: ownProps.story,
-    currentUser: state.session.currentUser,
-    storyComments: state.comments
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    fetchComments: function fetchComments(storyId) {
-      return dispatch((0, _comment_actions.fetchComments)(storyId));
-    },
-    clearErrors: function clearErrors() {
-      return dispatch((0, _comment_actions.receiveErrors)([]));
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comments2.default);
-
-/***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _comment_index_item = __webpack_require__(328);
-
-var _comment_index_item2 = _interopRequireDefault(_comment_index_item);
-
-var _comment_form_container = __webpack_require__(329);
-
-var _comment_form_container2 = _interopRequireDefault(_comment_form_container);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Comments = function (_React$Component) {
-  _inherits(Comments, _React$Component);
-
-  function Comments(props) {
-    _classCallCheck(this, Comments);
-
-    var _this = _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).call(this, props));
-
-    _this.state = {
-      storyComments: _this.props.storyComments
-    };
-    return _this;
-  }
-
-  _createClass(Comments, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.fetchComments(this.props.storyId);
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (Object.keys(this.props.storyComments).slice(-1)[0] !== Object.keys(nextProps.storyComments).slice(-1)[0]) {
-        this.props.fetchComments(this.props.storyId);
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      if (!!this.props.storyComments) {
-        var comments = Object.values(this.props.storyComments).map(function (comment) {
-          return _react2.default.createElement(_comment_index_item2.default, { key: comment.id, comment: comment });
-        });
-
-        return _react2.default.createElement(
-          'div',
-          { className: 'comments-container' },
-          _react2.default.createElement(_comment_form_container2.default, { storyId: this.props.storyId }),
-          _react2.default.createElement(
-            'ul',
-            { className: 'comments-list' },
-            comments
-          )
-        );
-      } else {
-        return _react2.default.createElement(
-          'div',
-          null,
-          ' Loading...'
-        );
-      }
-    }
-  }]);
-
-  return Comments;
-}(_react2.default.Component);
-
-exports.default = Comments;
-
-/***/ }),
+/* 326 */,
+/* 327 */,
 /* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -53933,86 +53821,34 @@ exports.default = UserStoryShow;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectAuthoredStories = undefined;
-
-var _values = __webpack_require__(334);
-
-var _values2 = _interopRequireDefault(_values);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var selectAuthoredStories = exports.selectAuthoredStories = function selectAuthoredStories(state, author) {
   return author ? author.authoredStories.map(function (id) {
     return state.stories[id];
   }) : [];
 };
 
-/***/ }),
-/* 334 */
-/***/ (function(module, exports, __webpack_require__) {
+var sortStories = function sortStories(stories, userFollowing) {
+  if (!!stories[1]) {
+    var storiesIndex = [];
+    Object.values(stories).forEach(function (story) {
+      if (userFollowing.includes(story.author_id)) {
+        storiesIndex.unshift(story);
+      } else {
+        storiesIndex.push(story);
+      }
+    });
+    return storiesIndex;
+  }
+  return [];
+};
 
-var baseValues = __webpack_require__(335),
-    keys = __webpack_require__(28);
-
-/**
- * Creates an array of the own enumerable string keyed property values of `object`.
- *
- * **Note:** Non-object values are coerced to objects.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property values.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.values(new Foo);
- * // => [1, 2] (iteration order is not guaranteed)
- *
- * _.values('hi');
- * // => ['h', 'i']
- */
-function values(object) {
-  return object == null ? [] : baseValues(object, keys(object));
-}
-
-module.exports = values;
-
+var getFollowingStoriesFirst = exports.getFollowingStoriesFirst = function getFollowingStoriesFirst(state, user) {
+  return user ? sortStories(state.stories, Object.values(user)[0].following) : [];
+};
 
 /***/ }),
-/* 335 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayMap = __webpack_require__(117);
-
-/**
- * The base implementation of `_.values` and `_.valuesIn` which creates an
- * array of `object` property values corresponding to the property names
- * of `props`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array} props The property names to get values for.
- * @returns {Object} Returns the array of property values.
- */
-function baseValues(object, props) {
-  return arrayMap(props, function(key) {
-    return object[key];
-  });
-}
-
-module.exports = baseValues;
-
-
-/***/ }),
+/* 334 */,
+/* 335 */,
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -54031,12 +53867,17 @@ var _story_index2 = _interopRequireDefault(_story_index);
 
 var _story_actions = __webpack_require__(12);
 
+var _selector = __webpack_require__(333);
+
+var _user_actions = __webpack_require__(22);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
     stories: state.stories,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    storiesList: (0, _selector.getFollowingStoriesFirst)(state, state.session.currentUser)
   };
 };
 
@@ -54044,6 +53885,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchStories: function fetchStories() {
       return dispatch((0, _story_actions.fetchStories)());
+    },
+    fetchUser: function fetchUser(id) {
+      return dispatch((0, _user_actions.fetchUser)(id));
     }
   };
 };
@@ -54096,9 +53940,15 @@ var StoryIndex = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var stories = this.props.stories;
+      var stories = void 0;
+      if (!!this.props.currentUser) {
+        stories = this.props.storiesList || this.props.stories;
+      } else {
+        stories = this.props.stories;
+      }
       stories = Object.keys(stories).map(function (id) {
-        return _react2.default.createElement(_story_index_item2.default, { key: id, story: stories[id] });
+        return _react2.default.createElement(_story_index_item2.default, { key: id,
+          story: stories[id] });
       });
       return _react2.default.createElement(
         'section',
@@ -54675,7 +54525,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    user: ownProps.user,
+    userId: ownProps.user,
     currentUser: state.session.currentUser
   };
 };
@@ -54696,6 +54546,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteFollow: function deleteFollow(follow) {
       return dispatch((0, _user_actions.deleteFollow)(follow));
+    },
+    fetchUser: function fetchUser(userId) {
+      return dispatch((0, _user_actions.fetchUser)(userId));
     }
   };
 };
@@ -54737,6 +54590,11 @@ var Follow = function (_React$Component) {
   }
 
   _createClass(Follow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchUser(this.props.userId);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -54746,15 +54604,15 @@ var Follow = function (_React$Component) {
         return _this2.props.openModal("follow-login");
       };
       if (!!this.props.currentUser) {
-        var user = this.props.user;
+        var userId = this.props.userId;
         var currentUser = Object.values(this.props.currentUser)[0];
         ableOrAlreadyFollow = function ableOrAlreadyFollow() {
-          return _this2.props.createFollow({ follower_id: currentUser.id, following_id: user.id });
+          return _this2.props.createFollow({ follower_id: currentUser.id, following_id: userId });
         };
-        if (user.followers.includes(currentUser.id)) {
+        if (currentUser.following.includes(userId)) {
           following = "Following";
           ableOrAlreadyFollow = function ableOrAlreadyFollow() {
-            return _this2.props.deleteFollow({ follower_id: currentUser.id, following_id: user.id });
+            return _this2.props.deleteFollow({ follower_id: currentUser.id, following_id: userId });
           };
         }
       }
@@ -54834,6 +54692,142 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_session_form2.default);
+
+/***/ }),
+/* 349 */,
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(2);
+
+var _comment_index = __webpack_require__(351);
+
+var _comment_index2 = _interopRequireDefault(_comment_index);
+
+var _comment_actions = __webpack_require__(55);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    storyId: ownProps.story.id,
+    story: ownProps.story,
+    currentUser: state.session.currentUser,
+    storyComments: state.comments
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchComments: function fetchComments(storyId) {
+      return dispatch((0, _comment_actions.fetchComments)(storyId));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _comment_actions.receiveErrors)([]));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comment_index2.default);
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _comment_index_item = __webpack_require__(328);
+
+var _comment_index_item2 = _interopRequireDefault(_comment_index_item);
+
+var _comment_form_container = __webpack_require__(329);
+
+var _comment_form_container2 = _interopRequireDefault(_comment_form_container);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CommentIndex = function (_React$Component) {
+  _inherits(CommentIndex, _React$Component);
+
+  function CommentIndex(props) {
+    _classCallCheck(this, CommentIndex);
+
+    var _this = _possibleConstructorReturn(this, (CommentIndex.__proto__ || Object.getPrototypeOf(CommentIndex)).call(this, props));
+
+    _this.state = {
+      storyComments: _this.props.storyComments
+    };
+    return _this;
+  }
+
+  _createClass(CommentIndex, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchComments(this.props.storyId);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (Object.keys(this.props.storyComments).slice(-1)[0] !== Object.keys(nextProps.storyComments).slice(-1)[0]) {
+        this.props.fetchComments(this.props.storyId);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!!this.props.storyComments) {
+        var comments = Object.values(this.props.storyComments).map(function (comment) {
+          return _react2.default.createElement(_comment_index_item2.default, { key: comment.id, comment: comment });
+        });
+
+        return _react2.default.createElement(
+          'div',
+          { className: 'comments-container' },
+          _react2.default.createElement(_comment_form_container2.default, { storyId: this.props.storyId }),
+          _react2.default.createElement(
+            'ul',
+            { className: 'comments-list' },
+            comments
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          null,
+          ' Loading...'
+        );
+      }
+    }
+  }]);
+
+  return CommentIndex;
+}(_react2.default.Component);
+
+exports.default = CommentIndex;
 
 /***/ })
 /******/ ]);

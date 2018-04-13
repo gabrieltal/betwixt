@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Follow from './follow';
-import { createFollow, deleteFollow, receiveErrors } from '../../actions/user_actions';
+import { createFollow, deleteFollow, receiveErrors, fetchUser } from '../../actions/user_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,7 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   openModal: modal => dispatch(openModal(modal)),
   closeModal: () => dispatch(closeModal()),
   createFollow: (follow) => dispatch(createFollow(follow)),
-  deleteFollow: (follow) => dispatch(deleteFollow(follow))
+  deleteFollow: (follow) => dispatch(deleteFollow(follow)),
+  fetchUser: (userId) => dispatch(fetchUser(userId))
 });
 
 export default connect (

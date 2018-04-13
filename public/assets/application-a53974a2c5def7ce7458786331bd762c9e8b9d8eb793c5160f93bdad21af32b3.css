@@ -453,13 +453,33 @@ header .login-button:hover, header .signout-button:hover {
   padding: 5px;
 }
 
-/* line 6, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
-.follow-container .Follow {
-  color: red;
+/* line 5, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container {
+  margin: 5px;
+  padding: 5px;
 }
-/* line 10, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+/* line 8, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container .Follow {
+  color: #6B0504;
+  font-size: 12px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #6B0504;
+}
+/* line 16, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container .Follow {
+  cursor: pointer;
+}
+/* line 20, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
 .follow-container .Following {
-  color: blue;
+  color: white;
+  background: #6B0504;
+  border-radius: 5px;
+  border: 2px solid #6B0504;
+}
+/* line 27, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/follows.scss */
+.follow-container .Following {
+  cursor: pointer;
 }
 
 /* line 2, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/heart.scss */
@@ -1354,7 +1374,7 @@ header .login-button:hover, header .signout-button:hover {
 .user-show-container .user-details .cannot-edit {
   display: none;
 }
-/* line 46, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 47, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-details .edit-link {
   margin-top: 10px;
   border: none;
@@ -1363,10 +1383,19 @@ header .login-button:hover, header .signout-button:hover {
   font-size: 18px;
   text-decoration: none;
 }
-/* line 55, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+/* line 56, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
 .user-show-container .user-details .edit-link:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+/* line 61, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-details .following-info {
+  display: flex;
+}
+/* line 63, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_show.scss */
+.user-show-container .user-details .following-info p {
+  font-size: 12px;
+  margin: 5px;
 }
 
 /* line 1, /home/gabriel/Desktop/betwixt/app/assets/stylesheets/components/user_story_show.scss */

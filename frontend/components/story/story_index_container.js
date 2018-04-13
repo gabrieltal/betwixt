@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import StoryIndex from './story_index';
 import { fetchStories } from '../../actions/story_actions';
 import { getFollowingStoriesFirst } from '../../reducers/selector';
+import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchStories: () => dispatch(fetchStories())
+  fetchStories: () => dispatch(fetchStories()),
+  fetchUser: (id) => dispatch(fetchUser(id))
 });
 
 export default connect(

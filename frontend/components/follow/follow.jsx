@@ -1,6 +1,10 @@
 import React from 'react';
 
 class Follow extends React.Component {
+  componentDidMount() {
+    this.props.fetchUser(this.props.userId);
+  }
+
   render () {
     let following = "Follow";
     let ableOrAlreadyFollow = () => this.props.openModal("follow-login");
