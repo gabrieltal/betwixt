@@ -1,5 +1,5 @@
 import {
-  RECEIVE_USER, RECEIVE_LIKE, REMOVE_LIKE
+  RECEIVE_USER, RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_FOLLOW, REMOVE_FOLLOW
 } from '../actions/user_actions';
 import merge from 'lodash/merge';
 const usersReducer = (oldState={}, action) => {
@@ -19,6 +19,9 @@ const usersReducer = (oldState={}, action) => {
       let index = nsArray.likes.indexOf(action.like.id);
       nsArray.likes.splice(index, 1);
       return merge({}, {[idxOfState]: nsArray});
+    case RECEIVE_FOLLOW:
+      newState = merge({}, oldState);
+      debugger;
     default:
       return oldState;
   }
