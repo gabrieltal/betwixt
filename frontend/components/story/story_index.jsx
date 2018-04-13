@@ -12,14 +12,14 @@ class StoryIndex extends React.Component {
     } else {
       stories = this.props.stories;
     }
-    stories = Object.keys(stories).map((id) => {
+    let storiesItems = Object.keys(stories).map((id) => {
       return <StoryIndexItem key={id}
         story={stories[id]}/>;
     });
     return (
       <section>
       <ul className="story-index">
-      {stories}
+      {storiesItems}
       </ul>
       </section>
     );
