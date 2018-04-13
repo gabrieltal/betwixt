@@ -18719,10 +18719,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var StoryShow = function (_React$Component) {
   _inherits(StoryShow, _React$Component);
 
-  function StoryShow() {
+  function StoryShow(props) {
     _classCallCheck(this, StoryShow);
 
-    return _possibleConstructorReturn(this, (StoryShow.__proto__ || Object.getPrototypeOf(StoryShow)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (StoryShow.__proto__ || Object.getPrototypeOf(StoryShow)).call(this, props));
+
+    _this.state = {
+      currentUser: _this.props.currentUser || ''
+    };
+    return _this;
   }
 
   _createClass(StoryShow, [{
@@ -18735,6 +18740,11 @@ var StoryShow = function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.currentUser !== nextProps.currentUser) {
         this.props.closeModal();
+        if (!!nextProps.users) {
+          this.setState({
+            currentUser: nextProps.users[Object.keys(this.props.currentUser)[0]]
+          });
+        }
       }
     }
   }, {
@@ -18746,12 +18756,12 @@ var StoryShow = function (_React$Component) {
       var ableToLike = function ableToLike() {
         return _this2.props.openModal("like-login");
       };
-      if (!!this.props.currentUser) {
-        var userId = Object.keys(this.props.currentUser)[0];
+      if (!!this.state.currentUser) {
+        var userId = parseInt(Object.keys(this.state.currentUser)[0]);
         ableToLike = function ableToLike() {
           return _this2.props.createLike({ user_id: userId, story_id: _this2.props.story.id });
         };
-        if (this.props.story.likes.includes(parseInt(userId))) {
+        if (this.props.story.likes.includes(userId)) {
           liked = "heart";
           ableToLike = function ableToLike() {
             return _this2.props.deleteLike({ user_id: userId, story_id: _this2.props.story.id });
@@ -54058,7 +54068,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     storyId: ownProps.match.params.storyId,
     story: state.stories[ownProps.match.params.storyId],
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    user: state.users
   };
 };
 
