@@ -9,6 +9,13 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :likes
+  has_many :followers,
+    class_name: :Follow,
+    foreign_key: :following_id
+
+  has_many :following,
+    class_name: :Follow,
+    foreign_key: :follower_id
 
   has_many :stories,
     dependent: :destroy,

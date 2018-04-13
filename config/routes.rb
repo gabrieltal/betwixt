@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create, :destroy ]
     resources :likes, only: [:create ]
+    resources :follows, only: [ :create, :destroy ]
   end
   delete 'api/likes/:user_id/:story_id', :to => 'api/likes#destroy'
   root "static_pages#root"
