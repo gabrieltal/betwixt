@@ -20,7 +20,9 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.id === 1
+      render json: ['Sorry but you cannot update the guest. Create your own account if you wish to use this feature'], status: 422
+    elsif @user.update_attributes(user_params)
       render 'api/users/show'
     else
       render json: ["Could not update"], status: 422
