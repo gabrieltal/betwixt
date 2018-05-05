@@ -7,6 +7,11 @@
 .edit-link {
   margin-right: 10px;
 }
+
+.edit-link:hover {
+  text-decoration: underline;
+}
+
 .controlsShow {
   display: inline-block;
   position: relative;
@@ -17,8 +22,15 @@
   margin-right: 5px;
 }
 
-.controlsShow:hover {
+.remove-story {
+  font-family: $main;
+  border: none;
+  background: none;
+}
+
+.remove-story:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .options {
@@ -27,7 +39,6 @@
 
 .fa:target {
   font-size: 32px;
-
 }
 
 .story-item-li {
@@ -38,6 +49,8 @@
   justify-content: center;
   max-width: 88%;
   min-width: 280px;
+  font-family: $main;
+
 }
 .story-index {
   display: block;
@@ -45,6 +58,7 @@
   margin: auto;
   width: 65%;
   margin-top: 55px;
+  font-family: $main;
 
   .story-header-img {
 
@@ -57,12 +71,13 @@
   .story-item {
     padding: 10px;
     width: 100%;
+    font-family: $main;
 
     .story-title {
       font-size: 24px;
       text-decoration: none;
       color: black;
-      font-family: sans-serif;
+      font-family: $main;
     }
 
     .story-preview {
@@ -71,10 +86,12 @@
       color: darkgray;
       font-family: serif;
       margin-top: 5px;
+      font-family: $main;
     }
 
     .update-date{
       display: none;
+      font-size: 14px;
     }
     .arrow-up {
       display: none;
@@ -82,27 +99,28 @@
     .create-date {
       margin: 5px 0;
       display: inline-block;
+      font-size: 14px;
     }
     .create-date:hover + .update-date {
-        font-size: 16px;
-        position: absolute;
-        display: block;
-        background-color: rgba(0, 0, 0, .9);
-        padding: 0px 7px 5px 7px;
-        border-radius: 5px;
-        color: white;
-        margin-top: 5px;
+      font-size: 16px;
+      position: absolute;
+      display: block;
+      background-color: rgba(0, 0, 0, .9);
+      padding: 0px 7px 5px 7px;
+      border-radius: 5px;
+      color: white;
+      margin-top: 5px;
 
-        .arrow-up {
-          position: relative;
-          top: -5px;
-          display: block;
-          width: 0;
-          height: 0;
-          border-left: 7px solid transparent;
-          border-right: 7px solid transparent;
-          border-bottom: 7px solid black;
-        }
+      .arrow-up {
+        position: relative;
+        top: -5px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid black;
+      }
     }
 
     .author {

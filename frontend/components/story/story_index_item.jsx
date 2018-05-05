@@ -41,7 +41,8 @@ class StoryIndexItem extends React.Component {
           </Link>
 
 
-          <button onClick={() => this.props.deleteStory(story.id).then(this.props.history.push('/'))}>
+          <button className="remove-story"
+            onClick={() => this.props.deleteStory(story.id).then(this.props.history.push('/'))}>
             Delete Story
           </button>
           </div>

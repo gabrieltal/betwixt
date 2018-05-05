@@ -2,6 +2,11 @@ import React from 'react';
 import StoryIndexItem from '../story/story_index_item';
 
 class UserStoryShow extends React.Component{
+
+  constructor(props) {
+    super(props);
+  }
+
   render () {
     if (this.props.authoredStories.length > 0 && this.props.authoredStories[0] !== undefined) {
       let stories = this.props.authoredStories;

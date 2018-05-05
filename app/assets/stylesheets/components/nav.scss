@@ -6,7 +6,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  font-family: $serif;
+  font-family: $title;
   margin: 0;
   background-color: white;
   text-align: center;
@@ -39,6 +39,20 @@ header {
       display: none;
     }
 
+    .greet-signout {
+      img {
+        display: none;
+      }
+
+      .new-story-button {
+        display: none;
+      }
+
+      .signout-button {
+        margin-top: 10px;
+      }
+    }
+
   }
 
   .header-Link {
@@ -55,7 +69,7 @@ header {
   .login-signup {
     float: right;
     margin-top: 20px;
-    font-family: $serif;
+    font-family: $title;
     button {
       margin-right: 15px;
     }
@@ -64,7 +78,7 @@ header {
       color: $burgundy;
       font-size: 14px;
       padding: 5px 10px;
-      font-family: $serif;
+      font-family: $title;
 
       background: white;
       border-radius: 5px;
@@ -75,7 +89,7 @@ header {
       color: white;
       cursor: pointer;
       background: $burgundy;
-      font-family: $serif;
+      font-family: $title;
 
     }
 
@@ -89,7 +103,7 @@ header {
     margin-right: 10px;
     font-size: 16px;
     align-items: center;
-    font-family: $serif;
+    font-family: $title;
 
     margin-top: 15px;
 
@@ -99,7 +113,7 @@ header {
       padding: 5px;
       margin: 0 10px 0 2px;
       text-decoration: none;
-      font-family: $serif;
+      font-family: $title;
 
     }
 
@@ -140,7 +154,7 @@ header {
     .welcome {
       color: $burgundy;
       text-decoration: none;
-      font-family: $serif;
+      font-family: $title;
     }
 
     .welcome:hover {
@@ -148,7 +162,7 @@ header {
     }
     .signout-button {
       margin-right: 10px;
-      font-family: $serif;
+      font-family: $title;
 
     }
     img {
@@ -164,7 +178,7 @@ header {
     background: none;
     padding: 0;
     color: $burgundy;
-    font-family: $serif;
+    font-family: $title;
 
     font-size: 14px;
   }

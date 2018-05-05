@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
+  font-family: $main;
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, .9);
@@ -12,6 +13,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  font-family: $main;
 
   text-align: center;
   background-color: $pale-pink;
@@ -53,6 +55,8 @@ p {
 }
 .login-form-container {
   margin-bottom: 15px;
+  font-family: $main;
+
   h3 {
     font-size: 32px;
     font-weight: bold;
@@ -93,6 +97,9 @@ p {
     padding: 5px;
     color: white;
     margin-bottom: 15px;
+    font-family: $main;
+    font-size: 15px;
+
   }
 
   .submit-button:hover {
@@ -108,5 +115,7 @@ p {
   margin: 0 0 15px 0;
   font-style: bold;
   color: red;
+  font-family: $main;
+
   font-size: 18px;
 }

@@ -4,6 +4,8 @@
   margin: auto;
   margin-top: 20px;
   width: 100%;
+  font-family: $main;
+
   .story-header-img {
     top: 0;
     height: 150px;
@@ -19,14 +21,16 @@
     width: 100%;
     float: left;
     padding: 5px;
+    font-family: $main;
   }
+
   .story-item-li {
     padding: 10px;
     border: 1px solid lightgray;
     margin: 15px;
     width: 100%;
     min-width: 380px;
-
+    font-family: $main;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -38,6 +42,8 @@
         color: $burgundy;
         font-size: 18px;
         text-decoration: none;
+        font-family: $main;
+        
       }
 
       .edit-link:hover {
@@ -48,18 +54,20 @@
       font-size: 24px;
       text-decoration: none;
       color: black;
-      font-family: sans-serif;
+      font-family: $main;
     }
 
     .story-preview {
       text-decoration: none;
       font-size: 14px;
       color: darkgray;
-      font-family: serif;
+      font-family: $main;
     }
     .create-date {
-      display: block;
+      display: inline-block;
       width: 20%;
+      font-size: 14px;
+      position: inherit;
     }
     .update-date {
       display: none;
@@ -67,35 +75,12 @@
     .arrow-up {
       display: none;
     }
-    .create-date:hover  + .update-date{
-        font-size: 16px;
-        position: absolute;
-        display: block;
-        background-color: rgba(0, 0, 0, .9);
-        padding: 0px 7px 5px 7px;
-        border-radius: 5px;
-        color: white;
-        margin-top: 5px;
 
-        .arrow-up {
-          position: relative;
-          top: -7px;
-
-          display: block;
-          width: 0;
-          height: 0;
-          border-left: 7px solid transparent;
-          border-right: 7px solid transparent;
-          border-bottom: 7px solid black;
-        }
-
-    }
     .author {
       text-decoration: none;
       color: black;
       font-size: 16px;
-      font-family: serif;
+      font-family: $main;
     }
-
   }
 }

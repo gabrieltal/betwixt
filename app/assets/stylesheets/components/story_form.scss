@@ -4,7 +4,7 @@
   margin-top: 135px;
   width: 85%;
   text-align: center;
-
+  font-family: $main;
 
   .title-input {
     border: none;
@@ -13,6 +13,8 @@
     margin-bottom: 15px;
     font-size: 28px;
     margin-bottom: 15px;
+    font-family: $main;
+    font-weight: bold;
   }
 
   input {
@@ -20,6 +22,8 @@
   }
 
   .subtitle-input {
+    font-family: $main;
+
     width: 75%;
     margin-left: 5px;
     margin-bottom: 15px;
@@ -33,6 +37,8 @@
     margin: 20px;
     border: none;
     opacity: 0;
+    font-family: $main;
+
   }
 
   .header-image-label {
@@ -45,6 +51,8 @@
     cursor: pointer;
     color: darkgray;
     margin-top: 10px;
+    font-family: $main;
+
   }
 
   .story-header-img {
@@ -53,6 +61,8 @@
     margin: 20px;
     max-width: 600px;
     max-height: 500px;
+    font-family: $main;
+
   }
 
   .quill {
@@ -61,6 +71,8 @@
 
   .ql-editor {
     border: none;
+    font-family: $main;
+
   }
 
   .input-publish {
@@ -71,6 +83,8 @@
     font-size: 18px;
     margin-bottom: 35px;
     margin-top: 0;
+    font-family: $main;
+
   }
 
   .input-publish:hover {
@@ -80,12 +94,16 @@
 
   .error-message {
     margin-top: 10px;
+    font-family: $main;
+
     li {
       padding: 5px;
     }
   }
   p {
     font-style: inherit;
+    font-family: $main;
+
   }
   strong {
     font-weight: bold;
@@ -103,6 +121,14 @@
     text-decoration: line-through;
   }
 
+  .ql-editor ul {
+    font-size: 16px;
+  }
+
+  .ql-editor ol {
+    font-size: 16px;
+  }
+
   h1 {
     display: block;
     font-size: 2em;
@@ -111,6 +137,8 @@
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    font-family: $main;
+
   }
 
   h2 {
@@ -121,6 +149,8 @@
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    font-family: $main;
+
   }
 
   blockquote {
@@ -129,5 +159,7 @@
    margin-bottom: 1em;
    margin-left: 40px;
    margin-right: 40px;
+   font-family: $main;
+
   }
 }

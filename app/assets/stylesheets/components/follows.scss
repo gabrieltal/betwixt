@@ -4,13 +4,16 @@
 
 .follow-container {
   margin: 5px;
+  font-family: $main;
   padding: 5px;
   .Follow {
     color: $burgundy;
-    font-size: 12px;
+    font-size: 14px;
     background: white;
     border-radius: 5px;
     border: 1px solid $burgundy;
+    font-family: $main;
+
   }
 
   .Follow {
@@ -20,6 +23,8 @@
   .Following {
     color: white;
     background: $burgundy;
+    font-family: $main;
+    font-size: 14px;
     border-radius: 5px;
     border: 2px solid $burgundy;
   }
