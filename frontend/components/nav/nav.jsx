@@ -10,7 +10,7 @@ class Nav extends React.Component {
     return (
       <div className='greet-signout'>
         <Link to={'/'}><button className='signout-button' onClick={this.props.logout}>Sign Out</button></Link>
-        <Link to={'/story/new'} className='new-story-button'>+</Link>
+        <Link to={'/story/new'} className='new-story-button'>New Story</Link>
         <div className="create-text"><div className="arrow-up"></div>Create New Story</div>
         <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>

@@ -9,12 +9,19 @@ import { ProtectedRoute } from '../util/route_util';
 import NewStoryContainer from './story/new_story_container';
 import EditStoryContainer from './story/edit_story_container';
 import UserEditContainer from './user/user_edit_container';
+
 const App = () => (
   <div>
     <Modal />
     <header>
-      <a className="about" href={'https://github.com/gabrieltal/betwixt'}>About</a>
-
+      <a className="about"
+        href={'https://github.com/gabrieltal/betwixt'}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        About
+      </a>
+      
       <Link to="/" className="header-Link">
         <h1>Betwixt</h1>
       </Link>

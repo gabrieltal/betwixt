@@ -71,18 +71,17 @@ class StoryForm extends React.Component {
     return (
       <div className="story-form" >
       <link href={"https://cdn.quilljs.com/1.3.6/quill.snow.css"} rel="stylesheet"/>
-        <label className="title-label">Title:
-          <input className="title-input" type="text" value={this.state.title} onChange={this.update('title')}/>
-        </label>
+        <input className="title-input" placeholder="Title" type="text" value={this.state.title} onChange={this.update('title')}/>
         <br/>
-        <label className="subtitle-label">Subtitle:
-          <input className="subtitle-input" type="text" value={this.state.subtitle} onChange={this.update('subtitle')}/>
-        </label>
+        <input className="subtitle-input"
+          placeholder="Tell a little about your story..."
+          type="text" value={this.state.subtitle}
+          onChange={this.update('subtitle')}/>
         <br/>
-        <label className="header-image-label">Header Image:
-        </label>
+        <label className="header-image-label">Add a header image...
           <input className="image-input" type="file" onChange={this.fileAdd}/>
           <img className="story-header-img" src={this.state.imageUrl} />
+        </label>
         <br/>
         <ReactQuill
           theme="snow"

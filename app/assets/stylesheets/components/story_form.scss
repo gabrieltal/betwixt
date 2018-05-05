@@ -5,49 +5,62 @@
   width: 85%;
   text-align: center;
 
-  .title-label {
-    margin: auto;
-    font-size: 18px;
-    .title-input {
-      width: 75%;
-      margin-left: 5px;
-      margin-bottom: 15px;
-      font-size: 18px;
-    }
+
+  .title-input {
+    border: none;
+    width: 75%;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-size: 28px;
     margin-bottom: 15px;
   }
 
-  .subtitle-label {
-    margin: auto;
-    font-size: 16px;
-    .subtitle-input {
-      width: 65%;
-      margin-left: 5px;
-      margin-bottom: 15px;
-      margin-top: 15px;
-      font-size: 16px;
-    }
+  input {
+    outline: none;
   }
+
+  .subtitle-input {
+    width: 75%;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 20px;
+    border: none;
+  }
+
   .image-input {
-    display: inline-block;
+    display: none;
     margin: 20px;
+    border: none;
+    opacity: 0;
   }
 
   .header-image-label {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding: 5px;
+    cursor: pointer;
+    color: darkgray;
+    margin-top: 10px;
   }
+
   .story-header-img {
+    border: none;
+    outline: none;
     margin: 20px;
-    width: 500px;
-    height: 400px;
+    max-width: 600px;
+    max-height: 500px;
   }
 
   .quill {
-    margin: 15px;
+    margin: 25px;
+  }
 
+  .ql-editor {
+    border: none;
   }
 
   .input-publish {
@@ -57,12 +70,14 @@
     color: $burgundy;
     font-size: 18px;
     margin-bottom: 35px;
+    margin-top: 0;
   }
 
   .input-publish:hover {
     text-decoration: underline;
     cursor: pointer;
   }
+
   .error-message {
     margin-top: 10px;
     li {

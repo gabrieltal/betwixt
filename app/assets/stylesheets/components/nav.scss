@@ -6,6 +6,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
+  font-family: $serif;
   margin: 0;
   background-color: white;
   text-align: center;
@@ -54,7 +55,7 @@ header {
   .login-signup {
     float: right;
     margin-top: 20px;
-    font-family: sans-serif;
+    font-family: $serif;
     button {
       margin-right: 15px;
     }
@@ -63,6 +64,7 @@ header {
       color: $burgundy;
       font-size: 14px;
       padding: 5px 10px;
+      font-family: $serif;
 
       background: white;
       border-radius: 5px;
@@ -73,6 +75,8 @@ header {
       color: white;
       cursor: pointer;
       background: $burgundy;
+      font-family: $serif;
+
     }
 
   }
@@ -85,16 +89,18 @@ header {
     margin-right: 10px;
     font-size: 16px;
     align-items: center;
+    font-family: $serif;
 
     margin-top: 15px;
 
     .new-story-button {
       color: black;
       font-size: 20px;
-      font-weight: bold;
       padding: 5px;
       margin: 0 10px 0 2px;
       text-decoration: none;
+      font-family: $serif;
+
     }
 
     .create-text {
@@ -134,6 +140,7 @@ header {
     .welcome {
       color: $burgundy;
       text-decoration: none;
+      font-family: $serif;
     }
 
     .welcome:hover {
@@ -141,6 +148,8 @@ header {
     }
     .signout-button {
       margin-right: 10px;
+      font-family: $serif;
+
     }
     img {
       bottom: 5px;
@@ -155,6 +164,8 @@ header {
     background: none;
     padding: 0;
     color: $burgundy;
+    font-family: $serif;
+
     font-size: 14px;
   }
 
