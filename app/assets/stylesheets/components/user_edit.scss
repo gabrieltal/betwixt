@@ -1,15 +1,27 @@
 .user-edit-form {
+  display: block;
+  width: 85%;
   margin: auto;
   align-items: center;
   text-align: center;
   margin-top: 100px;
+  font-family: $main;
   .username {
     font-size: 18px;
     margin-bottom: 10px;
     input {
       margin-left: 5px;
       margin-bottom: 15px;
+      font-weight: bold;
     }
+  }
+
+  input {
+    font-family: $main;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
   }
 
   .bio {
@@ -23,11 +35,25 @@
   }
 
   .user-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 5px;
+    width: 120px;
+    flex-basis: 120px;
+    cursor: pointer;
+    font-family: $main;
     .image-input {
-      margin-left: 10px;
-
+      display: none;
+      opacity: 0;
+      border: none;
     }
-    img {
+    .user-profile-img {
+      border: none;
+      outline: none;
+      margin-top: 15px;
       width: 175px;
       height: 175px;
     }

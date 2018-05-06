@@ -62,14 +62,16 @@ class UserEdit extends React.Component {
       return (
         <form className="user-edit-form">
           <label className="username">Username:
-            <input type="text" onChange={this.update('username')} value={this.state.username}/>
+            <input type="text" onChange={this.update('username')}
+              placeholder="username" value={this.state.username}/>
           </label>
           <br/>
           <label className="bio">Bio:
-            <input type="text" onChange={this.update('bio')} value={this.state.bio}/>
+            <input type="text" onChange={this.update('bio')}
+              placeholder="Write a little about yourself..." value={this.state.bio}/>
           </label>
           <br/>
-          <label className="user-image">Profile Picture:
+          <label className="user-image">Profile Picture...
             <input className="image-input" type="file" onChange={this.fileAdd} />
             <img className="user-profile-img" src={this.state.imageUrl} />
           </label>
