@@ -1,0 +1,16 @@
+.story-index.features {
+  display: flex;
+  justify-content: center;
+  width: 65%;
+  border-bottom: 1px solid lightgray;
+  margin-top: 70px;
+}
+
+.story-index.features li {
+  display: flex;
+  flex: 1;
+  flex-direction: column-reverse;
+  img {
+    width: 100%;
+  }
+}

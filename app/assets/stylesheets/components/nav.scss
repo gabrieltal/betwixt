@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
   position: fixed;
   width: 100%;
   top: 0;
@@ -26,11 +27,13 @@ header {
     text-decoration: underline;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 650px) {
     .about {
-      display:none;
+      display: none;
     }
+  }
 
+  @media screen and (max-width: 480px) {
     .login-button {
       display: none;
     }

@@ -12,14 +12,23 @@ class StoryIndex extends React.Component {
     } else {
       stories = Object.values(this.props.stories);
     }
-    let storiesItems = stories.map((story) => {
-      return <StoryIndexItem key={story.id}
-        story={story}/>;
+    let featureItems = [];
+    let storyItems = [];
+    stories.forEach((story, i) => {
+      i < 3 ?
+        featureItems.push(<StoryIndexItem key={story.id}
+        story={story} feature='feature' />) :
+
+        storyItems.push(<StoryIndexItem key={story.id}
+          story={story} feature=""/>);
     });
     return (
       <section>
+      <ul className="story-index features">
+        {featureItems}
+      </ul>
       <ul className="story-index">
-      {storiesItems}
+        {storyItems}
       </ul>
       </section>
     );

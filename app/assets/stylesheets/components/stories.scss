@@ -72,12 +72,21 @@
     padding: 10px;
     width: 100%;
     font-family: $main;
-
     .story-title {
       font-size: 24px;
       text-decoration: none;
       color: black;
       font-family: $main;
+    }
+
+    .story-show-body {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .user-follow-container {
+      display: flex;
+      align-items: center;
     }
 
     .story-preview {

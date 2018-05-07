@@ -11,22 +11,22 @@ class StoryIndexItem extends React.Component {
       userControlClassName = "controlsShow";
     }
     return (
-      <li className="story-item-li">
+      <li className={`story-item-li ${this.props.feature}`}>
         <div className="story-item">
         <Link className="story-title" to={`/story/${story.id}`}>
             {story.title}
         </Link>
         <br/>
         <Link className="story-preview" to  ={`/story/${story.id}`}>
-        <p className="story-show-body">{story.subtitle}</p>
+          <p className="story-show-body">{story.subtitle}</p>
+        </Link>
+        <div className="user-follow-container">
+          <Link className="author" to={`/user/${story.author_id}`}>
+            {story.author}
+          </Link>
+          <FollowContainer user={story.author_id} />
+        </div>
 
-        </Link>
-        <br/>
-        <Link className="author" to={`/user/${story.author_id}`}>
-          {story.author}
-        </Link>
-        <FollowContainer user={story.author_id} />
-        <br/>
         <p className="create-date">{story.created_at}</p>
 
         <div className="update-date">
