@@ -1,4 +1,5 @@
 .story-show-body {
+  font-family: $main;
   p {
     font-style: inherit;
   }
@@ -53,10 +54,12 @@
   justify-content: center;
   padding: 25px;
   margin: auto;
-  width: 100%;
+  width: 95%;
+  align-self: center;
   margin-top: 65px;
   align-items: center;
   align-content: center;
+  font-family: $main;
   .author-display {
     display: flex;
     align-items: center;
@@ -64,7 +67,6 @@
     justify-content: center;
     flex-direction: row;
     padding: 10px;
-
     width: 80%;
     margin-bottom: 25px;
     .user-profile-pic {
@@ -78,6 +80,10 @@
     .user-details {
       display: flex;
       flex-direction: column;
+      a {
+        color: black;
+        text-decoration: none;
+      }
     }
   }
 
@@ -93,8 +99,9 @@
     width: 80%;
 
     .story-header-img {
-      width: 50vw;
+      width: 80%;
       height: 35%;
+      max-height: 500px;
       margin: 10px;
       padding: 25px;
     }
@@ -102,7 +109,7 @@
     .story-title {
       text-align: center;
       font-size: 40px;
-      font-family: sans-serif;
+      font-family: $main;
       margin-bottom: 15px;
       font-weight: bold;
     }
@@ -110,14 +117,19 @@
     .story-subtitle {
       margin: 15px 0;
       text-align: center;
-      font-family: serif;
+      font-family: $main;
       font-size: 24px;
       color: gray;
     }
 
-    .story-body {
-      font-size: 18px;
-      font-family: serif;
+    .story-show-body {
+      width: 60%;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.58;
+      letter-spacing: -.003em;
+      font-size: 21px;
+      font-family: $main;
       margin-bottom: 15px;
     }
 
