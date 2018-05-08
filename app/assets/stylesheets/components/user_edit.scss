@@ -7,12 +7,12 @@
   margin-top: 100px;
   font-family: $main;
   .username {
-    font-size: 18px;
+    font-size: 21px;
     margin-bottom: 10px;
+    font-weight: bold;
     input {
       margin-left: 5px;
       margin-bottom: 15px;
-      font-weight: bold;
     }
   }
 
@@ -28,6 +28,7 @@
     font-size: 18px;
     margin-bottom: 10px;
     input {
+      font-weight: bold;
       margin-left: 5px;
       padding: 10px;
       margin-bottom: 15px;

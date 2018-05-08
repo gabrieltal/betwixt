@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     redirectPageMessage: 'No account? ',
     headerMessage: 'Welcome back.',
     modalMessage:
-      'Sign in to access your account. You can like and follow and write your own stories if you can not find one that you like.'
+      'Sign in to access your account. You can like, follow others and write your own stories. Tell your tale. Keep on writing.'
   };
 };
 

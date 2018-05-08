@@ -35,16 +35,16 @@ class SessionForm extends React.Component {
           <h3>{this.props.headerMessage}</h3>
           <br/>
           <p>{this.props.modalMessage}</p>
-          <label className="input-field"> Username
-            <br/>
-            <input onChange={this.update('username')}
-                type="text" value={this.state.username}/>
-          </label>
           <br/>
-        <label className="input-field"> Password
+          <input className="input-field"
+            placeholder="username"
+            onChange={this.update('username')}
+            type="text" value={this.state.username}/>
           <br/>
-          <input onChange={this.update('password')} type="password" value={this.state.password}/>
-        </label>
+          <input className="input-field"
+            placeholder="password"
+            onChange={this.update('password')}
+            type="password" value={this.state.password}/>
         <br/>
         <ul className="error-message">
           {errors}

@@ -47,41 +47,45 @@
   padding: 8px;
   margin: auto;
   justify-content: center;
-  max-width: 88%;
-  min-width: 280px;
+  max-width: 75%;
+  min-width: 270px;
   font-family: $main;
-
+  word-wrap: break-word;
 }
 .story-index {
   display: block;
   padding: 25px;
   margin: auto;
-  width: 65%;
+  width: 55%;
   margin-top: 55px;
   font-family: $main;
-
   .story-header-img {
 
     top: 0;
-    height: 150px;
-    width: 150px;
-
+    height: 200px;
+    width: 200px;
+    padding: 5px;
     width: 1;
   }
   .story-item {
-    padding: 10px;
+    padding-top: 8px;
     width: 100%;
     font-family: $main;
+    min-width: 280px;
     .story-title {
       font-size: 24px;
       text-decoration: none;
       color: black;
       font-family: $main;
+      font-weight: bold;
+
     }
 
     .story-show-body {
       margin-top: 10px;
       margin-bottom: 0;
+      padding-right: 8px;
+      font-size: 16px;
     }
 
     .user-follow-container {
@@ -92,7 +96,7 @@
     .story-preview {
       text-decoration: none;
       font-size: 14px;
-      color: darkgray;
+      color: $dark-gray;
       font-family: serif;
       margin-top: 5px;
       font-family: $main;

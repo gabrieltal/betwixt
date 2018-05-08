@@ -27,23 +27,26 @@
     display: flex;
     flex-direction: column;
     font-family: $main;
-    
+
     h3 {
-      font-size: 18px;
-      font-family: sans-serif;
+      font-size: 21px;
+      font-family: $main;
+      font-weight: bold;
     }
 
     .bio {
       margin-top: 5px;
-      color: darkgray;
+      color: black;
+      font-size: 16px;
       font-family: $main;
-
+      padding: 5px;
     }
 
     .member-creation {
-      color: darkgray;
+      color: $dark-gray;
       font-family: $main;
-
+      font-size: 16px;
+      margin-bottom: 10px;
     }
 
     .cannot-edit {
@@ -74,6 +77,7 @@
           color: $burgundy;
           font-size: 14px;
           margin: 5px;
+
         }
       }
     }

@@ -7,18 +7,34 @@ class StoryIndexItem extends React.Component {
   render () {
     let userControlClassName = "controlsHide";
     const story = this.props.story;
+    let title = '';
+    let subtitle = '';
     if (!!this.props.currentUser && parseInt(Object.keys(this.props.currentUser)[0]) === story.author_id) {
       userControlClassName = "controlsShow";
+    }
+
+    if (story.title) {
+      title = story.title.substring(0, 40);
+      if (story.title.length !== title.length) {
+        title += '...';
+      }
+    }
+
+    if (story.subtitle) {
+      subtitle = `${story.subtitle.substring(0, 140)}`;
+      if (story.subtitle.length !== subtitle.length) {
+        subtitle += '...';
+      }
     }
     return (
       <li className={`story-item-li ${this.props.feature}`}>
         <div className="story-item">
         <Link className="story-title" to={`/story/${story.id}`}>
-            {story.title}
+            {title}
         </Link>
         <br/>
         <Link className="story-preview" to  ={`/story/${story.id}`}>
-          <p className="story-show-body">{story.subtitle}</p>
+          <p className="story-show-body">{subtitle}</p>
         </Link>
         <div className="user-follow-container">
           <Link className="author" to={`/user/${story.author_id}`}>

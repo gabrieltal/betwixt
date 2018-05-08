@@ -25,7 +25,7 @@ class CommentIndex extends React.Component {
         let comments = Object.values(this.props.storyComments).map(comment =>
           <CommentIndexItem key={comment.id} comment={comment}/>
         );
-
+        comments = comments.reverse();
       return (
         <div className="comments-container">
           <CommentFormContainer storyId={this.props.storyId} />

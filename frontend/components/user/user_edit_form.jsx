@@ -61,15 +61,11 @@ class UserEdit extends React.Component {
     if (!!this.props.user && Object.keys(this.props.user)[0] === this.props.userId) {
       return (
         <form className="user-edit-form">
-          <label className="username">Username:
-            <input type="text" onChange={this.update('username')}
+            <input className="username" type="text" onChange={this.update('username')}
               placeholder="username" value={this.state.username}/>
-          </label>
           <br/>
-          <label className="bio">Bio:
-            <input type="text" onChange={this.update('bio')}
+            <input className="bio" type="text" onChange={this.update('bio')}
               placeholder="Write a little about yourself..." value={this.state.bio}/>
-          </label>
           <br/>
           <label className="user-image">Profile Picture...
             <input className="image-input" type="file" onChange={this.fileAdd} />
@@ -85,7 +81,6 @@ class UserEdit extends React.Component {
     } else {
       this.props.history.push("/");
       return (<div></div>)
-
     }
   }
 }

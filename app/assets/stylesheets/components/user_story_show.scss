@@ -1,15 +1,16 @@
 .user-stories {
   display: block;
-  padding: 15px;
+
+  padding: 25px;
   margin: auto;
   margin-top: 20px;
-  width: 100%;
+  width: 80%;
   font-family: $main;
 
   .story-header-img {
     top: 0;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     padding: 5px;
     padding-left: 10px;
     width: 1;
@@ -22,18 +23,19 @@
     float: left;
     padding: 5px;
     font-family: $main;
+    min-width: 320px;
   }
 
   .story-item-li {
     padding: 10px;
     border: 1px solid lightgray;
-    margin: 15px;
+    margin-bottom: 15px;
     width: 100%;
-    min-width: 380px;
+    min-width: 600px;
     font-family: $main;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
 
     .edit-link {
         margin-top: 10px;
@@ -43,7 +45,7 @@
         font-size: 18px;
         text-decoration: none;
         font-family: $main;
-        
+
       }
 
       .edit-link:hover {
@@ -55,13 +57,16 @@
       text-decoration: none;
       color: black;
       font-family: $main;
+      font-weight: bold;
     }
 
     .story-preview {
       text-decoration: none;
       font-size: 14px;
-      color: darkgray;
+      color: $dark-gray;
       font-family: $main;
+      word-wrap: break-word;
+
     }
     .create-date {
       display: inline-block;
@@ -81,6 +86,10 @@
       color: black;
       font-size: 16px;
       font-family: $main;
+    }
+
+    .author:hover {
+      text-decoration: underline;
     }
   }
 }

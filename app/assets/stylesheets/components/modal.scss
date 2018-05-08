@@ -81,13 +81,18 @@ p {
     font-size: 16px;
     width: 30%;
     margin-bottom: 20px;
+    text-align: center;
     padding: 5px;
-    input {
-      margin: auto;
-      margin-bottom: 15px;
-      font-size: 16px;
-      width: 65%;
-    }
+    margin: auto;
+    margin-bottom: 15px;
+    font-size: 16px;
+    width: 35%;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 
   .submit-button {
