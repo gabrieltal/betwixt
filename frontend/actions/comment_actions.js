@@ -8,6 +8,10 @@ export const fetchComment = (id) => (dispatch) => (
   ApiComment.fetchComment(id).then((comment) => dispatch(receiveComment(comment)))
 );
 
+export const fetchUserComments = (userId) => (dispatch) => (
+  ApiComment.fetchUserComments(userId).then((comments) => dispatch(receiveComments(comments)))
+);
+
 export const fetchComments = (storyId) => (dispatch) => (
   ApiComment.fetchComments(storyId).then((comments) => dispatch(receiveComments(comments)))
 );

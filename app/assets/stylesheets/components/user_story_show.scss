@@ -1,12 +1,10 @@
 .user-stories {
   display: block;
-
   padding: 25px;
   margin: auto;
-  margin-top: 20px;
   width: 80%;
   font-family: $main;
-
+  min-width: 640px;
   .story-header-img {
     top: 0;
     height: 200px;
@@ -14,7 +12,6 @@
     padding: 5px;
     padding-left: 10px;
     width: 1;
-    float: right;
   }
   .story-item {
     display: flex;

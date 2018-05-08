@@ -2,6 +2,9 @@ export const selectAuthoredStories = (state, author) => {
   return author ? author.authoredStories.map(id => state.stories[id]) : [];
 };
 
+export const selectAuthoredComments = (state, author) => {
+  return author ? author.comments.map(id => state.comments[id]) : [];
+}
 const sortStories = (stories, userFollowing) => {
   if (!!stories[1]) {
     let storiesIndex = [];

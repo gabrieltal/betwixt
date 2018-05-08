@@ -1,6 +1,6 @@
 json.set! comment.id do
   json.extract! comment, :id, :body
-  json.story_id comment.story.id
+  json.story_id comment.story_id
   json.created_at (comment.created_at.strftime("%b %d, %Y"))
   json.author do
     json.id comment.user.id

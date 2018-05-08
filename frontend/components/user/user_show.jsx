@@ -1,13 +1,13 @@
 import React from 'react';
-import StoryIndexItem from '../story/story_index_item';
 import UserStoryShowContainer from './user_story_show_container';
 import { Link } from 'react-router-dom';
 import FollowContainer from '../follow/follow_container';
-
+import Tabs from '../tabs/tabs.jsx';
 class UserShow extends React.Component{
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
-    this.props.fetchStories();
+    this.props.fetchUserStories(this.props.match.params.userId);
+    this.props.fetchUserComments(this.props.match.params.userId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,7 +38,7 @@ class UserShow extends React.Component{
               </div>
             </div>
           </div>
-          <UserStoryShowContainer user={user}/>
+          <Tabs user={user}/>
         </div>
       );
     } else {

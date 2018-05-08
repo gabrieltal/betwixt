@@ -10,6 +10,16 @@ class Api::StoriesController < ApplicationController
     end
   end
 
+  def user_stories
+    @user = User.find(params[:author_id])
+    if @user
+      @stories = @user.stories
+      render 'api/stories/index'
+    else
+      render json: ['User has no stories']
+    end
+  end
+
   def show
     @story = Story.find(params[:id])
     if @story

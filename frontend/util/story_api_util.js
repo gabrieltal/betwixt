@@ -5,6 +5,13 @@ export const fetchStory = (id) => (
   })
 );
 
+export const fetchUserStories = (authorId) => (
+  $.ajax({
+    url: `api/stories/from/${authorId}`,
+    method: 'GET',
+  })
+);
+
 export const fetchStories = () => (
   $.ajax({
     url: 'api/stories',

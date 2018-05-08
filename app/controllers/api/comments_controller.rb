@@ -11,6 +11,16 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def user_comments
+    @user = User.find(params[:user_id]) unless params[:user_id].nil?
+    if @user
+      @comments = @user.comments
+      render 'api/comments/index'
+    else
+      render json: ['User has no comments']
+    end
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -32,6 +42,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :author_id, :story_id)
+    params.require(:comment).permit(:body, :author_id, :story_id, :user_id)
   end
 end

@@ -5,6 +5,13 @@ export const fetchComments = (storyId) => (
   })
 );
 
+export const fetchUserComments = (userId) => (
+  $.ajax({
+    url: `api/comments/from/${userId}`,
+    method: 'GET',
+  })
+);
+
 export const createComment = (comment) => (
   $.ajax({
       url: `api/comments`,

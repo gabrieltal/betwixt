@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   padding: 25px;
-  width: 65%;
+  width: 80%;
   margin: auto;
   align-items: center;
   margin-top: 65px;
+  min-width: 680px;
   align-content: center;
   flex-direction: column;
   font-family: $main;

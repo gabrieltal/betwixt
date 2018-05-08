@@ -1,0 +1,43 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  margin: auto;
+  width: 80%;
+  font-family: $main;
+  min-width: 680px;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.tabs nav {
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  button {
+    margin: 15px;
+    padding: 5px;
+    font-size: 16px;
+    background: none;
+    font-family: $main;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .tabSelected {
+    font-weight: bold;
+    color: $burgundy;
+  }
+
+  button:hover {
+    text-decoration: underline;
+  }
+  border-bottom: 2px solid $dark-gray;
+}
