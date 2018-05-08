@@ -1,0 +1,30 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+class StorySpecifiedCommentIndexItem extends React.Component{
+  render () {
+    const author = this.props.comment.author;
+    const comment = this.props.comment;
+
+    return (
+      <li className="comment-item">
+        <div className="author-info">
+          <Link to={`/user/${author.id}`}>
+            <img src={author.image}/>
+          </Link>
+          <div className="text-info">
+            <Link to={`/user/${author.id}`}>
+              <h3>{author.name}</h3>
+            </Link>
+            <p>{comment.created_at}</p>
+          </div>
+        </div>
+        <div className="comment-body" dangerouslySetInnerHTML={{__html: comment.body}}/>
+        <Link to={`/story/${comment.story_id}`}>
+          <p>In response to...</p>
+        </Link>
+      </li>
+    );
+  }
+}
+
+export default StorySpecifiedCommentIndexItem;

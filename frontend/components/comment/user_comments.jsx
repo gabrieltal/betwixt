@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentIndexItem from './comment_index_item';
+import StorySpecifiedCommentIndexItem from './story_specified_comment_index_item';
 
 class UserComments extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class UserComments extends React.Component {
 
       comments = comments.map((comment) => {
         if (typeof comment !== 'undefined') {
-          return <CommentIndexItem key={comment.id}
+          return <StorySpecifiedCommentIndexItem key={comment.id}
             comment={comment} />
         }
       });
