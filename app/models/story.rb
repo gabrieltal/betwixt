@@ -13,6 +13,7 @@ class Story < ApplicationRecord
     foreign_key: :author_id
 
   has_many :comments,
+    dependent: :destroy,
     class_name: :Comment,
     foreign_key: :story_id
 
