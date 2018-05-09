@@ -119,9 +119,11 @@
     .story-title {
       text-align: center;
       font-size: 40px;
+      max-width: 80%;
       font-family: $main;
       margin-bottom: 15px;
       font-weight: bold;
+      word-wrap: break-word;
     }
 
     .story-subtitle {
@@ -130,6 +132,8 @@
       font-family: $main;
       font-size: 24px;
       color: gray;
+      max-width: 80%;
+      word-wrap: break-word;
     }
 
     .story-show-body {

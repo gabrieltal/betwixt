@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UserShow from './user_show';
 import { fetchUser } from '../../actions/user_actions';
-import { fetchUserStories } from '../../actions/story_actions';
+import { fetchUserStories, fetchLikedStories } from '../../actions/story_actions';
 import { fetchUserComments } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: (id) => dispatch(fetchUser(id)),
   fetchUserStories: (authorId) => dispatch(fetchUserStories(authorId)),
-  fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
+  fetchUserComments: (userId) => dispatch(fetchUserComments(userId)),
+  fetchLikedStories: (userId) => dispatch(fetchLikedStories(userId))
 });
 
 export default connect(

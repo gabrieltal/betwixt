@@ -8,6 +8,10 @@ export const fetchStory = (id) => (dispatch) => (
   ApiStory.fetchStory(id).then((story) => dispatch(receiveStory(story)))
 );
 
+export const fetchLikedStories = (userId) => (dispatch) => (
+  ApiStory.fetchLikedStories(userId).then((stories) => dispatch(receiveStories(stories)))
+)
+
 export const fetchUserStories = (authorId) => (dispatch) => (
   ApiStory.fetchUserStories(authorId).then(stories => dispatch(receiveStories(stories)))
 );

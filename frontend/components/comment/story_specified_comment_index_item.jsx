@@ -20,7 +20,7 @@ class StorySpecifiedCommentIndexItem extends React.Component{
         </div>
         <div className="comment-body" dangerouslySetInnerHTML={{__html: comment.body}}/>
         <Link to={`/story/${comment.story_id}`}>
-          <p>In response to...</p>
+          <p className="link-to-story">In response to...</p>
         </Link>
       </li>
     );

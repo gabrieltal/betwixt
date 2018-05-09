@@ -47,6 +47,19 @@
       justify-content: space-around;
       border: 1px solid $pale-pink;
       box-shadow: 2px 2px $pale-pink;
+      a {
+        text-decoration: none;
+
+      }
+      .link-to-story {
+        font-family: $main;
+        cursor: pointer;
+        color: $burgundy;
+      }
+
+      .link-to-story:hover {
+        text-decoration: underline;
+      }
       .author-info {
         display: flex;
         img {
