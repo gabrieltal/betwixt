@@ -48,7 +48,9 @@ class Tabs extends React.Component {
           <button className={commentsClass} onClick={this.selectTab("Comments")}>
             Comments
           </button>
-        
+          <button className={likesClass} onClick={this.selectTab("Likes")}>
+            Likes
+          </button>
         </nav>
         {component}
       </div>

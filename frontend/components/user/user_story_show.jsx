@@ -7,6 +7,10 @@ class UserStoryShow extends React.Component{
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchUserStories(this.props.user.id)
+  }
+
   render () {
     if (this.props.authoredStories.length > 0 && this.props.authoredStories[0] !== undefined) {
       let stories = this.props.authoredStories;

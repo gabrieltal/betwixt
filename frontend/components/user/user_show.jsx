@@ -8,7 +8,6 @@ class UserShow extends React.Component{
     this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchUserStories(this.props.match.params.userId);
     this.props.fetchUserComments(this.props.match.params.userId);
-    this.props.fetchLikedStories(this.props.match.params.userId);
   }
 
   componentWillReceiveProps(nextProps) {

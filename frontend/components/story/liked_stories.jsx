@@ -2,23 +2,44 @@ import React from 'react';
 import StoryIndexItem from './story_index_item';
 
 class LikedStories extends React.Component {
-  render () {
-    if (this.props.likedStories.length > 0 && this.props.likedStories[0] !== undefined) {
-      let stories = this.props.likedStories;
+  constructor(props) {
+    super(props);
+    this.state = {
+      stories: this.props.likedStories
+    }
+  }
 
+  componentDidMount() {
+    this.props.fetchLikedStories(this.props.user.id)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let stories = nextProps.likedStories;
+    if (this.props.likedStories[0] !== stories[0]) {
+      this.state = {
+        stories
+      };
+    }
+  }
+
+  render () {
+    if (this.state.stories.length > 0 && this.state.stories[0] !== undefined) {
+      let stories = this.state.stories;
+      console.log(stories)
       stories = stories.map((story) => {
         if (typeof story !== 'undefined') {
           return <StoryIndexItem key={story.id} story={story}/>
         }
       });
 
+      console.log(stories)
+      debugger;
       return (
         <ul className="story-index">
           {stories}
         </ul>
       )
     } else {
-      console.log("hi")
       return (
         <div></div>
       )
