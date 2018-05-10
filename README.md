@@ -6,13 +6,12 @@ Betwixt is a web application that lets users read, like and publish stories, and
 
 ## Technologies Used
 
-  **Backend**
+####**Backend**
      * Backend Framework: Ruby on Rails
      * Database: PostgreSQL
-  **Frontend**
+####**Frontend**
      * React/Redux
      * [React-Quill](https://github.com/zenoamaro/react-quill) Component for Rich Text Editor
-
      * Styling: HTML5/CSS3
 
 ![Homepage](https://github.com/gabrieltal/betwixt/blob/master/docs/wireframes/betwixt-main.gif)
@@ -42,6 +41,18 @@ Betwixt is a web application that lets users read, like and publish stories, and
    * Users are able to see content other users have commented on by going to that user show page and are able to click to see what story it was they commented on
    * Users are able to view stories other users have written on the specific user show page
 
+  ### Code Highlights
+
+   ## Utilizing custom routes on the backend
+    In order to avoid making additional calls to the backend in order to do simple tasks such as unliking content or unfollowing someone; which usually using the rails boilerplate routes you would need to hold the id for the Like or Follow. I wanted to keep a clean state and not hold an id I wouldn't really need in most cases. My stories only need to hold the user ids for users who have liked it. My users only need the story id for the stories they like. To avoid carrying the Like id I created a custom route to send the story id and the user id and in the backend I found the like based off those two ids and accomplished the unliking in the backend.
+
+    `  @like = Like.find_by_user_id_and_story_id(params[:user_id], params[:story_id])
+      if @like
+        @like.destroy`
+
+  `delete 'api/likes/:user_id/:story_id', :to => 'api/likes#destroy'`
+
+  I did the same for unfollowing other users. I utilize custom routes and custom controller methods for a few other tasks in order to grab the necessary content and filter on the backend rather than client side. 
  ### Additional Resources
    * [Wireframe Proposal](https://github.com/gabrieltal/betwixt/wiki/Component-Hierarchy-with-Wireframes)
    * [Database Schema](https://github.com/gabrieltal/betwixt/wiki/Database-Schema)
