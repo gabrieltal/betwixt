@@ -10,7 +10,7 @@ Betwixt is a web application that lets users read, like and publish stories, and
      * Database: PostgreSQL
   #### Frontend
      * React/Redux
-     * [React-Quill](https://github.com/zenoamaro/react-quill) Component for Rich Text Editor
+     * React-Quill Component for Rich Text Editor
      * Styling: HTML5/CSS3
 
 ![Homepage](https://github.com/gabrieltal/betwixt/blob/master/docs/wireframes/betwixt-main.gif)
@@ -22,7 +22,7 @@ Betwixt is a web application that lets users read, like and publish stories, and
    * User number of followers and following are also featured on their website
 
   ### Story creation
-   * Users can create stories using React-Quill This allows the user to set headers, images as well as bullet points and list elements in the stories they create.
+   * Users can create stories using [React-Quill](https://github.com/zenoamaro/react-quill) This allows the user to set headers, images as well as bullet points and list elements in the stories they create.
    * Users can edit their stories and the edit date will also be reflected on the site allowing users to know when the story was edited
    * Users can also upload their own header images as well as edit their own custom profile pictures. The photos are retrieved using AWS and uses [Paperclip](https://github.com/thoughtbot/paperclip) as a file attachment for the Rails backend.
 
