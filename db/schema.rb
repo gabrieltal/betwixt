@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413014415) do
+ActiveRecord::Schema.define(version: 20180513192432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,22 @@ ActiveRecord::Schema.define(version: 20180413014415) do
     t.index ["author_id"], name: "index_stories_on_author_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "story_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_taggings_on_story_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
@@ -74,4 +90,6 @@ ActiveRecord::Schema.define(version: 20180413014415) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "taggings", "stories"
+  add_foreign_key "taggings", "tags"
 end
