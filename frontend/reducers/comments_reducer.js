@@ -5,7 +5,7 @@ const commentsReducer = (oldState={}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_COMMENT:
-      return merge({}, action.comment);
+      return merge({}, oldState, action.comment);
     case RECEIVE_COMMENTS:
       return merge({}, action.comments);
     case REMOVE_COMMENT:

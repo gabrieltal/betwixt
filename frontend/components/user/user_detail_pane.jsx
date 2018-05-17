@@ -16,10 +16,12 @@ class UserDetailPane extends React.Component {
             <img className="user-profile-pic" src={author.image_url}/>
           </Link>
           <div className="user-details">
-            <Link to={`/user/${author.id}`}><h3>{author.username}</h3></Link>
+            <div className="user-name-follow">
+              <Link to={`/user/${author.id}`}><h3>{author.username}</h3></Link>
+              <FollowContainer user={author.id}/>
+            </div>
             <p className="bio">{author.bio}</p>
             <p className="member-creation">Betwixt member since {author.created_at}</p>
-            <FollowContainer user={author.id}/>
           </div>
         </aside>
       );

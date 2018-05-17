@@ -14,20 +14,14 @@ class CommentIndex extends React.Component {
     this.props.fetchComments(this.props.storyId);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (Object.keys(this.props.storyComments).slice(-1)[0]
-      !== Object.keys(nextProps.storyComments).slice(-1)[0]) {
-      this.props.fetchComments(this.props.storyId);
-    }
-  }
   render () {
     if (!!this.props.storyComments) {
         let comments = Object.values(this.props.storyComments).map(comment =>
           <CommentIndexItem key={comment.id} comment={comment}/>
         );
-        comments = comments.reverse();
       return (
         <div className="comments-container">
+          <h3>Responses</h3>
           <CommentFormContainer storyId={this.props.storyId} />
           <ul className="comments-list">
             {comments}

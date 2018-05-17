@@ -41,6 +41,8 @@ class StoryShow extends React.Component{
   render () {
     if (!!this.props.story) {
       const story = this.props.story;
+      let tags = this.props.story.tags;
+      tags = tags.map((tag) => <li>{tag}</li>);
       return (
         <div className="story-show-container">
         <UserDetailPaneContainer authorId={this.props.story.author_id}/>
@@ -49,6 +51,9 @@ class StoryShow extends React.Component{
             <h3 className="story-subtitle">{story.subtitle}</h3>
             <img className="story-header-img" src={story.image_url}/>
             <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body}}/>
+            <ul className="tag-list">
+            {tags}
+            </ul>
             <p className="story-date">Created on {story.created_at}</p>
             <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
           </section>

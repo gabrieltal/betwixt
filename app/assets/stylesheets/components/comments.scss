@@ -7,9 +7,25 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
+  margin-top: 5px;
+  h3 {
+    font-family: $main;
+    font-weight: bold;
+
+    align-self: flex-start;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
   form {
     width: 100%;
     text-align: center;
+    font-family: $main;
+    p {
+      font-size: 15px;
+      font-weight: 400;
+    }
     .ql-toolbar.ql-snow {
       height: 0;
       border-top: none;
@@ -45,7 +61,7 @@
       margin: 10px;
       flex-direction: column;
       justify-content: space-around;
-      border: 1px solid $pale-pink;
+      border: 2px solid $pale-pink;
       box-shadow: 2px 2px $pale-pink;
       a {
         text-decoration: none;

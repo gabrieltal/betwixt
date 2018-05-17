@@ -3,11 +3,16 @@ class Api::CommentsController < ApplicationController
   skip_before_action :require_sign_in, only: [:show, :index]
   before_action :find_story, only: [:index]
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
-      render 'api/comments/show'
+    check_comment = comment_params[:body]
+    if check_comment.delete("<p><br></p>").strip.length == 0
+      render json: ['Comment cannot be empty'], status: 422
     else
-      render json: @comment.errors.full_messages, status: 422
+      @comment = Comment.new(comment_params)
+      if @comment.save
+        render 'api/comments/show'
+      else
+        render json: @comment.errors.full_messages, status: 422
+      end
     end
   end
 
