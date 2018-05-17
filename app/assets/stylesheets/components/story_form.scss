@@ -17,6 +17,57 @@
     font-weight: bold;
   }
 
+  #remove-tag {
+    padding-left: 5px;
+    padding-right: 0;
+    color: $dark-gray;
+    font-weight: bold;
+  }
+
+  #remove-tag:hover {
+    color: red;
+    cursor: pointer;
+  }
+
+  #tag-input {
+    border: none;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  #tag-message {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .tag-form-display {
+    display: flex;
+    font-family: $main;
+    justify-content: center;
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      background: lightgray;
+      margin: 5px;
+      border-radius: 5px;
+      font-weight: 400;
+      font-size: 15px;
+      p {
+        margin: 0;
+        padding: 5px;
+      }
+
+      span {
+        margin-bottom: 3px;
+        margin-left: 4px;
+      }
+    }
+  }
+
   input {
     outline: none;
   }
