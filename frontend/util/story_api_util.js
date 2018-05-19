@@ -5,6 +5,13 @@ export const fetchStory = (id) => (
   })
 );
 
+export const searchTaggedStories = (tag) => (
+  $.ajax({
+    url: `api/tags/${tag}`,
+    method: 'GET'
+  })
+)
+
 export const fetchLikedStories = (userId) => (
   $.ajax({
     url: `api/users/${userId}/likes`,

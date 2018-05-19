@@ -21,7 +21,7 @@ class UserShow extends React.Component{
       const user = this.props.user;
       const canEdit = parseInt(Object.keys(this.props.currentUser)[0]) === user.id ? "edit-link" : "cannot-edit";
       return (
-        <div className="user-show-container">
+        <main className="user-show-container">
           <div className="user-header-info">
             <img className="user-profile-pic" src={user.image_url}/>
             <div className="user-details">
@@ -39,7 +39,7 @@ class UserShow extends React.Component{
             </div>
           </div>
           <Tabs user={user}/>
-        </div>
+        </main>
       );
     } else {
       return (

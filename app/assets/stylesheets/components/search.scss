@@ -1,0 +1,28 @@
+.search-container {
+  margin-top: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $main;
+
+  #no-results {
+    margin-top: 15px;
+    font-family: $main;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .search-form-container {
+    font-family: $main;
+    width: 60%;
+    border-bottom: 1px solid lightgray;
+    input {
+      width: 100%;
+      border: none;
+      font-family: $main;
+      font-size: 18px;
+      font-weight: 400;
+      outline: none;
+    }
+  }
+}

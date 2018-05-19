@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   delete 'api/follows/:follower_id/:following_id', :to => 'api/follows#destroy'
   get 'api/comments/from/:user_id', :to => 'api/comments#user_comments', :defaults => {:format => :json}
   get 'api/stories/from/:author_id', :to => 'api/stories#user_stories', :defaults => {:format => :json}
-  get 'tags/:tag', :to => 'api/stories#index', as: 'tag', :defaults => {:format => :json}
+  get 'api/tags/:tag', :to => 'api/stories#index', as: 'tag', :defaults => {:format => :json}
   root "static_pages#root"
 
 end

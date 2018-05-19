@@ -40,7 +40,7 @@ class Tabs extends React.Component {
       component = <LikedStoriesContainer user={this.props.user}/>
     }
     return (
-      <div className="tabs">
+      <aside className="tabs">
         <nav className="tab-header">
           <button className={storiesClass} onClick={this.selectTab("Stories")}>
             Stories
@@ -53,7 +53,7 @@ class Tabs extends React.Component {
           </button>
         </nav>
         {component}
-      </div>
+      </aside>
     )
   }
 }

@@ -35,6 +35,10 @@ class Story < ApplicationRecord
   end
 
   def self.tagged_with(tag)
-    Tag.find_by_name!(tag).stories
+    begin
+      Tag.find_by_name!(tag).stories
+    rescue
+      "not found"
+    end
   end
 end

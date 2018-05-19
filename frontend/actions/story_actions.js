@@ -8,6 +8,11 @@ export const fetchStory = (id) => (dispatch) => (
   ApiStory.fetchStory(id).then((story) => dispatch(receiveStory(story)))
 );
 
+export const searchTaggedStories = (tag) => (dispatch) => (
+  ApiStory.searchTaggedStories(tag).then((stories) => dispatch(receiveStories(stories)),
+  (errors) => dispatch(receiveErrors(errors.responseJSON)))
+);
+
 export const fetchLikedStories = (userId) => (dispatch) => (
   ApiStory.fetchLikedStories(userId).then((stories) => dispatch(receiveStories(stories)))
 )

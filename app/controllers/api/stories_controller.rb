@@ -48,10 +48,15 @@ class Api::StoriesController < ApplicationController
   def index
     if params[:tag]
       @stories = Story.tagged_with(params[:tag])
+      if (@stories == 'not found')
+        render json: ["Tag not found"], status: 404
+      else
+        render 'api/stories/index'
+      end
     else
       @stories = Story.all
+      render 'api/stories/index'
     end
-    render 'api/stories/index'
   end
 
   private
