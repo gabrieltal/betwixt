@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Nav from './nav';
 import { logout, login } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
-
-const mapStateToProps = (state) => {
+import { withRouter } from 'react-router-dom';
+const mapStateToProps = (state, ownProps) => {
   return { currentUser: state.session.currentUser };
 };
 

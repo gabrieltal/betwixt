@@ -1,6 +1,7 @@
 class Api::StoriesController < ApplicationController
   before_action :require_sign_in
   skip_before_action :require_sign_in, only: [:show, :index]
+
   def create
     @story = Story.new(story_params)
     if @story.save
@@ -45,7 +46,11 @@ class Api::StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all
+    if params[:tag]
+      @stories = Story.tagged_with(params[:tag])
+    else
+      @stories = Story.all
+    end
     render 'api/stories/index'
   end
 

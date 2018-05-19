@@ -3,9 +3,18 @@
   align-items: center;
 }
 
+.separator {
+  border-bottom: 2px solid lightgray;
+  width: 80%;
+  margin: 10px;
+}
+
 .tag-list {
   display: flex;
   font-family: $main;
+  align-self: flex-start;
+  margin-left: 15vw;
+  margin-bottom: 15px;
   justify-content: space-between;
   li {
     padding: 5px 10px;
@@ -79,6 +88,18 @@
   align-items: center;
   align-content: center;
   font-family: $main;
+
+  .story-accessories {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+    width: 100%;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
   .author-display {
     display: flex;
     align-items: center;

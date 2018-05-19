@@ -21,6 +21,12 @@
     padding: 5px;
     font-family: $main;
     min-width: 320px;
+
+    .user-follow-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
   }
 
   .story-item-li {
@@ -42,13 +48,13 @@
         font-size: 18px;
         text-decoration: none;
         font-family: $main;
-
       }
 
       .edit-link:hover {
         text-decoration: underline;
         cursor: pointer;
       }
+
     .story-title {
       font-size: 24px;
       text-decoration: none;
@@ -63,8 +69,8 @@
       color: $dark-gray;
       font-family: $main;
       word-wrap: break-word;
-
     }
+
     .create-date {
       display: inline-block;
       width: 20%;

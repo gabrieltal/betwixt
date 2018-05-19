@@ -33,4 +33,8 @@ class Story < ApplicationRecord
   def all_tags
     self.tags.map(&:name).join(", ")
   end
+
+  def self.tagged_with(tag)
+    Tag.find_by_name!(tag).stories
+  end
 end

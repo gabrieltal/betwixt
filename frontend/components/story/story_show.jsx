@@ -32,8 +32,8 @@ class StoryShow extends React.Component{
     }
       return (
         <aside className="like-container">
-        <p>{this.props.story.likes.length}</p>
         <span className={liked} onClick={ableToLike}></span>
+        <p>{this.props.story.likes.length}</p>
         </aside>
       );
     }
@@ -51,13 +51,16 @@ class StoryShow extends React.Component{
             <h3 className="story-subtitle">{story.subtitle}</h3>
             <img className="story-header-img" src={story.image_url}/>
             <div className="story-show-body" dangerouslySetInnerHTML={{__html: story.body}}/>
+            <div className="separator"></div>
             <ul className="tag-list">
             {tags}
             </ul>
-            <p className="story-date">Created on {story.created_at}</p>
-            <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
+            <div className="story-accessories">
+              {this.likeButton()}
+              <p className="story-date">Created on {story.created_at}</p>
+              <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
+            </div>
           </section>
-            {this.likeButton()}
           <CommentIndexContainer story={story}/>
         </div>
       );

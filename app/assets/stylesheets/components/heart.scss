@@ -1,17 +1,28 @@
 
 .like-container {
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  p {
+    align-self:center;
+    padding-left: 10px;
+    font-family: $main;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 21px;
+  }
 }
 
 .heart {
   background-color: red;
   display: inline-block;
-  height: 30px;
-  margin: 0 10px;
+  height: 12px;
+  margin: 0 4px;
   position: relative;
   top: 0;
   transform: rotate(-45deg);
-  width: 30px;
+  width: 12px;
 }
 
 .heart:before,
@@ -19,18 +30,18 @@
   content: "";
   background-color: red;
   border-radius: 50%;
-  height: 30px;
+  height: 12px;
   position: absolute;
-  width: 30px;
+  width: 12px;
 }
 
 .heart:before {
-  top: -15px;
+  top: -6px;
   left: 0;
 }
 
 .heart:after {
-  left: 15px;
+  left: 6px;
   top: 0;
 }
 
@@ -45,12 +56,12 @@
 .sad {
   background-color: gray;
   display: inline-block;
-  height: 30px;
-  margin: 0 10px;
+  height: 12px;
+  margin: 0 4px;
   position: relative;
   top: 0;
   transform: rotate(-45deg);
-  width: 30px;
+  width: 12px;
 }
 
 .sad:before,
@@ -58,17 +69,17 @@
   content: "";
   background-color: gray;
   border-radius: 50%;
-  height: 30px;
+  height: 12px;
   position: absolute;
-  width: 30px;
+  width: 12px;
 }
 
 .sad:before {
-  top: -15px;
+  top: -6px;
   left: 0;
 }
 
 .sad:after {
-  left: 15px;
+  left: 6px;
   top: 0;
 }
