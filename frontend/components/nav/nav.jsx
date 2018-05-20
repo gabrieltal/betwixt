@@ -32,7 +32,7 @@ class Nav extends React.Component {
   removeSearchBar(e) {
     let searchBar = document.querySelector(".search-form-container");
     let searchIcon = document.querySelector(".anchor");
-    searchIcon.style.left = '115px';
+    searchIcon.style.left = '90px';
     searchBar.style.visibility = "hidden";
     searchBar.style.opacity = 0;
     this.setState({
