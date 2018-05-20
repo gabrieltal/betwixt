@@ -12,6 +12,15 @@ class Nav extends React.Component {
     }
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.displaySearchBar = this.displaySearchBar.bind(this);
+    this.removeSearchBar = this.removeSearchBar.bind(this);
+  }
+
+  componentDidMount() {
+    let searchIcon = document.getElementById("search-glass");
+    let searchBar = document.querySelector(".search-form-container");
+    searchBar.addEventListener("focusout", this.removeSearchBar);
+    searchIcon.addEventListener("click", this.displaySearchBar);
   }
 
   update(e) {
@@ -20,15 +29,37 @@ class Nav extends React.Component {
     })
   }
 
+  removeSearchBar(e) {
+    let searchBar = document.querySelector(".search-form-container");
+    let searchIcon = document.getElementById("search-glass");
+    searchIcon.style.right = '400px';
+    searchBar.style.visibility = "hidden";
+    searchBar.style.opacity = 0;
+    this.setState({
+      search: ''
+    })
+  }
+
+  displaySearchBar(e) {
+    let searchBar = document.querySelector(".search-form-container");
+    let searchIcon = document.getElementById("search-glass");
+    searchIcon.style.right = '550px';
+    searchBar.style.visibility = "visible";
+    searchBar.style.opacity = 1;
+  }
+
   handleSubmit(e) {
     this.props.history.push(`/search/${this.state.search}`)
   }
 
   searchForm() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
-      </form>
+      <aside className="search-family">
+        <span id="search-glass" class="fas fa-search"></span>
+        <form className="search-form-container" onSubmit={this.handleSubmit}>
+          <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
+        </form>
+      </aside>
     );
   }
 
@@ -39,7 +70,6 @@ class Nav extends React.Component {
         {this.searchForm()}
         <Link to={'/'}><button className='signout-button' onClick={this.props.logout}>Sign Out</button></Link>
         <Link to={'/story/new'} className='new-story-button'>New Story</Link>
-        <div className="create-text"><div className="arrow-up"></div>Create New Story</div>
         <Link to={`/user/${user.id}`}><img src={user.image_url}/></Link>
       </div>
     );

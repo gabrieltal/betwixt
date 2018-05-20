@@ -55,7 +55,30 @@ header {
         margin-top: 10px;
       }
     }
+  }
 
+  .search-family {
+    display: flex;
+    span {
+      position: absolute;
+      right: 400px;
+      cursor: pointer;
+      transition: all .5s ease;
+    }
+  }
+
+  .search-form-container {
+    margin-right: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s linear;
+    input {
+      border: none;
+      outline: none;
+      font-family: $main;
+      font-size: 14px;
+      font-weight: 400;
+    }
   }
 
   .header-Link {
