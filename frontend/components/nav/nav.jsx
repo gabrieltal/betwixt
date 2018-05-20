@@ -16,13 +16,6 @@ class Nav extends React.Component {
     this.removeSearchBar = this.removeSearchBar.bind(this);
   }
 
-  componentDidMount() {
-    let searchIcon = document.getElementById("search-glass");
-    let searchBar = document.querySelector(".search-form-container");
-    searchBar.addEventListener("focusout", this.removeSearchBar);
-    searchIcon.addEventListener("click", this.displaySearchBar);
-  }
-
   update(e) {
     return this.setState({
       search: e.target.value
@@ -56,9 +49,9 @@ class Nav extends React.Component {
     return (
       <aside className="search-family">
         <span className="anchor">
-          <span id="search-glass" class="fas fa-search"></span>
+          <span id="search-glass" onClick={this.displaySearchBar} class="fas fa-search"></span>
         </span>
-        <form className="search-form-container" onSubmit={this.handleSubmit}>
+        <form className="search-form-container" focusout={this.removeSearchBar} onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
         </form>
       </aside>

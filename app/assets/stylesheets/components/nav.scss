@@ -66,7 +66,6 @@ header {
         display: none;
       }
     }
-
   }
 
   .search-family {
@@ -110,6 +109,10 @@ header {
 
   .login-signup {
     float: right;
+    display: flex;
+    max-height: 50px;
+    min-height: 50px;
+    align-items: center;
     margin-top: 20px;
     font-family: $title;
     button {
@@ -132,9 +135,7 @@ header {
       cursor: pointer;
       background: $burgundy;
       font-family: $title;
-
     }
-
   }
 
   .greet-signout {
@@ -146,7 +147,6 @@ header {
     font-size: 16px;
     align-items: center;
     font-family: $title;
-
     margin-top: 15px;
 
     .new-story-button {
@@ -156,7 +156,6 @@ header {
       margin: 0 10px 0 2px;
       text-decoration: none;
       font-family: $title;
-
     }
 
     .create-text {
