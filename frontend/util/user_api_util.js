@@ -15,3 +15,10 @@ export const updateUser = (formData) => (
     data: formData
   })
 );
+
+export const searchTaggedUsers = (tag) => (
+  $.ajax({
+    url: `api/search/users/${tag}`,
+    method: 'GET'
+  })
+)

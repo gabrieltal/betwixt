@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:create, :show, :update] do
+    resources :users, only: [:create, :show, :update, :index] do
       resources :likes, only: [:index]
     end
     resource :session, only: [:create, :destroy]
@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   delete 'api/follows/:follower_id/:following_id', :to => 'api/follows#destroy'
   get 'api/comments/from/:user_id', :to => 'api/comments#user_comments', :defaults => {:format => :json}
   get 'api/stories/from/:author_id', :to => 'api/stories#user_stories', :defaults => {:format => :json}
-  get 'api/tags/:tag', :to => 'api/stories#index', as: 'tag', :defaults => {:format => :json}
+  get 'api/search/stories/:tag', :to => 'api/stories#index', as: 'tag', :defaults => {:format => :json}
+  get 'api/search/users/:tag', :to => 'api/users#index', :defaults => {:format => :json}
   root "static_pages#root"
 
 end

@@ -1,5 +1,6 @@
 import {
-  RECEIVE_USER, RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_FOLLOW, REMOVE_FOLLOW
+  RECEIVE_USER, RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_FOLLOW,
+  REMOVE_FOLLOW, RECEIVE_USERS
 } from '../actions/user_actions';
 import merge from 'lodash/merge';
 const usersReducer = (oldState={}, action) => {
@@ -9,6 +10,8 @@ const usersReducer = (oldState={}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
       return merge({}, oldState, action.user);
+    case RECEIVE_USERS:
+      return merge({}, action.users);
     case RECEIVE_LIKE:
       newState = merge({}, oldState);
       console.log(newState);

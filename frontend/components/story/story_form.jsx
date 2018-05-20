@@ -109,9 +109,11 @@ class StoryForm extends React.Component {
     if (tag.trim().length === 0) {return};
     let addedTag = this.state.tags;
     if (addedTag.length === 0) {
-      addedTag = [tag];
+      addedTag = [tag.trim()];
     } else {
-      addedTag.push(tag);
+      if (!this.state.tags.includes(tag.trim())) {
+        addedTag.push(tag.trim());
+      }
     }
 
     this.setState({

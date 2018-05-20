@@ -1,39 +1,29 @@
 import React from 'react';
-import StoryIndexItem from '../story/story_index_item';
+import StoriesSearchContainer from './stories_search_container';
+import UsersSearchContainer from './users_search_container';
+import debounce from 'lodash/debounce';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       search: this.props.searchParams,
-      errors: []
+      selected: 'Stories',
+      searchParams: this.props.searchParams
     }
-
+    this.selectTab = this.selectTab.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.props.searchTaggedStories(this.props.searchParams);
+  selectTab(pane) {
+    return e => this.setState({
+      selected: pane
+    })
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors.length === 1) {
-      this.setState({
-        errors: nextProps.errors
-      })
-    }
-    if (this.props.searchParams !== nextProps.searchParams) {
-      this.props.clearErrors();
-      this.props.searchTaggedStories(nextProps.searchParams);
-      this.setState({
-        errors: []
-      })
-    }
   }
 
   update(e) {
@@ -43,40 +33,47 @@ class Search extends React.Component {
   }
 
   handleSubmit(e) {
+    let search = this.state.search;
+    this.setState({
+      searchParams: search
+    });
     this.props.history.push(`/search/${this.state.search}`)
   }
 
   render () {
-    if (Object.keys(this.props.stories).length === 0 || this.state.errors.length === 1) {
-      return (
-        <main className="search-container">
-          <form onSubmit={this.handleSubmit} className="search-form-container">
-            <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
-          </form>
-          <h2 id="no-results">
-            No results found
-          </h2>
-        </main>
-      )
+    let component;
+    let storiesClass = 'tab';
+    let usersClass = 'tab';
+    if (this.state.selected === 'Stories') {
+      storiesClass += 'Selected';
+      usersClass -= 'Selected';
+      component = <StoriesSearchContainer searchParams={this.state.searchParams}/>
     } else {
-      let stories = Object.values(this.props.stories).map((story) => {
-        return (<li><StoryIndexItem key={story.id}
-          story={story}
-          feature="" />
-        </li>);
-      })
-      return (
-        <main className="search-container">
-          <form onSubmit={this.handleSubmit} className="search-form-container">
-            <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
-          </form>
-          <ul className="user-stories">
-            {stories}
-          </ul>
-        </main>
-      )
+      usersClass += 'Selected';
+      storiesClass -= 'Selected';
+      component = <UsersSearchContainer searchParams={this.state.searchParams}/>
     }
+
+    return (
+      <main className="search-container">
+        <form onSubmit={this.handleSubmit} className="search-form-container">
+          <input type="text" onChange={this.update}
+            placeholder="Search Betwixt" value={this.state.search}
+          />
+        </form>
+        <nav className="tab-header">
+          <button className={storiesClass} onClick={this.selectTab("Stories")}>
+            Stories
+          </button>
+          <button className={usersClass} onClick={this.selectTab("Users")}>
+            Users
+          </button>
+        </nav>
+        {component}
+      </main>
+    )
   }
+
 }
 
 export default Search;

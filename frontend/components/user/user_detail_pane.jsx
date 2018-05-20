@@ -4,7 +4,9 @@ import FollowContainer from '../follow/follow_container';
 
 class UserDetailPane extends React.Component {
   componentDidMount() {
-    this.props.fetchUser(this.props.authorId);
+    if (Object.keys(this.props.author).length === 0) {
+      this.props.fetchUser(this.props.authorId);
+    }
   }
 
   render () {

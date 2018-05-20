@@ -18,6 +18,19 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    if params[:tag]
+      @users = User.containing(params[:tag])
+      if (@users.length == 0)
+        render json: ["No users found"], status: 404
+      else
+        render 'api/users/index'
+      end
+    else
+      render json: ['No results found'], status: 404
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.id === 1

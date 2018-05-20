@@ -7,7 +7,7 @@ export const fetchStory = (id) => (
 
 export const searchTaggedStories = (tag) => (
   $.ajax({
-    url: `api/tags/${tag}`,
+    url: `api/search/stories/${tag}`,
     method: 'GET'
   })
 )

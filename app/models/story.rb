@@ -43,6 +43,6 @@ class Story < ApplicationRecord
   end
 
   def self.containing(tag)
-    Story.where(["title LIKE ?", "%#{tag}%"])
+    Story.where(["title ILIKE ?", "%#{tag}%"])
   end
 end

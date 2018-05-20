@@ -52,6 +52,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def self.containing(tag)
+    User.where(["username ILIKE ?", "%#{tag}%"])
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
