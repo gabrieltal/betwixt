@@ -38,7 +38,11 @@ class Story < ApplicationRecord
     begin
       Tag.find_by_name!(tag).stories
     rescue
-      "not found"
+      []
     end
+  end
+
+  def self.containing(tag)
+    Story.where(["title LIKE ?", "%#{tag}%"])
   end
 end

@@ -31,8 +31,8 @@ class Nav extends React.Component {
 
   removeSearchBar(e) {
     let searchBar = document.querySelector(".search-form-container");
-    let searchIcon = document.getElementById("search-glass");
-    searchIcon.style.right = '400px';
+    let searchIcon = document.querySelector(".anchor");
+    searchIcon.style.left = '115px';
     searchBar.style.visibility = "hidden";
     searchBar.style.opacity = 0;
     this.setState({
@@ -42,8 +42,8 @@ class Nav extends React.Component {
 
   displaySearchBar(e) {
     let searchBar = document.querySelector(".search-form-container");
-    let searchIcon = document.getElementById("search-glass");
-    searchIcon.style.right = '550px';
+    let searchIcon = document.querySelector(".anchor");
+    searchIcon.style.left = '-25px';
     searchBar.style.visibility = "visible";
     searchBar.style.opacity = 1;
   }
@@ -55,7 +55,9 @@ class Nav extends React.Component {
   searchForm() {
     return (
       <aside className="search-family">
-        <span id="search-glass" class="fas fa-search"></span>
+        <span className="anchor">
+          <span id="search-glass" class="fas fa-search"></span>
+        </span>
         <form className="search-form-container" onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
         </form>

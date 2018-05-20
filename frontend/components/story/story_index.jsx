@@ -23,14 +23,14 @@ class StoryIndex extends React.Component {
           story={story} feature=""/>);
     });
     return (
-      <section>
+      <main>
       <ul className="story-index features">
         {featureItems}
       </ul>
       <ul className="story-index">
         {storyItems}
       </ul>
-      </section>
+      </main>
     );
   }
 }

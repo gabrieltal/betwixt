@@ -59,16 +59,18 @@ header {
 
   .search-family {
     display: flex;
+    .anchor {
+      position: relative;
+      left: 115px;
+    }
     span {
       position: absolute;
-      right: 400px;
       cursor: pointer;
       transition: all .5s ease;
     }
   }
 
   .search-form-container {
-    margin-right: 5px;
     visibility: hidden;
     opacity: 0;
     transition: visibility 1s, opacity 1s linear;
