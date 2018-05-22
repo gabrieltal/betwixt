@@ -183,7 +183,7 @@ class StoryForm extends React.Component {
           placeholder="Add a tag..."
           type="text"
           />
-        <p id="tag-message">Limit of 5 tags, add or change tags so readers know what your story is about</p>
+        <p id="tag-message">Limit of 5 tags, remove and change tags so readers know what your story is about</p>
         <br/>
         <button className="input-publish" onClick={this.handleSubmit}>Publish</button>
       </div>

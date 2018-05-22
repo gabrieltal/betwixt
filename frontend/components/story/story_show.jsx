@@ -42,7 +42,11 @@ class StoryShow extends React.Component{
     if (!!this.props.story) {
       const story = this.props.story;
       let tags = this.props.story.tags;
-      tags = tags.map((tag) => <li>{tag}</li>);
+      tags = tags.map((tag, i) =>
+        (<li key={i}>
+          <Link to={`/search/${tag}`} className="tagLink">{tag}</Link>
+        </li>)
+      )
       return (
         <div className="story-show-container">
         <UserDetailPaneContainer authorId={this.props.story.author_id}/>
@@ -57,8 +61,9 @@ class StoryShow extends React.Component{
             </ul>
             <div className="story-accessories">
               {this.likeButton()}
-              <p className="story-date">Created on {story.created_at}</p>
+              <p className="story-date">Created on {story.created_at}
               <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
+              </p>
             </div>
           </section>
           <CommentIndexContainer story={story}/>
