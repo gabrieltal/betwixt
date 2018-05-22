@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
-import { RECEIVE_FOLLOW, REMOVE_FOLLOW, RECEIVE_LIKE, REMOVE_LIKE } from '../actions/user_actions';
+import { RECEIVE_FOLLOW, REMOVE_FOLLOW, RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_USER_CURRENT } from '../actions/user_actions';
 
 const _nullUser = Object.freeze({
     currentUser: null
@@ -10,9 +10,13 @@ const sessionReducer = (oldState=_nullUser, action) => {
   Object.freeze(oldState);
   let newState;
   let index;
+  let currentUser;
   switch (action.type) {
+    case RECEIVE_USER_CURRENT:
+      currentUser = action.user;
+      return merge({}, {currentUser});
     case RECEIVE_CURRENT_USER:
-      const currentUser = action.currentUser;
+      currentUser = action.currentUser;
       return merge({}, { currentUser });
     case RECEIVE_FOLLOW:
       newState = merge({}, oldState);
@@ -32,7 +36,6 @@ const sessionReducer = (oldState=_nullUser, action) => {
       index = Object.values(Object.values(newState)[0])[0].likes.indexOf(action.like.story_id);
       Object.values(Object.values(newState)[0])[0].likes.splice(index, 1);
       return newState;
-
     default:
       return oldState;
   }

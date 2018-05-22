@@ -3,6 +3,7 @@ import * as ApiLike from '../util/like_api_util';
 import * as ApiFollow from '../util/follow_api_util';
 
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USER_CURRENT = "RECEIVE_USER_CURRENT";
 export const RECEIVE_USER_FORM_ERRORS = "RECEIVE_USER_FORM_ERRORS";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
 export const REMOVE_LIKE = "REMOVE_LIKE";
@@ -15,7 +16,7 @@ export const fetchUser = (id) => (dispatch) => (
 );
 
 export const updateUser = (user) => (dispatch) => (
-  ApiUser.updateUser(user).then((user) => dispatch(receiveUser(user)),
+  ApiUser.updateUser(user).then((user) => dispatch(receiveUserCurrent(user)),
   (errors) => dispatch(receiveErrors(errors.responseJSON))
 ));
 
@@ -28,6 +29,11 @@ const receiveUsers = (users) => ({
   type: RECEIVE_USERS,
   users
 });
+
+const receiveUserCurrent = (user) => ({
+  type: RECEIVE_USER_CURRENT,
+  user
+})
 
 const receiveUser = (user) => ({
   type: RECEIVE_USER,
