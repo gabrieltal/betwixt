@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :likes,
     dependent: :destroy
+    
   has_many :followers,
     class_name: :Follow,
     foreign_key: :following_id

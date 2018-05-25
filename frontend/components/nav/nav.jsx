@@ -49,9 +49,9 @@ class Nav extends React.Component {
     return (
       <aside className="search-family">
         <span className="anchor">
-          <span id="search-glass" onClick={this.displaySearchBar} class="fas fa-search"></span>
+          <span id="search-glass" onClick={this.displaySearchBar} className="fas fa-search"></span>
         </span>
-        <form className="search-form-container" focusout={this.removeSearchBar} onSubmit={this.handleSubmit}>
+        <form className="search-form-container" onBlur={this.removeSearchBar} onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.update} placeholder="Search Betwixt" value={this.state.search}/>
         </form>
       </aside>
