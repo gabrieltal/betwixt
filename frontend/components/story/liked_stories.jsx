@@ -31,9 +31,6 @@ class LikedStories extends React.Component {
           return <StoryIndexItem key={story.id} story={story}/>
         }
       });
-
-      console.log(stories)
-      debugger;
       return (
         <ul className="story-index">
           {stories}
