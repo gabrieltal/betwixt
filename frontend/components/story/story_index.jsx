@@ -45,7 +45,7 @@ class StoryIndex extends React.Component {
           <li><Link to="/search/sciencefiction">ScienceFiction</Link></li>
           <li><Link to="/search/horror">Horror</Link></li>
           <li><Link to="/search/fantasy">Fantasy</Link></li>
-          <li><Link to="/search/ ">More</Link></li>
+          <li><Link to="/search/tags">More</Link></li>
         </ul>
       </nav>
       <ul className="story-index features">

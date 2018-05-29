@@ -46,11 +46,11 @@ class Search extends React.Component {
     let usersClass = 'tab';
     if (this.state.selected === 'Stories') {
       storiesClass += 'Selected';
-      usersClass -= 'Selected';
+      usersClass = 'tab';
       component = <StoriesSearchContainer searchParams={this.state.searchParams}/>
     } else {
       usersClass += 'Selected';
-      storiesClass -= 'Selected';
+      storiesClass = 'tab';
       component = <UsersSearchContainer searchParams={this.state.searchParams}/>
     }
 

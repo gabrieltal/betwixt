@@ -43,8 +43,8 @@ class UsersSearch extends React.Component {
         </h2>
       );
     } else {
-      let users = Object.values(this.props.users).map((user) => (
-        <li><UserDetailPaneContainer authorId={user.id}/></li>
+      let users = Object.values(this.props.users).map((user, i) => (
+        <li key={`${i}`}><UserDetailPaneContainer authorId={user.id}/></li>
       ));
 
       return (

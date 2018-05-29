@@ -25,17 +25,17 @@ class Tabs extends React.Component {
     let likesClass = 'tab';
     if (this.state.selected === "Stories") {
       storiesClass += 'Selected';
-      commentsClass -= 'Selected';
-      likesClass -= 'Selected';
+      commentsClass = 'tab';
+      likesClass = 'tab';
       component = <UserStoryShowContainer user={this.props.user}/>
     } else if (this.state.selected === "Comments") {
-      storiesClass -= 'Selected';
+      storiesClass = 'tab';
       commentsClass += 'Selected';
-      likesClass -= 'Selected';
+      likesClass = 'tab';
       component = <UserCommentContainer user={this.props.user}/>
     } else {
-      storiesClass -= 'Selected';
-      commentsClass -= 'Selected';
+      storiesClass = 'tab';
+      commentsClass = 'tab';
       likesClass += 'Selected';
       component = <LikedStoriesContainer user={this.props.user}/>
     }

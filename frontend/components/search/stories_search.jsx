@@ -43,9 +43,8 @@ class StoriesSearch extends React.Component {
         </h2>
       );
     } else {
-      let stories = Object.values(this.props.stories).map((story) => (
-        <li><StoryIndexItem key={story.id} story={story} feature="" />
-        </li>
+      let stories = Object.values(this.props.stories).map((story, i) => (
+        <StoryIndexItem key={story.id} story={story} feature="" />
       ));
 
       return (
