@@ -3,230 +3,264 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 header {
   display: flex;
-  justify-content: space-around;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  font-family: $title;
-  margin: 0;
-  background-color: white;
-  text-align: center;
-  z-index: 1000;
-  border-bottom: 1px solid lightgray;
-  .about {
-    float: left;
-    color: darkgray;
-    text-decoration: none;
-    margin-top: 25px;
-    margin-left: 15px;
-    padding: 5px;
+  flex-direction: column;
+  align-items: center;
+  main {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    top: 0;
+    font-family: $title;
+    margin: 0;
+    background-color: white;
     text-align: center;
-  }
-
-  .about:hover {
-    text-decoration: underline;
-  }
-
-  @media screen and (max-width: 700px) {
+    z-index: 1000;
     .about {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 585px) {
-    .greet-signout {
-      .search-family {
-        display: none;
-      }
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .login-button {
-      display: none;
-    }
-
-    .signup-button {
-      display: none;
-    }
-
-    .greet-signout {
-      img {
-        display: none;
-      }
-
-      .new-story-button {
-        display: none;
-      }
-
-      .signout-button {
-        margin-top: 10px;
-      }
-      .search-family {
-        display: none;
-      }
-    }
-  }
-
-  .search-family {
-    display: flex;
-    width: 115px;
-    .anchor {
-      position: relative;
-      left: 90px;
-    }
-    span {
-      position: absolute;
-      cursor: pointer;
-      transition: all .5s ease;
-    }
-  }
-
-  .search-form-container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 1s linear;
-    input {
-      width: 100px;
-      border: none;
-      outline: none;
-      font-family: $main;
-      font-size: 14px;
-      font-weight: 400;
-    }
-  }
-
-  .header-Link {
-    display: inline-block;
-    text-align: center;
-    margin-top: 10px;
-    color: $my-black;
-    font-size: 45px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-
-  .login-signup {
-    float: right;
-    display: flex;
-    max-height: 50px;
-    min-height: 50px;
-    align-items: center;
-    margin-top: 20px;
-    font-family: $title;
-    button {
-      margin-right: 15px;
-    }
-
-    .signup-button, .signin-button, .demo-button {
-      color: $burgundy;
-      font-size: 14px;
-      padding: 5px 10px;
-      font-family: $title;
-
-      background: white;
-      border-radius: 5px;
-      border: 2px solid $burgundy;
-    }
-
-    .signup-button:hover, .demo-button:hover {
-      color: white;
-      cursor: pointer;
-      background: $burgundy;
-      font-family: $title;
-    }
-  }
-
-  .greet-signout {
-    float: right;
-
-    font-family: sans-serif;
-    display: flex;
-    margin-right: 10px;
-    font-size: 16px;
-    align-items: center;
-    font-family: $title;
-    margin-top: 15px;
-
-    .new-story-button {
-      color: black;
-      font-size: 20px;
+      float: left;
+      color: darkgray;
+      text-decoration: none;
+      margin-top: 25px;
+      margin-left: 15px;
       padding: 5px;
-      margin: 0 10px 0 2px;
-      text-decoration: none;
-      font-family: $title;
+      text-align: center;
     }
 
-    .create-text {
-      display: none;
-    }
-
-  .new-story-button:hover {
-    text-decoration: underline;
-    + .create-text {
-      font-size: 16px;
-      top: 60px;
-      position: absolute;
-      display: inline-block;
-      background-color: rgba(0, 0, 0, .9);
-      padding: 0px 7px 5px 7px;
-      border-radius: 5px;
-      color: white;
-      margin-top: 5px;
-      .arrow-up {
-        position: relative;
-        left: 63px;
-        top: -7px;
-        display: block;
-        width: 0;
-        height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid black;
-      }
-    }
-
-  }
-
-    p {
-      margin-right: 10px;
-    }
-    .welcome {
-      color: $burgundy;
-      text-decoration: none;
-      font-family: $title;
-    }
-
-    .welcome:hover {
+    .about:hover {
       text-decoration: underline;
     }
-    .signout-button {
+
+    @media screen and (max-width: 700px) {
+      .about {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 585px) {
+      .greet-signout {
+        .search-family {
+          display: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .login-button {
+        display: none;
+      }
+
+      .signup-button {
+        display: none;
+      }
+
+      .greet-signout {
+        img {
+          display: none;
+        }
+
+        .new-story-button {
+          display: none;
+        }
+
+        .signout-button {
+          margin-top: 10px;
+        }
+        .search-family {
+          display: none;
+        }
+      }
+    }
+
+    .search-family {
+      display: flex;
+      width: 115px;
+      .anchor {
+        position: relative;
+        left: 90px;
+      }
+      span {
+        position: absolute;
+        cursor: pointer;
+        transition: all .5s ease;
+      }
+    }
+
+    .search-form-container {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 1s, opacity 1s linear;
+      input {
+        width: 100px;
+        border: none;
+        outline: none;
+        font-family: $main;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .header-Link {
+      display: inline-block;
+      text-align: center;
+      margin-top: 10px;
+      color: $my-black;
+      font-size: 45px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .login-signup {
+      float: right;
+      display: flex;
+      max-height: 50px;
+      min-height: 50px;
+      align-items: center;
+      margin-top: 20px;
+      font-family: $title;
+      button {
+        margin-right: 15px;
+      }
+
+      .signup-button, .signin-button, .demo-button {
+        color: $burgundy;
+        font-size: 14px;
+        padding: 5px 10px;
+        font-family: $title;
+
+        background: white;
+        border-radius: 5px;
+        border: 2px solid $burgundy;
+      }
+
+      .signup-button:hover, .demo-button:hover {
+        color: white;
+        cursor: pointer;
+        background: $burgundy;
+        font-family: $title;
+      }
+    }
+
+    .greet-signout {
+      float: right;
+
+      font-family: sans-serif;
+      display: flex;
       margin-right: 10px;
+      font-size: 16px;
+      align-items: center;
+      font-family: $title;
+      margin-top: 15px;
+
+      .new-story-button {
+        color: black;
+        font-size: 20px;
+        padding: 5px;
+        margin: 0 10px 0 2px;
+        text-decoration: none;
+        font-family: $title;
+      }
+
+      .create-text {
+        display: none;
+      }
+
+    .new-story-button:hover {
+      text-decoration: underline;
+      + .create-text {
+        font-size: 16px;
+        top: 60px;
+        position: absolute;
+        display: inline-block;
+        background-color: rgba(0, 0, 0, .9);
+        padding: 0px 7px 5px 7px;
+        border-radius: 5px;
+        color: white;
+        margin-top: 5px;
+        .arrow-up {
+          position: relative;
+          left: 63px;
+          top: -7px;
+          display: block;
+          width: 0;
+          height: 0;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+          border-bottom: 7px solid black;
+        }
+      }
+
+    }
+
+      p {
+        margin-right: 10px;
+      }
+      .welcome {
+        color: $burgundy;
+        text-decoration: none;
+        font-family: $title;
+      }
+
+      .welcome:hover {
+        text-decoration: underline;
+      }
+      .signout-button {
+        margin-right: 10px;
+        font-family: $title;
+
+      }
+      img {
+        bottom: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    .login-button, .signout-button {
+      border: none;
+      background: none;
+      padding: 0;
+      color: $burgundy;
       font-family: $title;
 
+      font-size: 14px;
     }
-    img {
-      bottom: 5px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+
+    .login-button:hover, .signout-button:hover {
+      cursor: pointer;
+      text-decoration: underline black;
+    }
+
+  }
+}
+
+#mainTags {
+  z-index: 1001;
+  display: block;
+  padding: 10px;
+  background: white;
+  width: 97%;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    li {
+      font-family: $main;
+      font-weight: 400;
+      font-size: 20px;
+      a {
+        color: $dark-gray;
+        text-decoration: none;
+      }
     }
   }
+  border-bottom: 1px solid lightgray;
+}
 
-  .login-button, .signout-button {
-    border: none;
-    background: none;
-    padding: 0;
-    color: $burgundy;
-    font-family: $title;
-
-    font-size: 14px;
-  }
-
-  .login-button:hover, .signout-button:hover {
-    cursor: pointer;
-    text-decoration: underline black;
-  }
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

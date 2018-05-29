@@ -11,35 +11,38 @@ import EditStoryContainer from './story/edit_story_container';
 import UserEditContainer from './user/user_edit_container';
 import SearchContainer from './search/search_container';
 
-const App = () => (
-  <div>
-    <Modal />
-    <header>
-      <a className="about"
-        href={'https://github.com/gabrieltal/betwixt'}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        About
-      </a>
+class App extends React.Component {
+  render () {
+    return (
+      <div>
+        <Modal />
+        <header>
+          <main>
+            <a className="about" href={'https://github.com/gabrieltal/betwixt'}
+            target="_blank" rel="noopener noreferrer"> About
+            </a>
 
-      <Link to="/" className="header-Link">
-        <h1>Betwixt</h1>
-      </Link>
-      <NavContainer />
-    </header>
+            <Link to="/" className="header-Link">
+              <h1>Betwixt</h1>
+            </Link>
+            <NavContainer />
+          </main>
+        </header>
 
-    <Switch>
-      <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
-      <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
-      <Route exact path="/story/:storyId" component={StoryShowContainer} />
-      <Route exact path="/search/:searchParams" component={SearchContainer}/>
-      <Route exact path="/user/:userId" component={UserShowContainer} />
-      <ProtectedRoute exact path="/user/:userId/edit" component={UserEditContainer}/>
-      <Route exact path="/" component={StoryIndexContainer} />
-      <Redirect from='/' to="/"/>
-    </Switch>
-  </div>
-);
+        <Switch>
+          <ProtectedRoute exact path="/story/new" component={NewStoryContainer} />
+          <ProtectedRoute exact path="/story/:storyId/edit" component={EditStoryContainer}/>
+          <Route exact path="/story/:storyId" component={StoryShowContainer} />
+          <Route exact path="/search/:searchParams" component={SearchContainer}/>
+          <Route exact path="/user/:userId" component={UserShowContainer} />
+          <ProtectedRoute exact path="/user/:userId/edit" component={UserEditContainer}/>
+          <Route exact path="/" component={StoryIndexContainer} />
+          <Redirect from='/' to="/"/>
+        </Switch>
+      </div>
+
+    )
+  }
+}
 
 export default App;

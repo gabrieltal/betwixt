@@ -1,8 +1,21 @@
 import React from 'react';
 import StoryIndexItem from './story_index_item';
+import { Link } from 'react-router-dom';
+
 class StoryIndex extends React.Component {
   componentDidMount () {
     this.props.fetchStories();
+
+    let nav = document.getElementById("mainTags");
+    nav.style.display="block";
+    let sticky = nav.offsetTop;
+    window.onscroll = () => {
+      if (window.pageYOffset >= sticky) {
+        nav.classList.add("sticky");
+      } else {
+        nav.classList.remove("sticky");
+      }
+    }
   }
 
   render () {
@@ -24,6 +37,17 @@ class StoryIndex extends React.Component {
     });
     return (
       <main>
+      <nav id="mainTags">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/search/pizza">Pizza</Link></li>
+          <li><Link to="/search/books">Books</Link></li>
+          <li><Link to="/search/sciencefiction">ScienceFiction</Link></li>
+          <li><Link to="/search/horror">Horror</Link></li>
+          <li><Link to="/search/fantasy">Fantasy</Link></li>
+          <li><Link to="/search/ ">More</Link></li>
+        </ul>
+      </nav>
       <ul className="story-index features">
         {featureItems}
       </ul>
