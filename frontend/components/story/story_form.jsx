@@ -34,6 +34,11 @@ class StoryForm extends React.Component {
 
   componentDidMount() {
     let tagInput = document.getElementById('tag-input');
+    if (this.props.story.tags.length >= 5) {
+      let tagMessage = document.getElementById('tag-message');
+      tagInput.style.display = 'none';
+      tagMessage.style.display = 'inline-block';
+    }
     tagInput.addEventListener("keyup", (e) => {
       e.preventDefault();
       if (e.keyCode === 13) {
@@ -83,8 +88,8 @@ class StoryForm extends React.Component {
 
   displayTags() {
     if (this.state.tags.length > 0) {
-      let tagDisplay = this.state.tags.map(tag =>
-        <li>
+      let tagDisplay = this.state.tags.map((tag, i) =>
+        <li key={i}>
           <p>{tag}</p>
           <span id="remove-tag" onClick={this.removeTag}>
             x
