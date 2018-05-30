@@ -5,6 +5,7 @@ import uiReducer from './ui_reducer';
 import usersReducer from './users_reducer';
 import storiesReducer from './stories_reducer';
 import commentsReducer from './comments_reducer';
+import searchReducer from './search_reducer';
 
 export default combineReducers({
   session: sessionReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   errors: errorsReducer,
   users: usersReducer,
   stories: storiesReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  search: searchReducer
 });

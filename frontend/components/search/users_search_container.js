@@ -5,7 +5,7 @@ import UsersSearch from './users_search';
 const mapStateToProps = (state, ownProps) => {
   return {
     searchParams: ownProps.searchParams,
-    users: state.users,
+    users: state.search.users,
     errors: state.errors.form
   }
 };

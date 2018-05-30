@@ -10,6 +10,7 @@ export const REMOVE_LIKE = "REMOVE_LIKE";
 export const RECEIVE_FOLLOW = "RECEIVE_FOLLOW";
 export const REMOVE_FOLLOW = "REMOVE_FOLLOW";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const RECEIVE_SEARCH_USERS = "RECEIVE_SEARCH_USERS";
 
 export const fetchUser = (id) => (dispatch) => (
   ApiUser.fetchUser(id).then((user) => dispatch(receiveUser(user)))
@@ -21,7 +22,7 @@ export const updateUser = (user) => (dispatch) => (
 ));
 
 export const searchTaggedUsers = (tag) => (dispatch) => (
-  ApiUser.searchTaggedUsers(tag).then((users) => dispatch(receiveUsers(users)),
+  ApiUser.searchTaggedUsers(tag).then((users) => dispatch(receiveSearchUsers(users)),
   (errors) => dispatch(receiveErrors(errors.responseJSON)))
 );
 
@@ -38,6 +39,11 @@ const receiveUserCurrent = (user) => ({
 const receiveUser = (user) => ({
   type: RECEIVE_USER,
   user
+});
+
+const receiveSearchUsers = (users) => ({
+  type: RECEIVE_SEARCH_USERS,
+  users
 });
 
 export const receiveErrors = (errors) => ({

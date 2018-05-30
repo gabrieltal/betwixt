@@ -7,8 +7,7 @@ class StoriesSearch extends React.Component {
 
     this.state = {
       search: this.props.searchParams,
-      errors: [],
-      hasLoaded: false
+      errors: []
     }
   }
 
@@ -18,15 +17,9 @@ class StoriesSearch extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
-    this.setState({
-      hasLoaded: false
-    })
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      hasLoaded: true
-    })
     if (nextProps.errors.length === 1) {
       this.setState({
         errors: nextProps.errors
@@ -37,19 +30,12 @@ class StoriesSearch extends React.Component {
       this.props.clearErrors();
       this.props.searchTaggedStories(nextProps.searchParams);
       this.setState({
-        errors: []
+        errors: [],
       })
     }
   }
 
   render () {
-    if (!this.state.hasLoaded) {
-      return (
-        <h2 id="no-results">
-          Searching...
-        </h2>
-      )
-    }
     if (Object.keys(this.props.stories).length === 0 || this.state.errors.length === 1) {
       return (
         <h2 id="no-results">

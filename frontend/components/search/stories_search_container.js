@@ -5,7 +5,7 @@ import StoriesSearch from './stories_search';
 const mapStateToProps = (state, ownProps) => {
   return {
     searchParams: ownProps.searchParams,
-    stories: state.stories,
+    stories: state.search.stories,
     errors: state.errors.form
   }
 };

@@ -3,13 +3,14 @@ export const RECEIVE_STORY = "RECEIVE_STORY";
 export const RECEIVE_STORIES = "RECEIVE_STORIES";
 export const REMOVE_STORY = "REMOVE_STORY";
 export const RECEIVE_FORM_ERRORS = "RECEIVE_FORM_ERRORS";
+export const RECEIVE_SEARCH_STORIES = "RECEIVE_SEARCH_STORIES";
 
 export const fetchStory = (id) => (dispatch) => (
   ApiStory.fetchStory(id).then((story) => dispatch(receiveStory(story)))
 );
 
 export const searchTaggedStories = (tag) => (dispatch) => (
-  ApiStory.searchTaggedStories(tag).then((stories) => dispatch(receiveStories(stories)),
+  ApiStory.searchTaggedStories(tag).then((stories) => dispatch(receiveSearchStories(stories)),
   (errors) => dispatch(receiveErrors(errors.responseJSON)))
 );
 
@@ -43,6 +44,11 @@ const removeStory = (storyId) => ({
   type: REMOVE_STORY,
   storyId
 });
+
+const receiveSearchStories = (stories) => ({
+  type: RECEIVE_SEARCH_STORIES,
+  stories
+})
 
 const receiveStories = (stories) => ({
   type: RECEIVE_STORIES,

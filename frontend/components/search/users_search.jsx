@@ -7,8 +7,7 @@ class UsersSearch extends React.Component {
 
     this.state = {
       search: this.props.searchParams,
-      errors: [],
-      hasLoaded: false
+      errors: []
     }
   }
 
@@ -18,15 +17,9 @@ class UsersSearch extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
-    this.setState({
-      hasLoaded: false
-    })
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      hasLoaded: true
-    })
     if (nextProps.errors.length === 1) {
       this.setState({
         errors: nextProps.errors
@@ -43,13 +36,6 @@ class UsersSearch extends React.Component {
   }
 
   render () {
-    if (!this.state.hasLoaded) {
-      return (
-        <h2 id="no-results">
-          Searching...
-        </h2>
-      )
-    }
     if (Object.keys(this.props.users).length === 0 || this.state.errors.length === 1) {
       return (
         <h2 id="no-results">
