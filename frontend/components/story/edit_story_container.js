@@ -27,7 +27,8 @@ class EditStoryForm extends React.Component {
     if (!!this.props.story) {
     return (
       <StoryForm action={this.props.action} errors={this.props.errors}
-        story={this.props.story} authorId={this.props.authorId} />
+        story={this.props.story} authorId={this.props.authorId}
+        clearErrors={this.props.clearErrors} />
     );
   } else {
     return (<div>Loading...</div>);

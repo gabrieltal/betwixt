@@ -120,7 +120,7 @@ class StoryForm extends React.Component {
       tags: addedTag
     })
 
-    if (this.state.tags.length === 5) {
+    if (this.state.tags.length >= 5) {
       let tagInput = document.getElementById('tag-input');
       let tagMessage = document.getElementById('tag-message');
       tagInput.style.display = 'none';

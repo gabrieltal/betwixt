@@ -4,8 +4,6 @@
   font-family: $main;
 }
 
-
-
 .user-name-follow {
   display: flex;
   align-items: center;
@@ -20,10 +18,8 @@
 .tag-list {
   display: flex;
   font-family: $main;
-  align-self: flex-start;
-  margin-left: 15vw;
-  margin-bottom: 15px;
-  justify-content: space-between;
+  align-self: center;
+  justify-content: center;
   li {
     padding: 5px 10px;
     background: lightgray;
@@ -42,6 +38,7 @@
 
 .story-show-body {
   font-family: $main;
+  text-align: center;
   p {
     font-style: inherit;
   }
@@ -191,7 +188,7 @@
     }
 
     .story-show-body {
-      width: 60%;
+      width: 65%;
       font-weight: 400;
       font-style: normal;
       line-height: 1.58;
@@ -199,6 +196,13 @@
       font-size: 21px;
       font-family: $main;
       margin-bottom: 15px;
+      img {
+        width: 90%;
+        margin-bottom: 10px;
+      }
+      p {
+        margin-bottom: 0;
+      }
     }
 
     .story-date {
