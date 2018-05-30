@@ -16,7 +16,6 @@ const usersReducer = (oldState={}, action) => {
       return merge({}, action.users);
     case RECEIVE_LIKE:
       newState = merge({}, oldState);
-      console.log(newState);
       Object.values(newState)[0]["likes"].push(action.like.story_id);
       return newState;
     case REMOVE_LIKE:
