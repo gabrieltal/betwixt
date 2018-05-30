@@ -9,8 +9,10 @@ class Search extends React.Component {
     this.state = {
       search: this.props.searchParams,
       selected: 'Stories',
-      searchParams: this.props.searchParams
+      searchParams: this.props.searchParams,
+      inputErrorMessage: ''
     }
+
     this.selectTab = this.selectTab.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,9 +36,24 @@ class Search extends React.Component {
 
   handleSubmit(e) {
     let search = this.state.search;
+    if (search.trim().length === 0) {
+      this.setState({
+        inputErrorMessage: 'Search parameters cannot be blank!',
+        search: ''
+
+      })
+      return;
+    } else {
+      this.setState({
+        inputErrorMessage: '',
+      })
+    }
+
     this.setState({
       searchParams: search
     });
+
+
     this.props.history.push(`/search/${this.state.search}`)
   }
 
@@ -61,6 +78,7 @@ class Search extends React.Component {
             placeholder="Search Betwixt" value={this.state.search}
           />
         </form>
+        <h3 id="searchParamsError">{this.state.inputErrorMessage}</h3>
         <nav className="tab-header">
           <button className={storiesClass} onClick={this.selectTab("Stories")}>
             Stories

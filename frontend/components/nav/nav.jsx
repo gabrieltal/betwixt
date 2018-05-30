@@ -42,7 +42,11 @@ class Nav extends React.Component {
   }
 
   handleSubmit(e) {
-    this.props.history.push(`/search/${this.state.search}`)
+    let search = this.state.search;
+    if (this.state.search.trim().length === 0) {
+      search = '1984';
+    }
+    this.props.history.push(`/search/${search}`)
   }
 
   searchForm() {
