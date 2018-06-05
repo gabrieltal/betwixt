@@ -5,10 +5,6 @@ import ReactQuill from 'react-quill';
 import CommentIndexContainer from '../comment/comment_index_container';
 
 class StoryShow extends React.Component{
-  constructor (props) {
-    super(props);
-  }
-
   componentDidMount () {
     this.props.fetchStory(this.props.match.params.storyId);
   }
@@ -62,7 +58,7 @@ class StoryShow extends React.Component{
             <div className="story-accessories">
               {this.likeButton()}
               <p className="story-date">Created on {story.created_at}
-              <div className="update-date"><div className="arrow-up"></div>Updated {story.updated_at}</div>
+              <span className="update-date"><span className="arrow-up"></span>Updated {story.updated_at}</span>
               </p>
             </div>
           </section>

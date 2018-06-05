@@ -55,7 +55,7 @@ class Api::StoriesController < ApplicationController
         render 'api/stories/index'
       end
     else
-      @stories = Story.all
+      @stories = Story.all.includes(:user)
       render 'api/stories/index'
     end
   end

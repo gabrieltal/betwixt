@@ -25,7 +25,6 @@ class LikedStories extends React.Component {
   render () {
     if (this.state.stories.length > 0 && this.state.stories[0] !== undefined) {
       let stories = this.state.stories;
-      console.log(stories)
       stories = stories.map((story) => {
         if (typeof story !== 'undefined') {
           return <StoryIndexItem key={story.id} story={story}/>

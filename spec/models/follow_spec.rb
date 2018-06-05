@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Follow, type: :model do
 
   describe 'Following' do
-    follower = User.find_by_username('gabrielt');
-    following = User.find_by_username('gabriel');
+    follower = User.create({username: 'pizzamaster2001', password: 'password'});
+    following = User.create({username: 'gabrieltal123', password: 'password'});
 
     follow = Follow.create({
       follower_id: follower.id,
