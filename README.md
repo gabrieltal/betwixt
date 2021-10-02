@@ -8,6 +8,12 @@ Betwixt is a web application that lets users read, like and publish stories; as 
 
 ![Homepage](https://github.com/gabrieltal/betwixt/blob/master/docs/wireframes/betwixt-main.gif)
 
+## Background
+
+I made this back when I was at App Academy. It was my first run at creating a solo full stack application. I was pretty pleased with the results. It was a Medium clone so I tried to style it similar to Medium. Obviously nowhere near as good looking. The project hasn't been kept up, but it is still live.
+
+I haven't worked on this since 2018 so I don't have a whole lot more to say or add. Just a fun project to see my evolution as a web developer and see where it all started.
+
 ## Installation
 
 ### Requirements
