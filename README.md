@@ -4,8 +4,6 @@
 
 Betwixt is a web application that lets users read, like and publish stories; as well as follow other authors. Inspired by Medium.
 
-[things-betwixt.herokuapp.com](http://things-betwixt.herokuapp.com/#/)
-
 ![Homepage](https://github.com/gabrieltal/betwixt/blob/master/docs/wireframes/betwixt-main.gif)
 
 ## Background
